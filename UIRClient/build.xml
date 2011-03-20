@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="UIRClient" default="build-pretty" basedir=".">
+	<!-- Configure path to GWT SDK -->
+	<property name="gwt.sdk" location="D:\eclipse\plugins\com.google.gwt.eclipse.sdkbundle.2.2.0_2.2.0.v201102111811\gwt-2.2.0" />
+	<property name="glassfish.path" location="D:\glassfish\glassfish">
+	</property>
+	<path id="project.class.path">
+		<pathelement location="build/classes" />
+		<pathelement location="${gwt.sdk}/gwt-user.jar" />
+		<fileset dir="${gwt.sdk}" includes="gwt-dev*.jar" />
+		<!-- Add any additional non-server libs (such as JUnit)-->
+		<fileset dir="libs" includes="**/*.jar" />
+	</path>
+
+	<target name="javac" description="Compile java source">
+		<mkdir dir="build/classes" />
+		<javac srcdir="src" includes="**" encoding="utf-8" destdir="build/classes">
+			<classpath refid="project.class.path" />
+		</javac>
+		<copy todir="build/classes">
+			<fileset dir="src" excludes="**/*.java **/.svn/" />
+		</copy>
+	</target>
+
+	<target name="gwtc-pretty" depends="javac" description="GWT compile to JavaScript">
+		<mkdir dir="public" />
+		<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
+			<classpath>
+				<pathelement location="src" />
+				<path refid="project.class.path" />
+			</classpath>
+			<!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
+			<jvmarg value="-Xmx256M" />
+			<!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
+			<arg value="-style" />
+			<arg value="PRETTY" />
+			<arg value="-war" />
+			<arg value="public" />
+			<arg value="-extra" />
+			<arg value="extra" />
+			<arg value="com.lise.markowitz.UIRClient" />
+		</java>
+		<copy todir="public">
+			<fileset dir="static" excludes="**/.svn/" />
+		</copy>
+		<copy todir="public/WEB-INF">
+			<fileset dir="build" excludes="**/client/" />
+		</copy>
+		<move todir="public">
+			<fileset dir="public/com.lise.markowitz.UIRClient" excludes="**/.svn/" />
+		</move>
+		<delete dir="public/com.lise.markowitz.UIRClient" />
+	</target>
+
+	<target name="gwtc-release" depends="javac" description="GWT compile to JavaScript">
+		<mkdir dir="public" />
+		<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
+			<classpath>
+				<pathelement location="src" />
+				<path refid="project.class.path" />
+			</classpath>
+			<!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
+			<jvmarg value="-Xmx256M" />
+			<!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
+			<arg value="-style" />
+			<arg value="OBF" />
+			<arg value="-war" />
+			<arg value="public" />
+			<arg value="-extra" />
+			<arg value="extra" />
+			<arg value="com.lise.markowitz.UIRClient" />
+		</java>
+		<copy todir="public">
+			<fileset dir="static" excludes="**/.svn/" />
+		</copy>
+		<copy todir="public/WEB-INF">
+			<fileset dir="build" excludes="**/client/" />
+		</copy>
+		<move todir="public">
+			<fileset dir="public/com.lise.markowitz.UIRClient" excludes="**/.svn/" />
+		</move>
+		<delete dir="public/com.lise.markowitz.UIRClient" />
+	</target>
+
+	<target name="hosted" depends="javac" description="Run hosted mode">
+		<java failonerror="true" fork="true" classname="com.google.gwt.dev.HostedMode">
+			<classpath>
+				<pathelement location="src" />
+				<path refid="project.class.path" />
+			</classpath>
+			<jvmarg value="-Xmx256M" />
+			<arg value="-noserver" />
+			<arg value="-port" />
+			<arg value="8080" />
+			<arg value="-war" />
+			<arg value="public" />
+			<arg value="-startupUrl" />
+			<arg value="http://localhost:8080/UIRClient/UIRClient.html" />
+			<!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
+			<arg value="com.lise.markowitz.UIRClient" />
+		</java>
+	</target>
+
+	<target name="build-release" depends="clean, gwtc-release" description="Build this project" />
+	<target name="build-pretty" depends="clean, gwtc-pretty" description="Build this project" />
+
+	<target name="war" depends="build-release" description="Create a war file">
+		<zip destfile="UIRClient.war" basedir="public" />
+	</target>
+
+	<target name="war-pretty" depends="build-pretty" description="Create a war-pretty file">
+		<zip destfile="UIRClient.war" basedir="public" />
+	</target>
+
+	<target name="clean" description="Cleans this project">
+		<delete dir="build/classes" failonerror="false" />
+		<delete dir="public" failonerror="false" />
+	</target>
+
+	<target name="local-deploy">
+		<taskdef name="sun-appserv-deploy" classname="org.glassfish.ant.tasks.DeployTask" classpath="${glassfish.path}/lib/ant/ant-tasks.jar" />
+		<sun-appserv-deploy force="true" file="UIRClient.war" host="localhost" port="4848" installDir="${glassfish.path}" />
+	</target>
+
+	<target name="war-deploy" depends="clean, war, local-deploy" />
+
+</project>
