@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<sun-web-app>
+	<resource-ref>
+		<res-ref-name>jdbc/rsdhDB</res-ref-name>
+		<jndi-name>jdbc/db</jndi-name>
+	</resource-ref>
+</sun-web-app>
