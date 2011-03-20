@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ProxyClasses" default="jar" basedir=".">
+	<target name="clean" description="Clean old compilation">
+		<delete>
+			<fileset dir="." includes="**/*.class" />
+		</delete>
+		<delete dir="bin" failonerror="false" />
+	</target>
+	<target name="compile" depends="clean">
+		<mkdir dir="bin" />
+		<javac srcdir="src" encoding="utf-8" destdir="bin" excludes="**/.svn/">
+			<classpath>
+				<path>
+					<pathelement location="CacheDB.jar" />
+				</path>
+			</classpath>
+		</javac>
+	</target>
+	<target name="jar" description="Create a jar file" depends="compile">
+		<property name="version.num" value="1.0" />
+		<manifest file="src/META-INF/MANIFEST.MF">
+			<attribute name="Implementation-Version" value="${version.num}" />
+		</manifest>
+
+		<delete dir="lib" failonerror="false" />
+		<mkdir dir="lib" />
+		<jar destfile="lib/ProxyClasses.jar" basedir="bin" manifest="src/META-INF/MANIFEST.MF" />
+	</target>
+</project>
