@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>UIRServer</display-name>
   <resource-ref>
-    <res-ref-name>jdbc/rsdhDB</res-ref-name>
+    <res-ref-name>jdbc/db</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Application</res-auth>
   </resource-ref>

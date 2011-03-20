@@ -3,7 +3,6 @@
 	<name>UIREE</name>
 	<comment></comment>
 	<projects>
-		<project>proxy.intersys.api</project>
 		<project>UIRClient</project>
 		<project>UIRServer</project>
 	</projects>
