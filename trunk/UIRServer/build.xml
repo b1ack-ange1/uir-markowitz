@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="UIRServer" default="war" basedir=".">
+	<target name="war" description="Create a war file">
+		<war destfile="UIRServer.war" webxml="public/WEB-INF/web.xml">
+			<lib dir="public/WEB-INF/lib" excludes="cacheDB*" />
+			<classes dir="build/classes" />
+			<fileset dir="public" includes="WEB-INF/sun*.xml,**/*.jsp" />
+		</war>
+	</target>
+</project>
