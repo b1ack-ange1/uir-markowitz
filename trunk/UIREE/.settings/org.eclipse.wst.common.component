@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+	<wb-module deploy-name="UIREE">
+		<wb-resource deploy-path="/" source-path="/EarContent"/>
+		<dependent-module deploy-path="/" handle="module:/resource/RSDHACenter/RSDHACenter">
+			<dependent-object/>
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+        <dependent-module archiveName="ru.softlab.rsdh.api.jar" deploy-path="/lib" handle="module:/resource/ru.softlab.rsdh.api/ru.softlab.rsdh.api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="UIRServer.war" deploy-path="/" handle="module:/resource/UIRServer/UIRServer">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+	</wb-module>
+</project-modules>

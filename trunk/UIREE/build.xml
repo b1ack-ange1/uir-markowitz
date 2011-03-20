@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="UIREE" default="ear-fast-deploy" basedir=".">
+	<property name="glassfish.path" location="D:\glassfish\glassfish"/>
+<target name="server">
+		<ant antfile="../proxy.intersys.api/build.xml" target="jar" dir="../proxy.intersys.api/" />
+		<ant antfile="../UIRServer/build.xml" target="war" dir="../UIRServer/" />
+	</target>
+	<target name="client">
+		<ant antfile="../UIRClient/build.xml" target="war" dir="../UIRClient" />
+	</target>
+	<target name="client-pretty">
+		<ant antfile="../UIRClient/build.xml" target="war-pretty" dir="../UIRClient" />
+	</target>
+
+
+	<target name="makeEAR">
+		<property name="version.num" value="1.0" />
+		<buildnumber file="build.num" />
+		<manifest file="EarContent/META-INF/MANIFEST.MF">
+			<attribute name="Specification-Version" value="${version.num}" />
+			<attribute name="Implementation-Version" value="build${build.number}" />
+		</manifest>
+		<ear destfile="UIREE.ear" appxml="EarContent/META-INF/application.xml" manifest="EarContent/META-INF/MANIFEST.MF">
+			<fileset dir="../UIRClient" includes="*.war" />
+			<fileset dir="../UIRServer" includes="*.war" />
+			<fileset dir="../proxy.intersys.api" includes="*/*.jar" excludes="CacheDB**" />
+		</ear>
+	</target>
+
+	<target name="local-deploy">
+		<taskdef name="sun-appserv-deploy" classname="org.glassfish.ant.tasks.DeployTask" classpath="${glassfish.path}/lib/ant/ant-tasks.jar" />
+		<sun-appserv-deploy force="true" file="UIREE.ear" host="localhost" port="4848" installDir="${glassfish.path}" />
+	</target>
+
+	<target name="ear" description="Create an ear file" depends="server, client, makeEAR">
+	</target>
+	<target name="ear-pretty" description="Create an ear file" depends="server, client-pretty, makeEAR">
+	</target>
+	<target name="ear-fast" depends="server, makeEAR">
+	</target>
+
+
+	<target name="ear-deploy" depends="ear, local-deploy" />
+	<target name="ear-pretty-deploy" depends="ear-pretty, local-deploy" />
+	<target name="ear-fast-deploy" depends="ear-fast, local-deploy" />
+
+</project>
