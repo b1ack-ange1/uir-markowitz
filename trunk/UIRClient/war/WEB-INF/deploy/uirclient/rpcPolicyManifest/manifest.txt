@@ -1,3 +1,0 @@
-# Module uirclient
-# RPC service class, partial path of RPC policy file
-com.lise.markowitz.client.GreetingService, 7564FCA94F46428898F9E66296E9B94A.gwt.rpc
