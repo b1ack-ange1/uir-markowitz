@@ -2,6 +2,8 @@
 <project name="UIREE" default="ear-fast-deploy" basedir=".">
 	<property name="glassfish.path" location="K:\Program Files\glassfish\glassfish"/>
 	<property name="workspace.path" location="K:\учеба\8 семестр\УИР\workspace"/>
+	<property name="workspace.path" location="D:\учеба\УИР\uir-markowitz"/>
+
 <target name="server">
 		<ant antfile="${workspace.path}/proxy.intersys.api/build.xml" target="jar" dir="${workspace.path}/proxy.intersys.api/" />
 		<ant antfile="${workspace.path}/UIRServer/build.xml" target="war" dir="${workspace.path}/UIRServer/" />
