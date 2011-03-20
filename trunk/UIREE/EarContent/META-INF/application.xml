@@ -3,8 +3,8 @@
   <display-name>UIREE</display-name>
   <module>
     <web>
-      <web-uri>RSDHACenter.war</web-uri>
-      <context-root>RSDHACenter</context-root>
+      <web-uri>UIRClient.war</web-uri>
+      <context-root>UIRClient</context-root>
     </web>
   </module>
   <module>

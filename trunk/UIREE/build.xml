@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project name="UIREE" default="ear-fast-deploy" basedir=".">
-	<property name="glassfish.path" location="D:\glassfish\glassfish"/>
+	<property name="glassfish.path" location="K:\Program Files\glassfish\glassfish"/>
+	<property name="workspace.path" location="K:\учеба\8 семестр\УИР\workspace"/>
 <target name="server">
-		<ant antfile="../proxy.intersys.api/build.xml" target="jar" dir="../proxy.intersys.api/" />
-		<ant antfile="../UIRServer/build.xml" target="war" dir="../UIRServer/" />
+		<ant antfile="${workspace.path}/proxy.intersys.api/build.xml" target="jar" dir="${workspace.path}/proxy.intersys.api/" />
+		<ant antfile="${workspace.path}/UIRServer/build.xml" target="war" dir="${workspace.path}/UIRServer/" />
 	</target>
 	<target name="client">
-		<ant antfile="../UIRClient/build.xml" target="war" dir="../UIRClient" />
+		<ant antfile="${workspace.path}/UIRClient/build.xml" target="war" dir="${workspace.path}/UIRClient" />
 	</target>
 	<target name="client-pretty">
-		<ant antfile="../UIRClient/build.xml" target="war-pretty" dir="../UIRClient" />
+		<ant antfile="${workspace.path}/UIRClient/build.xml" target="war-pretty" dir="${workspace.path}/UIRClient" />
 	</target>
 
 
@@ -21,9 +22,9 @@
 			<attribute name="Implementation-Version" value="build${build.number}" />
 		</manifest>
 		<ear destfile="UIREE.ear" appxml="EarContent/META-INF/application.xml" manifest="EarContent/META-INF/MANIFEST.MF">
-			<fileset dir="../UIRClient" includes="*.war" />
-			<fileset dir="../UIRServer" includes="*.war" />
-			<fileset dir="../proxy.intersys.api" includes="*/*.jar" excludes="CacheDB**" />
+			<fileset dir="${workspace.path}/UIRClient" includes="*.war" />
+			<fileset dir="${workspace.path}/UIRServer" includes="*.war" />
+			<fileset dir="${workspace.path}/proxy.intersys.api" includes="*/*.jar" excludes="CacheDB**" />
 		</ear>
 	</target>
 
