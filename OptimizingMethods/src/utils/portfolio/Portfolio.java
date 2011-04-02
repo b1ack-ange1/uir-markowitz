@@ -6,7 +6,7 @@ public class Portfolio {
 	private double[][] covariance;
 	private double[] weight;
 
-	Portfolio(int size) {
+	public Portfolio(int size) {
 		this.size = size;
 		profit = new double[size];
 		covariance = new double[size][size];
