@@ -5,19 +5,45 @@ import utils.portfolio.Portfolio;
 public abstract class Method {
 	protected double[] profit;
 	protected double[][] covariances;
-	private int time;
+	protected double[] x;
+	protected double expectedProfit;
+	protected double finalProfit;
+	protected double risk;
+	protected double epsilon;
+
+	public double[] getX() {
+		return x;
+	}
+
+	public double getFinalProfit() {
+		return finalProfit;
+	}
+
+	private long time;
 	private int memory;
 	private int operations;
 
-	public Method(final Portfolio challenge) {
+	public Method(final Portfolio challenge, double epsilon) {
 		time = 0;
 		memory = 0;
 		operations = 0;
 		profit = challenge.getProfit();
 		covariances = challenge.getCovariance();
+		expectedProfit = 0;
+		this.epsilon=epsilon;
 	}
 
-	public int getTime() {
+	public Method(final Portfolio challenge, double expectedProfit, double epsilon) {
+		time = 0;
+		memory = 0;
+		operations = 0;
+		profit = challenge.getProfit();
+		covariances = challenge.getCovariance();
+		this.expectedProfit = expectedProfit;
+		this.epsilon=epsilon;
+	}
+
+	public long getTime() {
 		return time;
 	}
 
@@ -58,4 +84,51 @@ public abstract class Method {
 	}
 
 	public abstract void evaluate();
+
+	public void startTime() {
+		time = System.nanoTime();
+	}
+
+	public void endTime() {
+		time = System.nanoTime() - time;
+	}
+
+	protected double sumArray(double[] arr, int j) {
+		double out = 0;
+		for (int i = 0; i < arr.length-3; i++)
+			out += arr[i];
+		return out;
+	}
+
+	protected double sumProfit() {
+		double out = 0;
+		for (int i = 0; i < x.length; i++) {
+			out += x[i] * profit[i];
+		}
+		return out;
+	}
+
+	protected double sumCovarIndex(int i) {
+		double out = 0;
+		for (int j = 0; j < x.length; j++) {
+			if (j!=i) out += covariances[i][j] * x[j];
+		}
+		return out;
+	}
+
+	public double getRisk() {
+		countRisk();
+		return risk;
+	}
+
+	private void countRisk() {
+		risk = 0;
+		for (int i = 0; i < x.length; i++) {
+			risk += Math.sqrt(x[i]);
+		}
+
+		for (int i = 0; i < x.length; i++) {
+			risk += x[i] * sumCovarIndex(i);
+		}
+	}
 }
