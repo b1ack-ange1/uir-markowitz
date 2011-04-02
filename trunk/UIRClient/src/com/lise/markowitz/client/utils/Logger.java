@@ -7,11 +7,11 @@ import com.smartgwt.client.util.SC;
 public class Logger {
 	public static void log(String msg) {
 		if (Configuration.debugEnabled)
-			SC.logWarn(msg, "RSDH");
+			SC.logWarn(msg, "LISE");
 	}
 
 	public static void echoAll(JavaScriptObject value) {
 		if (Configuration.debugEnabled)
-			SC.logEchoAll(value, "RSDH");
+			SC.logEchoAll(value, "LISE");
 	}
 }

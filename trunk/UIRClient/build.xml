@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project name="UIRClient" default="build-pretty" basedir=".">
 	<!-- Configure path to GWT SDK -->
-	<property name="gwt.sdk" location="D:\eclipse\plugins\com.google.gwt.eclipse.sdkbundle.2.2.0_2.2.0.v201102111811\gwt-2.2.0" />
-	<property name="glassfish.path" location="D:\glassfish\glassfish">
+	<property name="gwt.sdk" location="K:\Program Files\eclipse\plugins\com.google.gwt.eclipse.sdkbundle.2.2.0_2.2.0.v201102111811\gwt-2.2.0" />
+	<property name="glassfish.path" location="K:\Program Files\glassfish\glassfish">
 	</property>
 	<path id="project.class.path">
 		<pathelement location="build/classes" />
