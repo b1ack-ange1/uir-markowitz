@@ -1,7 +1,7 @@
 package com.lise.markowitz.client.view;
 
-
 import com.google.gwt.core.client.GWT;
+import com.lise.markowitz.client.form.WorkPanel;
 import com.lise.markowitz.client.localization.LocalizeConstant;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.VerticalAlignment;
@@ -29,7 +29,8 @@ public class ClientPanel extends VLayout {
 	protected MenuButton serviceMenuButton;
 	protected IButton logoffButton;
 
-	private static ClientPanel rootPanel;
+	private static ClientPanel self = null;
+	private static MainDynamicPanel workPanel;
 
 	private ClientPanel() {
 		super();
@@ -110,17 +111,15 @@ public class ClientPanel extends VLayout {
 
 		this.addMember(topPanel);
 
-		Layout layout = new HLayout();
-		layout.setWidth100();
-		layout.setHeight100();
+		workPanel = MainDynamicPanel.getInstance();
 
-		this.addMember(layout);
+		this.addMember(workPanel);
 	}
 
 	public static ClientPanel getInstance() {
-		if (rootPanel == null)
-			rootPanel = new ClientPanel();
-		return rootPanel;
+		if (self == null)
+			self = new ClientPanel();
+		return self;
 	}
 
 	public Layout getTitlePanel() {
