@@ -47,22 +47,6 @@ public class UIRClient implements EntryPoint {
 		Page.setTitle(Localize.getInstance().appTitleFull());
 		screen.draw();
 
-		/*
-		 * RsdhHandleErrorCallback rsdhHandleErrorCallback = new
-		 * RsdhHandleErrorCallback();
-		 * RPCManager.setHandleTransportErrorCallback(rsdhHandleErrorCallback);
-		 * RPCManager.setHandleErrorCallback(rsdhHandleErrorCallback);
-		 * 
-		 * RPCManager.setLoginRequiredCallback(new LoginRequiredCallbackImpl());
-		 * // RPCManager.setShowPrompt(false);
-		 * 
-		 * // РћС‚СЂР°Р±РѕС‚Р°РµРј СЃСЃС‹Р»РєСѓ String userObjLinkId = Location
-		 * .getParameter(Configuration.UsrObjLinkIdParamName); String
-		 * userObjLinkClassCode = Location
-		 * .getParameter(Configuration.UsrObjLinkClassCodeParamName); if
-		 * (userObjLinkId != null) { RsdhRootPanel .getInstance() .getTree()
-		 * .openObject(Double.valueOf(userObjLinkId), userObjLinkClassCode); }
-		 */
 	}
 
 	private native void subscribeLoad() /*-{
