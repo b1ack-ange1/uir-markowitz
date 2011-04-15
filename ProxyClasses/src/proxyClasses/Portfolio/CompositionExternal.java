@@ -1,4 +1,4 @@
-package proxyClasses.Portfolio;
+package Portfolio;
 
 
 /**
@@ -8,7 +8,7 @@ package proxyClasses.Portfolio;
 **/
 
 public class CompositionExternal extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 2902;
+    private static final long serialVersionUID = 4040;
     private static String CACHE_CLASS_NAME = "Portfolio.CompositionExternal";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -690,7 +690,7 @@ public class CompositionExternal extends com.intersys.classes.Persistent {
        @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
        @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Portfolio.CompositionExternal#Chart"> Chart</A>
     */
-    public proxyClasses.Resources.Charts getChart()  throws com.intersys.objects.CacheException {
+    public Resources.Charts getChart()  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_Chart,
                                                 jj_Chart,
                                                 com.intersys.objects.Database.RET_OBJECT,
@@ -698,7 +698,7 @@ public class CompositionExternal extends com.intersys.classes.Persistent {
         com.intersys.cache.CacheObject cobj = dh.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Resources.Charts)(cobj.newJavaInstance());
+        return (Resources.Charts)(cobj.newJavaInstance());
     }
 
     /**
@@ -709,7 +709,7 @@ public class CompositionExternal extends com.intersys.classes.Persistent {
        @throws com.intersys.objects.CacheException if any error occurred during value setting.
        @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Portfolio.CompositionExternal#Chart"> Chart</A>
     */
-    public void setChart(proxyClasses.Resources.Charts value)  throws com.intersys.objects.CacheException {
+    public void setChart(Resources.Charts value)  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
         mInternal.setProperty(ii_Chart, jj_Chart,kk_Chart, com.intersys.objects.Database.RET_OBJECT, "Chart", dh);
         return;
@@ -803,7 +803,7 @@ public class CompositionExternal extends com.intersys.classes.Persistent {
        @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
        @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Portfolio.CompositionExternal#Portfolio"> Portfolio</A>
     */
-    public proxyClasses.Portfolio.Portfolio getPortfolio()  throws com.intersys.objects.CacheException {
+    public Portfolio.Portfolio getPortfolio()  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_Portfolio,
                                                 jj_Portfolio,
                                                 com.intersys.objects.Database.RET_OBJECT,
@@ -811,7 +811,7 @@ public class CompositionExternal extends com.intersys.classes.Persistent {
         com.intersys.cache.CacheObject cobj = dh.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Portfolio.Portfolio)(cobj.newJavaInstance());
+        return (Portfolio.Portfolio)(cobj.newJavaInstance());
     }
 
     /**
@@ -822,7 +822,7 @@ public class CompositionExternal extends com.intersys.classes.Persistent {
        @throws com.intersys.objects.CacheException if any error occurred during value setting.
        @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Portfolio.CompositionExternal#Portfolio"> Portfolio</A>
     */
-    public void setPortfolio(proxyClasses.Portfolio.Portfolio value)  throws com.intersys.objects.CacheException {
+    public void setPortfolio(Portfolio.Portfolio value)  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
         mInternal.setProperty(ii_Portfolio, jj_Portfolio,kk_Portfolio, com.intersys.objects.Database.RET_OBJECT, "Portfolio", dh);
         return;
@@ -1269,7 +1269,7 @@ after the index filing is completed.
      @see #ChartIndexExists(com.intersys.objects.Database,Resources.Charts,com.intersys.objects.StringHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Portfolio.CompositionExternal#ChartIndexExists"> Method ChartIndexExists</A>
     */
-    public static java.lang.Boolean ChartIndexExists (com.intersys.objects.Database db, proxyClasses.Resources.Charts K1) throws com.intersys.objects.CacheException {
+    public static java.lang.Boolean ChartIndexExists (com.intersys.objects.Database db, Resources.Charts K1) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"ChartIndexExists",args,com.intersys.objects.Database.RET_PRIM);
@@ -1283,7 +1283,7 @@ after the index filing is completed.
      @throws com.intersys.objects.CacheException if any error occured while running the method.
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Portfolio.CompositionExternal#ChartIndexExists"> Method ChartIndexExists</A>
     */
-    public static java.lang.Boolean ChartIndexExists (com.intersys.objects.Database db, proxyClasses.Resources.Charts K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
+    public static java.lang.Boolean ChartIndexExists (com.intersys.objects.Database db, Resources.Charts K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
         int[] _refs = new int[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
@@ -1408,14 +1408,14 @@ after the index filing is completed.
      @see #IDKEYOpen(com.intersys.objects.Database,java.lang.String,java.lang.Integer,com.intersys.objects.StatusCodeHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Portfolio.CompositionExternal#IDKEYOpen"> Method IDKEYOpen</A>
     */
-    public static proxyClasses.Portfolio.CompositionExternal IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
+    public static Portfolio.CompositionExternal IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"IDKEYOpen",args,com.intersys.objects.Database.RET_OBJECT);
         com.intersys.cache.CacheObject cobj = res.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Portfolio.CompositionExternal)(cobj.newJavaInstance());
+        return (Portfolio.CompositionExternal)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method IDKEYOpen in Cache.</p>
@@ -1427,7 +1427,7 @@ after the index filing is completed.
      @see #IDKEYOpen(com.intersys.objects.Database,java.lang.String,java.lang.Integer,com.intersys.objects.StatusCodeHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Portfolio.CompositionExternal#IDKEYOpen"> Method IDKEYOpen</A>
     */
-    public static proxyClasses.Portfolio.CompositionExternal IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency) throws com.intersys.objects.CacheException {
+    public static Portfolio.CompositionExternal IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
         args[0] = new com.intersys.cache.Dataholder(K1);
         args[1] = new com.intersys.cache.Dataholder(concurrency);
@@ -1435,7 +1435,7 @@ after the index filing is completed.
         com.intersys.cache.CacheObject cobj = res.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Portfolio.CompositionExternal)(cobj.newJavaInstance());
+        return (Portfolio.CompositionExternal)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method IDKEYOpen in Cache.</p>
@@ -1446,7 +1446,7 @@ after the index filing is completed.
      @throws com.intersys.objects.CacheException if any error occured while running the method.
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Portfolio.CompositionExternal#IDKEYOpen"> Method IDKEYOpen</A>
     */
-    public static proxyClasses.Portfolio.CompositionExternal IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency, com.intersys.objects.StatusCodeHolder sc) throws com.intersys.objects.CacheException {
+    public static Portfolio.CompositionExternal IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency, com.intersys.objects.StatusCodeHolder sc) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[3];
         int[] _refs = new int[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
@@ -1458,7 +1458,7 @@ after the index filing is completed.
         com.intersys.cache.CacheObject cobj = res[0].getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Portfolio.CompositionExternal)(cobj.newJavaInstance());
+        return (Portfolio.CompositionExternal)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method PercentageDisplayToLogical in Cache.</p>
@@ -1557,7 +1557,7 @@ after the index filing is completed.
      @see #PortfolioIndexExists(com.intersys.objects.Database,Portfolio.Portfolio,com.intersys.objects.StringHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Portfolio.CompositionExternal#PortfolioIndexExists"> Method PortfolioIndexExists</A>
     */
-    public static java.lang.Boolean PortfolioIndexExists (com.intersys.objects.Database db, proxyClasses.Portfolio.Portfolio K1) throws com.intersys.objects.CacheException {
+    public static java.lang.Boolean PortfolioIndexExists (com.intersys.objects.Database db, Portfolio.Portfolio K1) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"PortfolioIndexExists",args,com.intersys.objects.Database.RET_PRIM);
@@ -1571,7 +1571,7 @@ after the index filing is completed.
      @throws com.intersys.objects.CacheException if any error occured while running the method.
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Portfolio.CompositionExternal#PortfolioIndexExists"> Method PortfolioIndexExists</A>
     */
-    public static java.lang.Boolean PortfolioIndexExists (com.intersys.objects.Database db, proxyClasses.Portfolio.Portfolio K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
+    public static java.lang.Boolean PortfolioIndexExists (com.intersys.objects.Database db, Portfolio.Portfolio K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
         int[] _refs = new int[1];
         args[0] = new com.intersys.cache.Dataholder(K1);

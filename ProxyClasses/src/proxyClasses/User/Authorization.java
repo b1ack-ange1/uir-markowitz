@@ -1,4 +1,4 @@
-package proxyClasses.User;
+package User;
 
 
 /**
@@ -8,7 +8,7 @@ package proxyClasses.User;
 **/
 
 public class Authorization extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 3445;
+    private static final long serialVersionUID = 3112;
     private static String CACHE_CLASS_NAME = "User.Authorization";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -330,6 +330,127 @@ public class Authorization extends com.intersys.classes.Persistent {
     public static com.intersys.classes.RegisteredObject open (com.intersys.objects.Database db, com.intersys.objects.Oid oid, int concurrency) throws com.intersys.objects.CacheException {
         com.intersys.cache.CacheObject cobj = (((com.intersys.cache.SysDatabase)db).openCacheObject(CACHE_CLASS_NAME, oid.getData(), concurrency));
         return (com.intersys.classes.RegisteredObject)(cobj.newJavaInstance());
+    }
+    /**
+     * Creates an empty <code>CandidateKey</code> object for this class.
+     * Subsequently set methods can be used to set values for primary key.
+     *
+     * @param db <code>Database</code> object used for connection with
+     * Cache database.
+     * @return Empty <code>CandidateKey</code> object for this class.
+     * @throws com.intersys.objects.CacheException
+     *  @see com.intersys.objects.reflect.CacheClass#createPrimaryKey()
+     * @see com.intersys.objects.reflect.CacheClass#createBestCandidateKey (String)
+     * @see com.intersys.objects.reflect.CacheClass#createKey(String,String)
+     */
+    public static com.intersys.objects.CandidateKey createLgnIndexKey (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
+        return db.getCacheClass(CACHE_CLASS_NAME).createKey("LgnIndex");
+    }
+    /**
+     * Creates <code>CandidateKey</code> object for this class and sets its
+     * value according to the argument specified. If the key referes to a
+     * single column then the value is just a string value for this column.
+     * If primary key referes to several columns then a list of comma
+     * separated values is expected as <code>value</code> argument.
+     *
+     * The result of this method is the same as the result of 2 consequent
+     * statements:
+     *
+     * <code>
+     * CandidateKey key = User.Authorization.createLgnIndexKey(db);
+     * key.set(value);
+     * </code>
+     *
+     * Subsequently set methods can be used to modify values for primary key.
+     *
+     * @param db <code>Database</code> object used for connection with
+     * Cache database.
+     * @param value Comma separated list of values for Primary Key columns.
+     * @return <code>CandidateKey</code> object for this class.
+     * @throws com.intersys.objects.CacheException
+     * @see com.intersys.objects.reflect.CacheClass#createPrimaryKey(String)
+     * @see com.intersys.objects.reflect.CacheClass#createBestCandidateKey (String)
+     * @see com.intersys.objects.reflect.CacheClass#createKey(String,String)
+     */
+    public static com.intersys.objects.CandidateKey createLgnIndexKey (com.intersys.objects.Database db, String value) throws com.intersys.objects.CacheException {
+        return db.getCacheClass(CACHE_CLASS_NAME).createKey("LgnIndex", value);
+    }
+    /**
+     * Deletes a <code>CandidateKey</code> object for this class.
+     *
+     * @param db <code>Database</code> object used for connection with
+     * Cache database.
+     * @throws com.intersys.objects.CacheException
+     */
+    public static void deleteByLgnIndexKey (com.intersys.objects.Database db, String keyValue) throws com.intersys.objects.CacheException {
+            com.intersys.objects.CandidateKey key = createLgnIndexKey (db, keyValue);
+            ((com.intersys.cache.SysDatabase)db).deleteObject(CACHE_CLASS_NAME, key);
+    }
+    /**
+     * Opens an instance of the class given its primary or candidate key with
+     * default concurrency.
+     *
+     * @param db <code>Database</code> object used for connection with
+     * Cache database.
+     * @param key primary or candidate key represented as
+     * <code>CandidateKey</code> object.
+     * @return a newly opened object.
+     * @throws com.intersys.objects.CacheException if open fails or there is no object with
+     * the given key.
+     * @see #createLgnIndexKey(com.intersys.objects.Database)
+     * @see #createLgnIndexKey(com.intersys.objects.Database, String)
+     * @see com.intersys.objects.reflect.CacheClass#openByKey(com.intersys.objects.CandidateKey)
+     */
+    public static com.intersys.classes.Persistent openByKey (com.intersys.objects.Database db, com.intersys.objects.CandidateKey key) throws com.intersys.objects.CacheException {
+        com.intersys.cache.CacheObject cobj = ((com.intersys.cache.SysDatabase)db).openByKey (CACHE_CLASS_NAME, key, -1);
+        return (com.intersys.classes.Persistent) cobj.newJavaInstance();
+    }
+
+    /**
+     * Deletes an instance of the class given its primary or candidate key
+     *
+     * @param db <code>Database</code> object used for connection with
+     * Cache database.
+     * @param key primary or candidate key represented as
+     * <code>CandidateKey</code> object.
+     * @throws com.intersys.objects.CacheException
+     */
+    public static void deleteByKey (com.intersys.objects.Database db, com.intersys.objects.CandidateKey key) throws com.intersys.objects.CacheException {
+        ((com.intersys.cache.SysDatabase)db).deleteObject(CACHE_CLASS_NAME, key);
+    }
+    /**
+     * Opens an instance of the class given its primary or candidate key with
+     * given concurrency.
+     *<p>
+      Here are concurrency values, see Object Concurrency Options in your on-line Cache' documentation for more information.
+      @see <a href = "http://cache-server:57772/csp/documatic/DocBook.UI.Page.cls?KEY=GOBJ_concurrency"> Object Concurrency Options.</A>
+
+      <TABLE border="1"
+      summary="Object Concurrency Options.">
+      <CAPTION><EM>Object Concurrency Options</EM></CAPTION>
+      <TR><TD>-1 </TD><TD>Default concurrency</TD></TR>
+      <TR><TD>0 </TD><TD>No locking, no locks are used</TD></TR>
+      <TR><TD>1 </TD><TD>Atomic</TD></TR>
+      <TR><TD>2 </TD><TD>Shared</TD></TR>
+      <TR><TD>3 </TD><TD>Shared/Retained</TD></TR>
+      <TR><TD>4 </TD><TD>Exclusive</TD></TR>
+      </TABLE>
+     <p>
+     * @param db
+     * @param key primary or candidate key represented as
+     * <code>CandidateKey</code> object.
+     * @param concurrency concurrency Concurrency level.  represented as
+     * <code>int</code>.
+     * @return a newly opened object.
+     * @throws com.intersys.objects.CacheException if open fails or there is no object with
+     * the given key.
+     * @see #createLgnIndexKey(com.intersys.objects.Database)
+     * @see #createLgnIndexKey(com.intersys.objects.Database, String)
+     * @see com.intersys.objects.reflect.CacheClass#openByKey(com.intersys.objects.CandidateKey)
+     */
+    public static com.intersys.classes.Persistent openByKey (com.intersys.objects.Database db, com.intersys.objects.CandidateKey key, int concurrency) throws com.intersys.objects.CacheException {
+        com.intersys.cache.CacheObject cobj = ((com.intersys.cache.SysDatabase)db).openByKey (CACHE_CLASS_NAME, key, concurrency);
+        return (com.intersys.classes.Persistent) cobj.newJavaInstance();
     }
     /**
     * Calls method
@@ -1270,14 +1391,14 @@ after the index filing is completed.
      @see #IDKEYOpen(com.intersys.objects.Database,java.lang.String,java.lang.Integer,com.intersys.objects.StatusCodeHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=User.Authorization#IDKEYOpen"> Method IDKEYOpen</A>
     */
-    public static proxyClasses.User.Authorization IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
+    public static User.Authorization IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"IDKEYOpen",args,com.intersys.objects.Database.RET_OBJECT);
         com.intersys.cache.CacheObject cobj = res.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.User.Authorization)(cobj.newJavaInstance());
+        return (User.Authorization)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method IDKEYOpen in Cache.</p>
@@ -1289,7 +1410,7 @@ after the index filing is completed.
      @see #IDKEYOpen(com.intersys.objects.Database,java.lang.String,java.lang.Integer,com.intersys.objects.StatusCodeHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=User.Authorization#IDKEYOpen"> Method IDKEYOpen</A>
     */
-    public static proxyClasses.User.Authorization IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency) throws com.intersys.objects.CacheException {
+    public static User.Authorization IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
         args[0] = new com.intersys.cache.Dataholder(K1);
         args[1] = new com.intersys.cache.Dataholder(concurrency);
@@ -1297,7 +1418,7 @@ after the index filing is completed.
         com.intersys.cache.CacheObject cobj = res.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.User.Authorization)(cobj.newJavaInstance());
+        return (User.Authorization)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method IDKEYOpen in Cache.</p>
@@ -1308,7 +1429,7 @@ after the index filing is completed.
      @throws com.intersys.objects.CacheException if any error occured while running the method.
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=User.Authorization#IDKEYOpen"> Method IDKEYOpen</A>
     */
-    public static proxyClasses.User.Authorization IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency, com.intersys.objects.StatusCodeHolder sc) throws com.intersys.objects.CacheException {
+    public static User.Authorization IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency, com.intersys.objects.StatusCodeHolder sc) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[3];
         int[] _refs = new int[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
@@ -1320,7 +1441,134 @@ after the index filing is completed.
         com.intersys.cache.CacheObject cobj = res[0].getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.User.Authorization)(cobj.newJavaInstance());
+        return (User.Authorization)(cobj.newJavaInstance());
+    }
+    /**
+     <p>Runs method LgnIndexDelete in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param K1 represented as java.lang.String
+     default argument concurrency set to -1
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see #LgnIndexDelete(com.intersys.objects.Database,java.lang.String,java.lang.Integer)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=User.Authorization#LgnIndexDelete"> Method LgnIndexDelete</A>
+    */
+    public static void LgnIndexDelete (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(K1);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"LgnIndexDelete",args,com.intersys.objects.Database.RET_PRIM);
+        db.parseStatus(res);
+        return;
+    }
+    /**
+     <p>Runs method LgnIndexDelete in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param K1 represented as java.lang.String
+     @param concurrency represented as java.lang.Integer
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=User.Authorization#LgnIndexDelete"> Method LgnIndexDelete</A>
+    */
+    public static void LgnIndexDelete (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
+        args[0] = new com.intersys.cache.Dataholder(K1);
+        args[1] = new com.intersys.cache.Dataholder(concurrency);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"LgnIndexDelete",args,com.intersys.objects.Database.RET_PRIM);
+        db.parseStatus(res);
+        return;
+    }
+    /**
+     <p>Runs method LgnIndexExists in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param K1 represented as java.lang.String
+     default argument id set to ""
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see #LgnIndexExists(com.intersys.objects.Database,java.lang.String,com.intersys.objects.StringHolder)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=User.Authorization#LgnIndexExists"> Method LgnIndexExists</A>
+    */
+    public static java.lang.Boolean LgnIndexExists (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(K1);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"LgnIndexExists",args,com.intersys.objects.Database.RET_PRIM);
+        return res.getBoolean();
+    }
+    /**
+     <p>Runs method LgnIndexExists in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param K1 represented as java.lang.String
+     @param id represented as com.intersys.objects.StringHolder
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=User.Authorization#LgnIndexExists"> Method LgnIndexExists</A>
+    */
+    public static java.lang.Boolean LgnIndexExists (com.intersys.objects.Database db, java.lang.String K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
+        int[] _refs = new int[1];
+        args[0] = new com.intersys.cache.Dataholder(K1);
+        args[1] = com.intersys.cache.Dataholder.create (id.value);
+        _refs[0] = 2;
+        com.intersys.cache.Dataholder[] res=db.runClassMethod(CACHE_CLASS_NAME,"LgnIndexExists",_refs,args,com.intersys.objects.Database.RET_PRIM);
+        id.set(res[1].getString());
+        return res[0].getBoolean();
+    }
+    /**
+     <p>Runs method LgnIndexOpen in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param K1 represented as java.lang.String
+     default argument concurrency set to -1
+     default argument sc set to $$$OK
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see #LgnIndexOpen(com.intersys.objects.Database,java.lang.String,java.lang.Integer,com.intersys.objects.StatusCodeHolder)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=User.Authorization#LgnIndexOpen"> Method LgnIndexOpen</A>
+    */
+    public static User.Authorization LgnIndexOpen (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(K1);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"LgnIndexOpen",args,com.intersys.objects.Database.RET_OBJECT);
+        com.intersys.cache.CacheObject cobj = res.getCacheObject();
+        if (cobj == null)
+            return null;
+        return (User.Authorization)(cobj.newJavaInstance());
+    }
+    /**
+     <p>Runs method LgnIndexOpen in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param K1 represented as java.lang.String
+     @param concurrency represented as java.lang.Integer
+     default argument sc set to $$$OK
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see #LgnIndexOpen(com.intersys.objects.Database,java.lang.String,java.lang.Integer,com.intersys.objects.StatusCodeHolder)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=User.Authorization#LgnIndexOpen"> Method LgnIndexOpen</A>
+    */
+    public static User.Authorization LgnIndexOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
+        args[0] = new com.intersys.cache.Dataholder(K1);
+        args[1] = new com.intersys.cache.Dataholder(concurrency);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"LgnIndexOpen",args,com.intersys.objects.Database.RET_OBJECT);
+        com.intersys.cache.CacheObject cobj = res.getCacheObject();
+        if (cobj == null)
+            return null;
+        return (User.Authorization)(cobj.newJavaInstance());
+    }
+    /**
+     <p>Runs method LgnIndexOpen in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param K1 represented as java.lang.String
+     @param concurrency represented as java.lang.Integer
+     @param sc represented as com.intersys.objects.StatusCodeHolder
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=User.Authorization#LgnIndexOpen"> Method LgnIndexOpen</A>
+    */
+    public static User.Authorization LgnIndexOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency, com.intersys.objects.StatusCodeHolder sc) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[3];
+        int[] _refs = new int[1];
+        args[0] = new com.intersys.cache.Dataholder(K1);
+        args[1] = new com.intersys.cache.Dataholder(concurrency);
+        args[2] = com.intersys.cache.Dataholder.create (sc.value);
+        _refs[0] = 3;
+        com.intersys.cache.Dataholder[] res=db.runClassMethod(CACHE_CLASS_NAME,"LgnIndexOpen",_refs,args,com.intersys.objects.Database.RET_OBJECT);
+        sc.set(res[1].getStatusCode());
+        com.intersys.cache.CacheObject cobj = res[0].getCacheObject();
+        if (cobj == null)
+            return null;
+        return (User.Authorization)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method LoginDisplayToLogical in Cache.</p>

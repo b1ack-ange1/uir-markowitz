@@ -1,4 +1,4 @@
-package proxyClasses.Resources;
+package Resources;
 
 
 /**
@@ -8,7 +8,7 @@ package proxyClasses.Resources;
 **/
 
 public class Tickers extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 4129;
+    private static final long serialVersionUID = 244;
     private static String CACHE_CLASS_NAME = "Resources.Tickers";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -1690,14 +1690,14 @@ after the index filing is completed.
      @see #CodeIndexOpen(com.intersys.objects.Database,java.lang.String,java.lang.Integer,com.intersys.objects.StatusCodeHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Resources.Tickers#CodeIndexOpen"> Method CodeIndexOpen</A>
     */
-    public static proxyClasses.Resources.Tickers CodeIndexOpen (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
+    public static Resources.Tickers CodeIndexOpen (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CodeIndexOpen",args,com.intersys.objects.Database.RET_OBJECT);
         com.intersys.cache.CacheObject cobj = res.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Resources.Tickers)(cobj.newJavaInstance());
+        return (Resources.Tickers)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method CodeIndexOpen in Cache.</p>
@@ -1709,7 +1709,7 @@ after the index filing is completed.
      @see #CodeIndexOpen(com.intersys.objects.Database,java.lang.String,java.lang.Integer,com.intersys.objects.StatusCodeHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Resources.Tickers#CodeIndexOpen"> Method CodeIndexOpen</A>
     */
-    public static proxyClasses.Resources.Tickers CodeIndexOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency) throws com.intersys.objects.CacheException {
+    public static Resources.Tickers CodeIndexOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
         args[0] = new com.intersys.cache.Dataholder(K1);
         args[1] = new com.intersys.cache.Dataholder(concurrency);
@@ -1717,7 +1717,7 @@ after the index filing is completed.
         com.intersys.cache.CacheObject cobj = res.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Resources.Tickers)(cobj.newJavaInstance());
+        return (Resources.Tickers)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method CodeIndexOpen in Cache.</p>
@@ -1728,7 +1728,7 @@ after the index filing is completed.
      @throws com.intersys.objects.CacheException if any error occured while running the method.
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Resources.Tickers#CodeIndexOpen"> Method CodeIndexOpen</A>
     */
-    public static proxyClasses.Resources.Tickers CodeIndexOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency, com.intersys.objects.StatusCodeHolder sc) throws com.intersys.objects.CacheException {
+    public static Resources.Tickers CodeIndexOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency, com.intersys.objects.StatusCodeHolder sc) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[3];
         int[] _refs = new int[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
@@ -1740,7 +1740,7 @@ after the index filing is completed.
         com.intersys.cache.CacheObject cobj = res[0].getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Resources.Tickers)(cobj.newJavaInstance());
+        return (Resources.Tickers)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method CodeIsValid in Cache.</p>
@@ -2135,14 +2135,14 @@ after the index filing is completed.
      @see #IDKEYOpen(com.intersys.objects.Database,java.lang.String,java.lang.Integer,com.intersys.objects.StatusCodeHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Resources.Tickers#IDKEYOpen"> Method IDKEYOpen</A>
     */
-    public static proxyClasses.Resources.Tickers IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
+    public static Resources.Tickers IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"IDKEYOpen",args,com.intersys.objects.Database.RET_OBJECT);
         com.intersys.cache.CacheObject cobj = res.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Resources.Tickers)(cobj.newJavaInstance());
+        return (Resources.Tickers)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method IDKEYOpen in Cache.</p>
@@ -2154,7 +2154,7 @@ after the index filing is completed.
      @see #IDKEYOpen(com.intersys.objects.Database,java.lang.String,java.lang.Integer,com.intersys.objects.StatusCodeHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Resources.Tickers#IDKEYOpen"> Method IDKEYOpen</A>
     */
-    public static proxyClasses.Resources.Tickers IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency) throws com.intersys.objects.CacheException {
+    public static Resources.Tickers IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
         args[0] = new com.intersys.cache.Dataholder(K1);
         args[1] = new com.intersys.cache.Dataholder(concurrency);
@@ -2162,7 +2162,7 @@ after the index filing is completed.
         com.intersys.cache.CacheObject cobj = res.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Resources.Tickers)(cobj.newJavaInstance());
+        return (Resources.Tickers)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method IDKEYOpen in Cache.</p>
@@ -2173,7 +2173,7 @@ after the index filing is completed.
      @throws com.intersys.objects.CacheException if any error occured while running the method.
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Resources.Tickers#IDKEYOpen"> Method IDKEYOpen</A>
     */
-    public static proxyClasses.Resources.Tickers IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency, com.intersys.objects.StatusCodeHolder sc) throws com.intersys.objects.CacheException {
+    public static Resources.Tickers IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency, com.intersys.objects.StatusCodeHolder sc) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[3];
         int[] _refs = new int[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
@@ -2185,7 +2185,7 @@ after the index filing is completed.
         com.intersys.cache.CacheObject cobj = res[0].getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Resources.Tickers)(cobj.newJavaInstance());
+        return (Resources.Tickers)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method NameDisplayToLogical in Cache.</p>
