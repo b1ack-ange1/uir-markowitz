@@ -1,4 +1,4 @@
-package proxyClasses.Event;
+package Event;
 
 
 /**
@@ -8,7 +8,7 @@ package proxyClasses.Event;
 **/
 
 public class InternalEvent extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 4547;
+    private static final long serialVersionUID = 3332;
     private static String CACHE_CLASS_NAME = "Event.InternalEvent";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -965,7 +965,7 @@ public class InternalEvent extends com.intersys.classes.Persistent {
        @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
        @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#IONew"> IONew</A>
     */
-    public proxyClasses.IO.InternalIO getIONew()  throws com.intersys.objects.CacheException {
+    public IO.InternalIO getIONew()  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_IONew,
                                                 jj_IONew,
                                                 com.intersys.objects.Database.RET_OBJECT,
@@ -973,7 +973,7 @@ public class InternalEvent extends com.intersys.classes.Persistent {
         com.intersys.cache.CacheObject cobj = dh.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.IO.InternalIO)(cobj.newJavaInstance());
+        return (IO.InternalIO)(cobj.newJavaInstance());
     }
 
     /**
@@ -984,7 +984,7 @@ public class InternalEvent extends com.intersys.classes.Persistent {
        @throws com.intersys.objects.CacheException if any error occurred during value setting.
        @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#IONew"> IONew</A>
     */
-    public void setIONew(proxyClasses.IO.InternalIO value)  throws com.intersys.objects.CacheException {
+    public void setIONew(IO.InternalIO value)  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
         mInternal.setProperty(ii_IONew, jj_IONew,kk_IONew, com.intersys.objects.Database.RET_OBJECT, "IONew", dh);
         return;
@@ -1023,7 +1023,7 @@ public class InternalEvent extends com.intersys.classes.Persistent {
        @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
        @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#IOold"> IOold</A>
     */
-    public proxyClasses.IO.InternalIO getIOold()  throws com.intersys.objects.CacheException {
+    public IO.InternalIO getIOold()  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_IOold,
                                                 jj_IOold,
                                                 com.intersys.objects.Database.RET_OBJECT,
@@ -1031,7 +1031,7 @@ public class InternalEvent extends com.intersys.classes.Persistent {
         com.intersys.cache.CacheObject cobj = dh.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.IO.InternalIO)(cobj.newJavaInstance());
+        return (IO.InternalIO)(cobj.newJavaInstance());
     }
 
     /**
@@ -1042,7 +1042,7 @@ public class InternalEvent extends com.intersys.classes.Persistent {
        @throws com.intersys.objects.CacheException if any error occurred during value setting.
        @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#IOold"> IOold</A>
     */
-    public void setIOold(proxyClasses.IO.InternalIO value)  throws com.intersys.objects.CacheException {
+    public void setIOold(IO.InternalIO value)  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
         mInternal.setProperty(ii_IOold, jj_IOold,kk_IOold, com.intersys.objects.Database.RET_OBJECT, "IOold", dh);
         return;
@@ -1081,7 +1081,7 @@ public class InternalEvent extends com.intersys.classes.Persistent {
        @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
        @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#Ticker"> Ticker</A>
     */
-    public proxyClasses.Resources.Tickers getTicker()  throws com.intersys.objects.CacheException {
+    public Resources.Tickers getTicker()  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_Ticker,
                                                 jj_Ticker,
                                                 com.intersys.objects.Database.RET_OBJECT,
@@ -1089,7 +1089,7 @@ public class InternalEvent extends com.intersys.classes.Persistent {
         com.intersys.cache.CacheObject cobj = dh.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Resources.Tickers)(cobj.newJavaInstance());
+        return (Resources.Tickers)(cobj.newJavaInstance());
     }
 
     /**
@@ -1100,7 +1100,7 @@ public class InternalEvent extends com.intersys.classes.Persistent {
        @throws com.intersys.objects.CacheException if any error occurred during value setting.
        @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#Ticker"> Ticker</A>
     */
-    public void setTicker(proxyClasses.Resources.Tickers value)  throws com.intersys.objects.CacheException {
+    public void setTicker(Resources.Tickers value)  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
         mInternal.setProperty(ii_Ticker, jj_Ticker,kk_Ticker, com.intersys.objects.Database.RET_OBJECT, "Ticker", dh);
         return;
@@ -1765,14 +1765,14 @@ after the index filing is completed.
      @see #IDKEYOpen(com.intersys.objects.Database,java.lang.String,java.lang.Integer,com.intersys.objects.StatusCodeHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#IDKEYOpen"> Method IDKEYOpen</A>
     */
-    public static proxyClasses.Event.InternalEvent IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
+    public static Event.InternalEvent IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"IDKEYOpen",args,com.intersys.objects.Database.RET_OBJECT);
         com.intersys.cache.CacheObject cobj = res.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Event.InternalEvent)(cobj.newJavaInstance());
+        return (Event.InternalEvent)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method IDKEYOpen in Cache.</p>
@@ -1784,7 +1784,7 @@ after the index filing is completed.
      @see #IDKEYOpen(com.intersys.objects.Database,java.lang.String,java.lang.Integer,com.intersys.objects.StatusCodeHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#IDKEYOpen"> Method IDKEYOpen</A>
     */
-    public static proxyClasses.Event.InternalEvent IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency) throws com.intersys.objects.CacheException {
+    public static Event.InternalEvent IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
         args[0] = new com.intersys.cache.Dataholder(K1);
         args[1] = new com.intersys.cache.Dataholder(concurrency);
@@ -1792,7 +1792,7 @@ after the index filing is completed.
         com.intersys.cache.CacheObject cobj = res.getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Event.InternalEvent)(cobj.newJavaInstance());
+        return (Event.InternalEvent)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method IDKEYOpen in Cache.</p>
@@ -1803,7 +1803,7 @@ after the index filing is completed.
      @throws com.intersys.objects.CacheException if any error occured while running the method.
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#IDKEYOpen"> Method IDKEYOpen</A>
     */
-    public static proxyClasses.Event.InternalEvent IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency, com.intersys.objects.StatusCodeHolder sc) throws com.intersys.objects.CacheException {
+    public static Event.InternalEvent IDKEYOpen (com.intersys.objects.Database db, java.lang.String K1, java.lang.Integer concurrency, com.intersys.objects.StatusCodeHolder sc) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[3];
         int[] _refs = new int[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
@@ -1815,7 +1815,7 @@ after the index filing is completed.
         com.intersys.cache.CacheObject cobj = res[0].getCacheObject();
         if (cobj == null)
             return null;
-        return (proxyClasses.Event.InternalEvent)(cobj.newJavaInstance());
+        return (Event.InternalEvent)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method IONewGetObject in Cache.</p>
@@ -1874,7 +1874,7 @@ after the index filing is completed.
      @see #IONewIndexExists(com.intersys.objects.Database,IO.InternalIO,com.intersys.objects.StringHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#IONewIndexExists"> Method IONewIndexExists</A>
     */
-    public static java.lang.Boolean IONewIndexExists (com.intersys.objects.Database db, proxyClasses.IO.InternalIO K1) throws com.intersys.objects.CacheException {
+    public static java.lang.Boolean IONewIndexExists (com.intersys.objects.Database db, IO.InternalIO K1) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"IONewIndexExists",args,com.intersys.objects.Database.RET_PRIM);
@@ -1888,7 +1888,7 @@ after the index filing is completed.
      @throws com.intersys.objects.CacheException if any error occured while running the method.
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#IONewIndexExists"> Method IONewIndexExists</A>
     */
-    public static java.lang.Boolean IONewIndexExists (com.intersys.objects.Database db, proxyClasses.IO.InternalIO K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
+    public static java.lang.Boolean IONewIndexExists (com.intersys.objects.Database db, IO.InternalIO K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
         int[] _refs = new int[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
@@ -1995,7 +1995,7 @@ after the index filing is completed.
      @see #IOoldIndexExists(com.intersys.objects.Database,IO.InternalIO,com.intersys.objects.StringHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#IOoldIndexExists"> Method IOoldIndexExists</A>
     */
-    public static java.lang.Boolean IOoldIndexExists (com.intersys.objects.Database db, proxyClasses.IO.InternalIO K1) throws com.intersys.objects.CacheException {
+    public static java.lang.Boolean IOoldIndexExists (com.intersys.objects.Database db, IO.InternalIO K1) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"IOoldIndexExists",args,com.intersys.objects.Database.RET_PRIM);
@@ -2009,7 +2009,7 @@ after the index filing is completed.
      @throws com.intersys.objects.CacheException if any error occured while running the method.
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#IOoldIndexExists"> Method IOoldIndexExists</A>
     */
-    public static java.lang.Boolean IOoldIndexExists (com.intersys.objects.Database db, proxyClasses.IO.InternalIO K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
+    public static java.lang.Boolean IOoldIndexExists (com.intersys.objects.Database db, IO.InternalIO K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
         int[] _refs = new int[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
@@ -2116,7 +2116,7 @@ after the index filing is completed.
      @see #TickerIndexExists(com.intersys.objects.Database,Resources.Tickers,com.intersys.objects.StringHolder)
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#TickerIndexExists"> Method TickerIndexExists</A>
     */
-    public static java.lang.Boolean TickerIndexExists (com.intersys.objects.Database db, proxyClasses.Resources.Tickers K1) throws com.intersys.objects.CacheException {
+    public static java.lang.Boolean TickerIndexExists (com.intersys.objects.Database db, Resources.Tickers K1) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"TickerIndexExists",args,com.intersys.objects.Database.RET_PRIM);
@@ -2130,7 +2130,7 @@ after the index filing is completed.
      @throws com.intersys.objects.CacheException if any error occured while running the method.
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=Event.InternalEvent#TickerIndexExists"> Method TickerIndexExists</A>
     */
-    public static java.lang.Boolean TickerIndexExists (com.intersys.objects.Database db, proxyClasses.Resources.Tickers K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
+    public static java.lang.Boolean TickerIndexExists (com.intersys.objects.Database db, Resources.Tickers K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
         int[] _refs = new int[1];
         args[0] = new com.intersys.cache.Dataholder(K1);

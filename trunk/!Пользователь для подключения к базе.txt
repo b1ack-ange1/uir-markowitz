@@ -1,0 +1,2 @@
+login: extConnector
+password: 5njd_ap2xc
