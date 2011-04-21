@@ -15,12 +15,14 @@ public interface LocalizeConstant extends Messages {
 	String user();
 
 	String refresh();
-	
+
 	String changePassword();
-	
+
 	String appTitle();
-	
+
 	String service();
-	
+
 	String logoff();
+
+	String treeGridTitle();
 }
