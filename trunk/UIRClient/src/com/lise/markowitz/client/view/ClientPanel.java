@@ -1,10 +1,22 @@
 package com.lise.markowitz.client.view;
 
+import java.util.HashMap;
+
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window.Location;
+import com.lise.markowitz.client.Configuration;
+import com.lise.markowitz.client.form.ChangePasswordForm;
 import com.lise.markowitz.client.form.WorkPanel;
 import com.lise.markowitz.client.localization.LocalizeConstant;
+import com.lise.markowitz.client.utils.AboutWindow;
+import com.smartgwt.client.rpc.RPCCallback;
+import com.smartgwt.client.rpc.RPCManager;
+import com.smartgwt.client.rpc.RPCRequest;
+import com.smartgwt.client.rpc.RPCResponse;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.VerticalAlignment;
+import com.smartgwt.client.util.BooleanCallback;
+import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.Label;
@@ -78,7 +90,7 @@ public class ClientPanel extends VLayout {
 		changePasswordItem
 				.addClickHandler(new com.smartgwt.client.widgets.menu.events.ClickHandler() {
 					public void onClick(MenuItemClickEvent event) {
-						// ChangePasswordForm.getInstance().show();
+						ChangePasswordForm.getInstance().show();
 					}
 				});
 
@@ -86,8 +98,8 @@ public class ClientPanel extends VLayout {
 		aboutItem
 				.addClickHandler(new com.smartgwt.client.widgets.menu.events.ClickHandler() {
 					public void onClick(MenuItemClickEvent event) {
-						// AboutWindow.getInstance().show();
-						// AboutWindow.getInstance().centerInPage();
+						AboutWindow.getInstance().show();
+						AboutWindow.getInstance().centerInPage();
 					}
 				});
 
@@ -102,7 +114,28 @@ public class ClientPanel extends VLayout {
 		logoffButton.setExtraSpace(10);
 		logoffButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
+				SC.ask(localizeConstant.rrp_exitConfirm(),
+						new BooleanCallback() {
+							public void execute(Boolean value) {
+								if (value != null && value) {
+									HashMap<String, Object> requestParams = new HashMap<String, Object>();
+									requestParams.put(
+											"actionURL",
+											Configuration.getWebServiceAddr(
+													false, false) + "Logoff");
+									RPCManager.send("", new RPCCallback() {
+										@Override
+										public void execute(
+												RPCResponse response,
+												Object rawData,
+												RPCRequest request) {
+											Location.reload();
 
+										}
+									}, requestParams);
+								}
+							}
+						});
 			}
 		});
 		titlePanel.addMember(logoffButton);

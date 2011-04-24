@@ -6,12 +6,13 @@ public class WelcomePanel extends WorkPanel {
 
 	public WelcomePanel() {
 		super();
-		addMember(new Label("ssss"));
+		panel.addMember(new Label("Стартовая страница, всем здрасьте!"));
+		removeMember(toolStrip);
 	}
 
 	@Override
 	public void buildToolStrip() {
-
+		
 	}
 
 	@Override

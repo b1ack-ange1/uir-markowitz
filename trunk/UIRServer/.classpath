@@ -15,6 +15,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/учеба/УИР/uir-markowitz/UIRServer/public/WEB-INF/lib/CacheDB.jar"/>
+	<classpathentry kind="lib" path="K:/учеба/8 семестр/УИР/workspace/UIRServer/public/WEB-INF/lib/CacheDB.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

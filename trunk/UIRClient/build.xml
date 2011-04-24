@@ -4,10 +4,12 @@
 	<property name="gwt.sdk" location="K:\Program Files\eclipse\plugins\com.google.gwt.eclipse.sdkbundle.2.2.0_2.2.0.v201102111811\gwt-2.2.0" />
 	<property name="glassfish.path" location="K:\Program Files\glassfish\glassfish">
 	</property>
+	<property name="gflot" location="K:\учеба\8 семестр\УИР\workspace\UIRClient\libs" />
 	<path id="project.class.path">
 		<pathelement location="build/classes" />
 		<pathelement location="${gwt.sdk}/gwt-user.jar" />
 		<fileset dir="${gwt.sdk}" includes="gwt-dev*.jar" />
+		<fileset dir="${gflot}" includes="gflot*.jar" />
 		<!-- Add any additional non-server libs (such as JUnit)-->
 		<fileset dir="libs" includes="**/*.jar" />
 	</path>
