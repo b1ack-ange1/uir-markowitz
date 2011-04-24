@@ -19,7 +19,7 @@ public class Configuration {
 	}-*/;
 
 	public static String getWebServiceAddr(boolean isSecure, boolean isNative) {
-		return getNativeConfiguration("rsdhWebServiceAddr")
+		return /*getNativeConfiguration("rsdhWebServiceAddr")*/ "/UIRServer"
 				+ (isSecure ? "/secure" : "") + (isNative ? "/native" : "/sc")
 				+ "/";
 	}
@@ -32,8 +32,6 @@ public class Configuration {
 	public final static String UsrObjLinkIdParamName = "Id";
 	public final static String UsrObjLinkDBParamName = "LogonDatabase";
 	public final static String UsrObjLinkClassCodeParamName = "ClassCode";
-
-	public final static String moduleCode = "RSDH-ThinClient-ACenter";
 
 	public final static boolean debugEnabled = true;
 

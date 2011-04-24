@@ -25,4 +25,26 @@ public interface LocalizeConstant extends Messages {
 	String logoff();
 
 	String treeGridTitle();
+
+	String welcomePage();
+
+	String loginTitle();
+
+	String loginNewPasswordGroup();
+
+	String loginNewPassEnter();
+
+	String loginPassRepeate();
+
+	String loginPassDontMatch();
+
+	String loginDisconnectMessage();
+
+	String lds_password();
+
+	String cpf_title();
+
+	String aw_copyRight();
+
+	String rrp_exitConfirm();
 }

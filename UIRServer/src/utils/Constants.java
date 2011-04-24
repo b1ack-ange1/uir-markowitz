@@ -8,8 +8,14 @@ public class Constants {
 	public final static Vector<String> realizedMethodsClasses = new Vector<String>();
 	
 	static {
-		realizedMethods.add("ArrHurv");
 		realizedMethods.add("Zojt");
+		realizedMethods.add("MonCar");
+		realizedMethods.add("Lagr");
+				
+		realizedMethods.add("ArrHurv");
+		realizedMethods.add("KunTak");
+				
+		realizedMethods.add("LevMark");
 		realizedMethods.add("WolfFr");
 		
 		realizedMethodsClasses.add("nonlinear");

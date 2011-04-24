@@ -2,7 +2,6 @@ package com.lise.markowitz.client.db.datasources;
 
 import com.google.gwt.core.client.GWT;
 import com.lise.markowitz.client.localization.LocalizeConstant;
-import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.data.fields.DataSourceIntegerField;
 import com.smartgwt.client.data.fields.DataSourceTextField;
 
@@ -16,7 +15,6 @@ public class NavigationTreeDataSource extends JSONDataSource {
 		super();
 
 		setID("TreeDataSource");
-		setRecordXPath("/data/object/");
 		setTitleField("Name");
 		DataSourceTextField nameField = new DataSourceTextField("name",
 				localizeConstant.treeGridTitle());
@@ -27,12 +25,13 @@ public class NavigationTreeDataSource extends JSONDataSource {
 
 		DataSourceIntegerField parentIdField = new DataSourceIntegerField(
 				"parentId", "Parent ID");
-		parentIdField.setRequired(true);
 		parentIdField.setForeignKey("TreeDataSource.id");
 
-		setFields(nameField, idField, parentIdField);
+		DataSourceTextField codeField = new DataSourceTextField("code", "Code");
 
-		setDataURL("/UIRServer/NavigationTreeServlet");
+		setFields(idField, parentIdField, nameField, codeField);
+
+		setDataURL("/UIRServer/secure/sc/"+"NavigationTreeServlet");
 
 	}
 

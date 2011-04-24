@@ -3,7 +3,8 @@
 	<name>UIRServer</name>
 	<comment></comment>
 	<projects>
-		<project>proxy.intersys.api</project>
+		<project>OptimizingMethods</project>
+		<project>ProxyClasses</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
