@@ -3,13 +3,13 @@ package utils.methods;
 import utils.portfolio.Portfolio;
 
 public abstract class Method {
-	protected double[] profit;
-	protected double[][] covariances;
-	protected double[] x;
-	protected double expectedProfit;
-	protected double finalProfit;
-	protected double risk;
-	protected double epsilon;
+	public double[] profit;
+	public double[][] covariances;
+	public double[] x;
+	public double expectedProfit;
+	public double finalProfit;
+	public double risk;
+	public double epsilon;
 
 	public double[] getX() {
 		return x;
