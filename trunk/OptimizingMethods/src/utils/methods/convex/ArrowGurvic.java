@@ -4,26 +4,26 @@ import utils.methods.Method;
 import utils.portfolio.Portfolio;
 
 public class ArrowGurvic extends Method {
-	private double alpha;
-	private double[] l;
+	public double alpha;
+	public double[] l;
+	public int xLength;
 
 	/*
-	 * l - массив лямбда, содержит ограничения на xi<=1 - первые n штук далее 2
-	 * ограничения на sum(xi)=1: sum(xi)<=1 & sum(xi)>=1 далее одно ограничение
-	 * на Eopt<=sum(xi*Ei)
+	 * l - массив лямбда, содержит ограничения на xi<=1 - первые n-1 штук далее
+	 * 1 ограничение Eopt<=sum(xi*Ei) + (1-sum(xi))En 1 ограничение sum(xi)<=1
 	 */
 
 	public ArrowGurvic(Portfolio challenge, double alpha, double epsilon) {
 		super(challenge, epsilon);
 		this.alpha = alpha;
 		x = new double[challenge.getSize()];
-		l = new double[challenge.getSize() + 3];
-		for (int i = 0; i < x.length; i++) {
-			x[i] = 0.5;
-			l[i] = 0;
+		l = new double[challenge.getSize() + 1];
+		xLength = x.length;
+		for (int i = 0; i < xLength; i++) {
+			x[i] = 1.0 / xLength;
+			l[i] = 0.1;
 		}
-
-		l[l.length - 1] = l[l.length - 2] = l[l.length - 3] = 0;
+		l[xLength] = 0.1;
 
 	}
 
@@ -32,25 +32,31 @@ public class ArrowGurvic extends Method {
 		super(challenge, expectedProfit, epsilon);
 		this.alpha = alpha;
 		x = new double[challenge.getSize()];
-		l = new double[challenge.getSize() + 3];
-		for (int i = 0; i < x.length; i++) {
-			x[i] = 0.5;
-			l[i] = 0;
+		l = new double[challenge.getSize() + 1];
+		xLength = x.length;
+		for (int i = 0; i < xLength; i++) {
+			x[i] = 1.0 / xLength;
+			l[i] = 0.1;
 		}
-
-		l[l.length - 1] = l[l.length - 2] = l[l.length - 3] = 0;
-
+		l[xLength] = 0.1;
 	}
 
 	@Override
 	public void evaluate() {
 		startTime();
 		boolean isTheEnd = false;
-		double[] x_new = x;
-		double[] l_new = l;
+		double[] x_new = new double[xLength];
+		for (int i = 0; i < xLength; i++) {
+			x_new[i] = x[i];
+		}
+		double[] l_new = new double[xLength + 1];
+		for (int i = 0; i < xLength + 1; i++) {
+			l_new[i] = l[i];
+		}
+
 		double risk = Double.MAX_VALUE;
 		while (!isTheEnd) {
-			for (int i = 0; i < x.length; i++) {
+			for (int i = 0; i < xLength - 1; i++) {
 				x_new[i] = Math.max(0, x[i] - alpha * difMainOnX(i));
 			}
 			for (int i = 0; i < l.length; i++) {
@@ -59,29 +65,59 @@ public class ArrowGurvic extends Method {
 
 			x = x_new;
 			l = l_new;
+			x[xLength - 1] = 1.0 - sumWeights();
+
+			x_new = new double[xLength];
+			for (int i = 0; i < xLength; i++) {
+				x_new[i] = x[i];
+			}
+
+			l_new = new double[xLength + 1];
+			for (int i = 0; i < xLength + 1; i++) {
+				l_new[i] = l[i];
+			}
+
 			isTheEnd = stopCriteria();
-			
-			
-			for (int i=0; i<x.length; i++) System.out.print("x"+i+"="+x[i]+";");
-			for (int i=0; i<l.length; i++) System.out.print("l"+i+"="+l[i]+";");
+
+			for (int i = 0; i < xLength; i++)
+				System.out.print("x" + i + "=" + x[i] + ";");
+			for (int i = 0; i < l.length; i++)
+				System.out.print("l" + i + "=" + l[i] + ";");
 			System.out.println("Current risk =" + getRisk());
+			isTheEnd = isTheEnd || (risk <= this.risk);
+			if (risk <= this.risk) {
+				this.risk = risk;
+
+				x = x_new;
+				l = l_new;
+				break;
+			}
+			risk = this.risk;
+
 		}
 		endTime();
 		finalProfit = sumProfit();
 	}
 
+	private double sumWeights() {
+		double out = 0;
+		for (int i = 0; i < xLength - 1; i++)
+			out += x[i];
+		return out;
+	}
+
 	private boolean stopCriteria() {
 		boolean criteria = true;
-		for (int i = 0; i < x.length; i++) {
+		for (int i = 0; i < xLength - 1; i++) {
 			criteria = criteria
-					&& (((difMainOnX(i) == 0) && (x[i] > 0)) || ((difMainOnX(i) >= 0) && (x[i] <= 0)));
+					&& (((difMainOnX(i) <= epsilon) && (x[i] > 0)) || ((difMainOnX(i) >= 0) && (x[i] <= 0)));
 			if (!criteria)
 				return false;
 		}
 
 		for (int i = 0; i < l.length; i++) {
 			criteria = criteria
-					&& (((difMainOnL(i) == 0) && (l[i] > 0)) || ((difMainOnL(i) <= 0) && (l[i] <= 0)));
+					&& (((difMainOnL(i) <= epsilon) && (l[i] > 0)) || ((difMainOnL(i) <= 0) && (l[i] <= 0)));
 			if (!criteria)
 				return false;
 		}
@@ -93,26 +129,36 @@ public class ArrowGurvic extends Method {
 		double out = 0;
 		out += 2 * x[index];
 		out += 2 * sumCovarIndex(index);
-		out += l[index];
-		out += l[x.length];
-		out -= l[x.length + 1];
-		out -= profit[index] * l[l.length - 1];
+		out += x[xLength - 1]
+				* (2 * covariances[xLength - 1][index] - covariances[xLength - 1][xLength - 1]);
+		out -= (2 * sumCovarIndex(xLength - 1) + covariances[xLength - 1][xLength - 1]
+				* x[xLength - 1]);
+		out -= l[index];
+		out += (profit[xLength - 1] - profit[index]) * l[l.length - 1];
+		out += l[xLength];
 		return out;
 	}
 
 	private double difMainOnL(int index) {
-		if (index < x.length) {
+		if (index < xLength - 1) {
 			// ограничение xi<=1
 			return x[index] - 1;
 		} else {
-			if (index == x.length) {
-				return sumArray(x, 0) - 1;
-			} else if (index == x.length + 1) {
-				return 1 - sumArray(x, 0);
-			} else {
+			if (index == xLength - 1)
+				// необходимо обязательно обновлять вес Xn
 				return expectedProfit - sumProfit();
-			}
+			else
+				return sumWeights() - 1;
 		}
+	}
+
+	protected double sumCovarIndex(int i) {
+		double out = 0;
+		for (int j = 0; j < xLength - 1; j++) {
+			if (j != i)
+				out += covariances[i][j] * x[j];
+		}
+		return out;
 	}
 
 }
