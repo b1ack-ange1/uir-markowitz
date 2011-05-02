@@ -8,7 +8,7 @@ package Resources;
 **/
 
 public class Tickers extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 244;
+    private static final long serialVersionUID = 2021;
     private static String CACHE_CLASS_NAME = "Resources.Tickers";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
