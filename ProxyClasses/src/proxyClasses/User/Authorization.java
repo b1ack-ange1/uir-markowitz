@@ -8,7 +8,7 @@ package User;
 **/
 
 public class Authorization extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 3112;
+    private static final long serialVersionUID = 6826;
     private static String CACHE_CLASS_NAME = "User.Authorization";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -1711,6 +1711,19 @@ after the index filing is completed.
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"PortfolioIsValid",args,com.intersys.objects.Database.RET_PRIM);
         db.parseStatus(res);
         return;
+    }
+    /**
+     <p>Runs method getPortfolios in Cache.</p>
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=User.Authorization#getPortfolios"> Method getPortfolios</A>
+    */
+    public java.util.List getPortfolios () throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("getPortfolios",args,com.intersys.objects.Database.RET_OBJECT);
+        com.intersys.cache.CacheObject cobj = res.getCacheObject();
+        if (cobj == null)
+            return null;
+        return (java.util.List)(cobj.newJavaInstance());
     }
     /**
      <p>Returns a CallableStatement for query Extent.</p>

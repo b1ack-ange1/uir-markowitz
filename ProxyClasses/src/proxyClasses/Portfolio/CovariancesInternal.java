@@ -8,7 +8,7 @@ package Portfolio;
 **/
 
 public class CovariancesInternal extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 7598;
+    private static final long serialVersionUID = 4556;
     private static String CACHE_CLASS_NAME = "Portfolio.CovariancesInternal";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
