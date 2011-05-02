@@ -31,9 +31,9 @@ public class quoteGetter {
 			// выбираем Газпром
 			requestText += "&em="+tickerID;
 			// дата, месяц (начиная с 0), год даты начала запроса
-			requestText += "&df=1"+calend.get(Calendar.DAY_OF_MONTH);
-			requestText += "&mf=1"+calend.get(Calendar.MONTH);
-			requestText += "&my=2009"+calend.get(Calendar.YEAR);
+			requestText += "&df="+calend.get(Calendar.DAY_OF_MONTH);
+			requestText += "&mf="+calend.get(Calendar.MONTH);
+			requestText += "&my="+calend.get(Calendar.YEAR);
 			// дата, месяц (начиная с 0), год даты конца запроса
 			requestText += "&dt="+calend.get(Calendar.DAY_OF_MONTH);
 			requestText += "&mt="+calend.get(Calendar.MONTH);
@@ -76,7 +76,7 @@ public class quoteGetter {
 
 			try {
 				//Создаем файл для скидывания информации с флагом append
-				FileWriter fstream = new FileWriter("D:\\logs\\quoteGetter\\import_"+calend.get(Calendar.DAY_OF_MONTH)+"_"+calend.get(Calendar.MONTH)+"_"+calend.get(Calendar.YEAR)+".log", true);
+				FileWriter fstream = new FileWriter("D:\\logs\\quoteGetter\\import_"+calend.get(Calendar.DAY_OF_MONTH)+"_"+(calend.get(Calendar.MONTH) + 1)+"_"+calend.get(Calendar.YEAR)+".log", true);
 				BufferedWriter out = new BufferedWriter(fstream);
 				out.write(answer.toString());
 				out.close();
@@ -84,7 +84,7 @@ public class quoteGetter {
 				//System.out.println("Error: " + e.getMessage());
 			}
 		} catch (IOException ex) {
-			System.out.println("catched:" + ex.toString());
+			//System.out.println("catched:" + ex.toString());
 		}
 	}
 
@@ -100,6 +100,6 @@ public class quoteGetter {
 		}
 
 		DBConnector dbConn = new DBConnector();
-		dbConn.importFile("D:\\logs\\quoteGetter\\import_"+calend.get(Calendar.DAY_OF_MONTH)+"_"+calend.get(Calendar.MONTH)+"_"+calend.get(Calendar.YEAR)+".log");
+		dbConn.importFile("D:\\logs\\quoteGetter\\import_"+calend.get(Calendar.DAY_OF_MONTH)+"_"+(calend.get(Calendar.MONTH) + 1)+"_"+calend.get(Calendar.YEAR)+".log");
 	}
 }

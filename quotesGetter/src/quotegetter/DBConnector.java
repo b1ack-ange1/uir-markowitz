@@ -21,7 +21,7 @@ public class DBConnector {
         try {
             dbConnection = CacheDatabase.getDatabase(dbURL, dbUser, dbPassword);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
     }
 
@@ -34,7 +34,7 @@ public class DBConnector {
             IOInternal.parseFile(DBConnector.getDatabase(), filename);
             TickerCovariance.callCountCovariances(DBConnector.getDatabase());
         } catch (CacheException ex) {
-            System.out.println(ex.getMessage());
+            //System.out.println(ex.getMessage());
         }
     }
 }
