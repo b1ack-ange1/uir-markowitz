@@ -32,7 +32,7 @@ public class UIRClient implements EntryPoint {
 		KeyIdentifier debugKey = new KeyIdentifier();
 		debugKey.setCtrlKey(true);
 		debugKey.setAltKey(true);
-		debugKey.setKeyName("D");
+		debugKey.setKeyName("F");
 
 		Page.registerKey(debugKey, new KeyCallback() {
 			public void execute(String keyName) {

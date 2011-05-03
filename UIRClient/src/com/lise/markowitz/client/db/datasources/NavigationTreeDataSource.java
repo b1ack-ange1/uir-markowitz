@@ -1,6 +1,7 @@
 package com.lise.markowitz.client.db.datasources;
 
 import com.google.gwt.core.client.GWT;
+import com.lise.markowitz.client.Configuration;
 import com.lise.markowitz.client.localization.LocalizeConstant;
 import com.smartgwt.client.data.fields.DataSourceIntegerField;
 import com.smartgwt.client.data.fields.DataSourceTextField;
@@ -31,7 +32,8 @@ public class NavigationTreeDataSource extends JSONDataSource {
 
 		setFields(idField, parentIdField, nameField, codeField);
 
-		setDataURL("/UIRServer/secure/sc/"+"NavigationTreeServlet");
+		setDataURL(Configuration.getWebServiceAddr(true, false)
+				+ "NavigationTreeServlet");
 
 	}
 

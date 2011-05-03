@@ -1,6 +1,18 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+
+import org.apache.commons.math.optimization.GoalType;
+import org.apache.commons.math.optimization.RealPointValuePair;
+import org.apache.commons.math.optimization.linear.LinearConstraint;
+import org.apache.commons.math.optimization.linear.LinearObjectiveFunction;
+import org.apache.commons.math.optimization.linear.Relationship;
+import org.apache.commons.math.optimization.linear.SimplexSolver;
+
 import utils.methods.convex.ArrowGurvic;
+import utils.methods.nonlinear.Zoitendake;
 import utils.portfolio.Portfolio;
 
 public class TestMain {
@@ -16,16 +28,17 @@ public class TestMain {
 				{ -0.3, 0.2, 1.0, -0.45 }, { -0.6, 0.9, -0.45, 1.0 } };
 		port.setCovariance(data2);
 		try {
-			ArrowGurvic method = new ArrowGurvic(port, 0.000001, 6,
-					0.000000000000001);
+			Zoitendake method = new Zoitendake(port, 6, 0.000001);
 			method.evaluate();
 			double[] x = method.getX();
 			for (int i = 0; i < x.length; i++) {
 				System.out.println("X" + i + " = " + x[i]);
 			}
+
 			System.out.println("Final Profit = " + method.getFinalProfit());
 			System.out.println("Final Risk = " + method.getRisk());
 			System.out.println("Time = " + method.getTime());
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

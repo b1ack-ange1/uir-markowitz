@@ -7,6 +7,7 @@ import com.google.gwt.user.client.Window.Location;
 import com.lise.markowitz.client.db.datasources.LoginDataSource;
 import com.lise.markowitz.client.localization.Localize;
 import com.lise.markowitz.client.utils.Logger;
+import com.lise.markowitz.client.view.ClientPanel;
 import com.lise.markowitz.client.view.MainDynamicPanel;
 import com.smartgwt.client.data.DSCallback;
 import com.smartgwt.client.data.DSRequest;
@@ -205,8 +206,12 @@ public class LoginForm extends Window {
 					
 					RPCManager.resendTransaction();
 					hide();
-					MainDynamicPanel.getInstance().getTree().show();
+					ClientPanel.getInstance().setLogin(Cookies.getCookie("lastUserName"));
 
+					if (firstShow)
+						new PortfolioPickerForm().show();
+
+					firstShow = false;
 					
 				} else {
 					if (rawData.toString().contains("ORA-28001")) {
@@ -226,7 +231,7 @@ public class LoginForm extends Window {
 	public String getConnectionDesc() {
 		if (Cookies.getCookie("lastUserName") != null)
 			return Cookies.getCookie("lastUserName") + "@"
-					+ Cookies.getCookie("lastDBName");
+					+ Cookies.getCookie("lastPortfolio");
 		else
 			return "";
 	}
