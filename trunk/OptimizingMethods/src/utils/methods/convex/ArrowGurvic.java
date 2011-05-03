@@ -6,7 +6,6 @@ import utils.portfolio.Portfolio;
 public class ArrowGurvic extends Method {
 	public double alpha;
 	public double[] l;
-	public int xLength;
 
 	/*
 	 * l - массив лямбда, содержит ограничения на xi<=1 - первые n-1 штук далее
@@ -17,6 +16,7 @@ public class ArrowGurvic extends Method {
 		super(challenge, epsilon);
 		this.alpha = alpha;
 		x = new double[challenge.getSize()];
+
 		l = new double[challenge.getSize() + 1];
 		xLength = x.length;
 		for (int i = 0; i < xLength; i++) {
@@ -32,12 +32,14 @@ public class ArrowGurvic extends Method {
 		super(challenge, expectedProfit, epsilon);
 		this.alpha = alpha;
 		x = new double[challenge.getSize()];
+
 		l = new double[challenge.getSize() + 1];
 		xLength = x.length;
 		for (int i = 0; i < xLength; i++) {
 			x[i] = 1.0 / xLength;
 			l[i] = 0.1;
 		}
+
 		l[xLength] = 0.1;
 	}
 
@@ -77,14 +79,12 @@ public class ArrowGurvic extends Method {
 				l_new[i] = l[i];
 			}
 
-			isTheEnd = stopCriteria();
-
 			for (int i = 0; i < xLength; i++)
 				System.out.print("x" + i + "=" + x[i] + ";");
 			for (int i = 0; i < l.length; i++)
 				System.out.print("l" + i + "=" + l[i] + ";");
 			System.out.println("Current risk =" + getRisk());
-			isTheEnd = isTheEnd || (risk <= this.risk);
+
 			if (risk <= this.risk) {
 				this.risk = risk;
 
@@ -92,6 +92,9 @@ public class ArrowGurvic extends Method {
 				l = l_new;
 				break;
 			}
+
+			isTheEnd = stopCriteria();
+			isTheEnd = isTheEnd || (risk <= this.risk);
 			risk = this.risk;
 
 		}
@@ -110,6 +113,7 @@ public class ArrowGurvic extends Method {
 		boolean criteria = true;
 		for (int i = 0; i < xLength - 1; i++) {
 			criteria = criteria
+
 					&& (((difMainOnX(i) <= epsilon) && (x[i] > 0)) || ((difMainOnX(i) >= 0) && (x[i] <= 0)));
 			if (!criteria)
 				return false;
@@ -117,6 +121,7 @@ public class ArrowGurvic extends Method {
 
 		for (int i = 0; i < l.length; i++) {
 			criteria = criteria
+
 					&& (((difMainOnL(i) <= epsilon) && (l[i] > 0)) || ((difMainOnL(i) <= 0) && (l[i] <= 0)));
 			if (!criteria)
 				return false;

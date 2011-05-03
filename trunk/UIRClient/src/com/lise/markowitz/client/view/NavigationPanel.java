@@ -16,7 +16,7 @@ import com.smartgwt.client.widgets.tree.events.LeafClickEvent;
 import com.smartgwt.client.widgets.tree.events.LeafClickHandler;
 
 public class NavigationPanel extends VLayout {
-	private TreeGrid treeGrid = new TreeGrid();
+	public final TreeGrid treeGrid = new TreeGrid();
 	private final MainDynamicPanel parent;
 
 	private LocalizeConstant localizeConstant = GWT

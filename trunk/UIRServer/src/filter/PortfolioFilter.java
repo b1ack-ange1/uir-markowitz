@@ -1,7 +1,6 @@
 package filter;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,27 +15,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import utils.Utils;
 
-import db.ConnectionManager;
-
-/**
- * Servlet Filter implementation class AuthorizationFilter
- */
-public class AuthorizationFilter implements Filter {
-	protected static final Logger LOGGER = Logger
-			.getLogger("lise.webService");
+public class PortfolioFilter implements Filter {
+	protected static final Logger LOGGER = Logger.getLogger("lise.webService");
 
 	private String username;
 	private String password;
+	private String portfolio;
 
-	/**
-	 * @see Filter#destroy()
-	 */
+	@Override
 	public void destroy() {
+		// TODO Auto-generated method stub
+
 	}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req;
@@ -46,20 +38,22 @@ public class AuthorizationFilter implements Filter {
 			LOGGER.log(Level.FINE, req.getServletPath());
 			String usr = null;
 			String pass = null;
-			//req.getSession().setAttribute("username", "admin");
-			//req.getSession().setAttribute("password", "admin");
+			String port = null;
 
-			if (username != null && password != null) {
+			if (username != null && password != null && portfolio != null) {
 				usr = username;
 				pass = password;
+				port = portfolio;
 			} else if (req.getSession().getAttribute("username") != null
-					&& req.getSession().getAttribute("password") != null) {
+					&& req.getSession().getAttribute("password") != null
+					&& req.getSession().getAttribute("portfolio") != null) {
 				usr = req.getSession().getAttribute("username").toString();
 				pass = req.getSession().getAttribute("password").toString();
+				port = req.getSession().getAttribute("portfolio").toString();
 			}
 
-			System.out.println("in filter");
-			if (usr != null && pass != null) {
+			System.out.println("in filter portfolio");
+			if (usr != null && pass != null && port != null) {
 				try {
 					/*
 					 * RsdhConnection.init(ConnectionManager.getConnection(usr,
@@ -69,7 +63,7 @@ public class AuthorizationFilter implements Filter {
 					chain.doFilter(request, response);
 				} catch (/* SQL */Exception e) {
 					LOGGER.log(Level.SEVERE,
-							AuthorizationFilter.class.getName(), e);
+							PortfolioFilter.class.getName(), e);
 					response.getWriter().write(
 							Utils.proceedSCError(-1, e.getLocalizedMessage(),
 									true).toString());
@@ -78,28 +72,26 @@ public class AuthorizationFilter implements Filter {
 					// RsdhConnection.closeConnection();
 				}
 			} else {
-				if (req.getServletPath().contains("/sc/"))
-				{	
-					System.out.println("contains sc");
-					response.getWriter().write(
-							"<SCRIPT>//'\"]]>>isc_loginRequired");
-				}
-				else if (response instanceof HttpServletResponse)
+				if (req.getServletPath().contains("/sc/")) {
+					System.out.println("contains sc portfolio");
+
+				} else if (response instanceof HttpServletResponse)
 					((HttpServletResponse) response)
 							.sendError(HttpServletResponse.SC_FORBIDDEN);
 				else
-					response.getWriter().write("Need authorization!");
+					response.getWriter().write("Need portfolio selection!");
 				response.getWriter().close();
 			}
 		}
 
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
+	@Override
 	public void init(FilterConfig fConfig) throws ServletException {
 		username = fConfig.getInitParameter("username");
 		password = fConfig.getInitParameter("password");
+		portfolio = fConfig.getInitParameter("portfolioId");
+
 	}
+
 }

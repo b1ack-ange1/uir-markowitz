@@ -10,6 +10,14 @@ public abstract class Method {
 	public double finalProfit;
 	public double risk;
 	public double epsilon;
+	public int xLength;
+
+
+
+	private long time;
+	private int memory;
+	private int operations;
+
 
 	public double[] getX() {
 		return x;
@@ -18,11 +26,7 @@ public abstract class Method {
 	public double getFinalProfit() {
 		return finalProfit;
 	}
-
-	private long time;
-	private int memory;
-	private int operations;
-
+	
 	public Method(final Portfolio challenge, double epsilon) {
 		time = 0;
 		memory = 0;

@@ -18,7 +18,7 @@ import utils.Utils;
 @SuppressWarnings("serial")
 public abstract class LISEServlet extends HttpServlet {
 	protected static final Logger LOGGER = Logger
-			.getLogger("ru.softlab.rsdh.webService");
+			.getLogger("lise.webService");
 
 	protected static ThreadLocal<HttpServletRequest> request = new ThreadLocal<HttpServletRequest>();
 	protected static ThreadLocal<HttpSession> _session = new ThreadLocal<HttpSession>();
@@ -47,6 +47,8 @@ public abstract class LISEServlet extends HttpServlet {
 
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
+		req.setCharacterEncoding("cp1251");
+		resp.setCharacterEncoding("utf-8");
 		request.set(req);
 		String jRequest = "";
 		if (req.getContentLength() > 0) {

@@ -6,6 +6,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window.Location;
 import com.lise.markowitz.client.Configuration;
 import com.lise.markowitz.client.form.ChangePasswordForm;
+import com.lise.markowitz.client.form.PortfolioPickerForm;
 import com.lise.markowitz.client.form.WorkPanel;
 import com.lise.markowitz.client.localization.LocalizeConstant;
 import com.lise.markowitz.client.utils.AboutWindow;
@@ -34,6 +35,8 @@ import com.smartgwt.client.widgets.menu.events.MenuItemClickEvent;
 public class ClientPanel extends VLayout {
 	private LocalizeConstant localizeConstant = GWT
 			.create(LocalizeConstant.class);
+
+	private String login, portfolio;
 
 	protected Layout titlePanel;
 	protected Label userInfo;
@@ -75,7 +78,7 @@ public class ClientPanel extends VLayout {
 		label.setWidth("*");
 		titlePanel.addMember(label);
 
-		userInfo = new Label();
+		userInfo = new Label("Информация о сеансе");
 		userInfo.setWidth("*");
 		userInfo.setMargin(5);
 		userInfo.setAlign(Alignment.RIGHT);
@@ -94,6 +97,15 @@ public class ClientPanel extends VLayout {
 					}
 				});
 
+		MenuItem changePortfolioItem = new MenuItem(
+				localizeConstant.changePortfolio());
+		changePortfolioItem
+				.addClickHandler(new com.smartgwt.client.widgets.menu.events.ClickHandler() {
+					public void onClick(MenuItemClickEvent event) {
+						new PortfolioPickerForm().show();
+					}
+				});
+
 		MenuItem aboutItem = new MenuItem(localizeConstant.about());
 		aboutItem
 				.addClickHandler(new com.smartgwt.client.widgets.menu.events.ClickHandler() {
@@ -104,7 +116,8 @@ public class ClientPanel extends VLayout {
 				});
 
 		MenuItemSeparator separator = new MenuItemSeparator();
-		serviceMenu.setItems(changePasswordItem, separator, aboutItem);
+		serviceMenu.setItems(changePasswordItem, separator,
+				changePortfolioItem, separator, aboutItem);
 
 		serviceMenuButton = new MenuButton(localizeConstant.service(),
 				serviceMenu);
@@ -163,4 +176,17 @@ public class ClientPanel extends VLayout {
 		logoffButton.setDisabled(!canLogoff);
 	}
 
+	public void setLogin(String login) {
+		this.login = login;
+		updateUserInfo();
+	}
+
+	public void setPortfolio(String portfolio) {
+		this.portfolio = portfolio;
+		updateUserInfo();
+	}
+
+	public void updateUserInfo() {
+		userInfo.setContents(login + "@" + portfolio);
+	}
 }

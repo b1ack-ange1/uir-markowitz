@@ -12,14 +12,17 @@ import javax.sql.DataSource;
 
 public class ConnectionManager {
 	protected static final Logger LOGGER = Logger
-			.getLogger("ru.softlab.rsdh.webService");
+			.getLogger("lise.webService");
 
 	private static DataSource dataSource;
 
 	public static Connection getConnection(String userName, String password)
-			throws SQLException {
+			throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Class.forName ("com.intersys.jdbc.CacheDriver").newInstance();
 		return getDataSource().getConnection(userName, password);
 	}
+	
+	
 
 	public static DataSource getDataSource() {
 		if (dataSource == null) {
@@ -28,7 +31,7 @@ public class ConnectionManager {
 				try {
 					initContext = new InitialContext();
 					dataSource = (DataSource) initContext
-							.lookup("java:comp/env/jdbc/rsdhDB");
+							.lookup("java:comp/env/jdbc/db");
 				} finally {
 					if (initContext != null)
 						initContext.close();

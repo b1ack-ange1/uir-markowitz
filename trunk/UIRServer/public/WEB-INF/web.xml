@@ -18,6 +18,15 @@
 		<filter-name>AuthorizationFilter</filter-name>
 		<url-pattern>/secure/*</url-pattern>
 	</filter-mapping>
+	<filter>
+		<display-name>PortfolioFilter</display-name>
+		<filter-name>PortfolioFilter</filter-name>
+		<filter-class>filter.PortfolioFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>PortfolioFilter</filter-name>
+		<url-pattern>/secure/*</url-pattern>
+	</filter-mapping>
 	<servlet>
 		<description></description>
 		<display-name>NavigationTreeServlet</display-name>
@@ -57,5 +66,65 @@
 	<servlet-mapping>
 		<servlet-name>ChangePassword</servlet-name>
 		<url-pattern>/secure/sc/ChangePassword</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>PortfolioList</display-name>
+		<servlet-name>PortfolioList</servlet-name>
+		<servlet-class>servlet.portfolio.PortfolioList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PortfolioList</servlet-name>
+		<url-pattern>/sc/PortfolioList</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>PortfolioPick</display-name>
+		<servlet-name>PortfolioPick</servlet-name>
+		<servlet-class>servlet.portfolio.PortfolioPick</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PortfolioPick</servlet-name>
+		<url-pattern>/sc/PortfolioPick</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>PortfolioNew</display-name>
+		<servlet-name>PortfolioNew</servlet-name>
+		<servlet-class>servlet.portfolio.PortfolioNew</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PortfolioNew</servlet-name>
+		<url-pattern>/sc/PortfolioNew</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>Portfolio</display-name>
+		<servlet-name>Portfolio</servlet-name>
+		<servlet-class>servlet.portfolio.Portfolio</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Portfolio</servlet-name>
+		<url-pattern>/secure/sc/Portfolio</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>PortfolioInit</display-name>
+		<servlet-name>PortfolioInit</servlet-name>
+		<servlet-class>servlet.portfolio.PortfolioInit</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PortfolioInit</servlet-name>
+		<url-pattern>/sc/PortfolioInit</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>TickerList</display-name>
+		<servlet-name>TickerList</servlet-name>
+		<servlet-class>servlet.ticker.TickerList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TickerList</servlet-name>
+		<url-pattern>/sc/TickerList</url-pattern>
 	</servlet-mapping>
 </web-app>

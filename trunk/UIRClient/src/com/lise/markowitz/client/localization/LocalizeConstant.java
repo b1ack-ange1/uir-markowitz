@@ -1,5 +1,6 @@
 package com.lise.markowitz.client.localization;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.i18n.client.Messages;
 
 public interface LocalizeConstant extends Messages {
@@ -47,4 +48,8 @@ public interface LocalizeConstant extends Messages {
 	String aw_copyRight();
 
 	String rrp_exitConfirm();
+
+	String newPortfolio();
+
+	String changePortfolio();
 }
