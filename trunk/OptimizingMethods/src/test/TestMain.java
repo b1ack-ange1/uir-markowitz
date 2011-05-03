@@ -1,17 +1,5 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-
-import org.apache.commons.math.optimization.GoalType;
-import org.apache.commons.math.optimization.RealPointValuePair;
-import org.apache.commons.math.optimization.linear.LinearConstraint;
-import org.apache.commons.math.optimization.linear.LinearObjectiveFunction;
-import org.apache.commons.math.optimization.linear.Relationship;
-import org.apache.commons.math.optimization.linear.SimplexSolver;
-
-import utils.methods.convex.ArrowGurvic;
 import utils.methods.nonlinear.Zoitendake;
 import utils.portfolio.Portfolio;
 

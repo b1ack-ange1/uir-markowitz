@@ -47,7 +47,7 @@ public class PortfolioList extends LISEServlet {
 				AuthData auth = null;
 				System.out.println("check2.5");
 				try {
-					String sql = "SELECT SQLUser.\"Authorization\".%ID FROM SQLUser.\"Authorization\" WHERE (SQLUser.\"Authorization\".Login = 'Admin')";
+					String sql = "SELECT userinf.AuthData.%ID FROM userinf.AuthData WHERE (userinf.AuthData.Login = 'antowka'";
 
 					System.out.println("check2.6");
 					Iterator employees = objManager.openByQuery(AuthData.class,
