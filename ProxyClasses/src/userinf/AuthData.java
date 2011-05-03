@@ -8,7 +8,7 @@ package userinf;
 **/
 
 public class AuthData extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 1922;
+    private static final long serialVersionUID = 6998;
     private static String CACHE_CLASS_NAME = "userinf.AuthData";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -833,64 +833,9 @@ public class AuthData extends com.intersys.classes.Persistent {
         return;
     }
 
-    private static int ii_Password = 4;
-    private static int jj_Password = 0;
-    private static int kk_Password = 4;
-    /**
-       Verifies that indexes for property <code>Password</code> in
-       zObjVal are the same as in Cache. It does not return anything
-       but it throws an exception in case of inconsistency.
-
-       <p> Please note, that if there is any inconsistency in zObjVal
-       indexes this is fatal and class can not work correctly and must
-       be regenerated.
-
-       @param db Database used for connection. Note that if you are
-       using multiple databases the class can be consistent with one
-       and inconsistent with another.
-       @throws com.intersys.objects.InvalidClassException if any inconsistency is found.
-       @throws com.intersys.objects.CacheException if any error occurred during
-       verification, e.g. communication error with Database.
-       @see #checkAllFieldsValid
-
-     */
-    public static void checkPasswordValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
-        checkZobjValid(db, CACHE_CLASS_NAME, "Password",ii_Password, jj_Password, kk_Password);
-    }
-    /**
-       Returns value of property <code>Password</code>.
-       <Description>
-       @return current value of <code>Password</code> represented as
-       <code>java.lang.String</code>
-
-       @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=userinf.AuthData#Password"> Password</A>
-    */
-    public java.lang.String getPassword()  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_Password,
-                                                jj_Password,
-                                                com.intersys.objects.Database.RET_PRIM,
-                                                "Password");
-       return dh.getString();
-    }
-
-    /**
-       Sets new value for <code>Password</code>.
-       <Description>
-       @param value new value to be set represented as
-       <code>java.lang.String</code>.
-       @throws com.intersys.objects.CacheException if any error occurred during value setting.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=userinf.AuthData#Password"> Password</A>
-    */
-    public void setPassword(java.lang.String value)  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
-        mInternal.setProperty(ii_Password, jj_Password,kk_Password, com.intersys.objects.Database.RET_PRIM, "Password", dh);
-        return;
-    }
-
-    private static int ii_Portfolios = 5;
+    private static int ii_Portfolios = 4;
     private static int jj_Portfolios = 0;
-    private static int kk_Portfolios = 5;
+    private static int kk_Portfolios = 4;
     /**
        Verifies that indexes for property <code>Portfolios</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -1611,46 +1556,6 @@ after the index filing is completed.
         return res.getString();
     }
     /**
-     <p>Runs method PasswordDisplayToLogical in Cache.</p>
-     @param db represented as com.intersys.objects.Database
-     @param _val represented as java.lang.String
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=userinf.AuthData#PasswordDisplayToLogical"> Method PasswordDisplayToLogical</A>
-    */
-    public static java.lang.String PasswordDisplayToLogical (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"PasswordDisplayToLogical",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getString();
-    }
-    /**
-     <p>Runs method PasswordIsValid in Cache.</p>
-     @param db represented as com.intersys.objects.Database
-     @param _val represented as java.lang.String
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=userinf.AuthData#PasswordIsValid"> Method PasswordIsValid</A>
-    */
-    public static void PasswordIsValid (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"PasswordIsValid",args,com.intersys.objects.Database.RET_PRIM);
-        db.parseStatus(res);
-        return;
-    }
-    /**
-     <p>Runs method PasswordLogicalToDisplay in Cache.</p>
-     @param db represented as com.intersys.objects.Database
-     @param _val represented as java.lang.String
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=userinf.AuthData#PasswordLogicalToDisplay"> Method PasswordLogicalToDisplay</A>
-    */
-    public static java.lang.String PasswordLogicalToDisplay (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"PasswordLogicalToDisplay",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getString();
-    }
-    /**
      <p>Runs method PortfoliosGetObject in Cache.</p>
      default argument force set to 0
      @throws com.intersys.objects.CacheException if any error occured while running the method.
@@ -1713,6 +1618,22 @@ after the index filing is completed.
         return;
     }
     /**
+     <p>Runs method getObjectByLogin in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param login represented as java.lang.String
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=userinf.AuthData#getObjectByLogin"> Method getObjectByLogin</A>
+    */
+    public static com.intersys.classes.Persistent getObjectByLogin (com.intersys.objects.Database db, java.lang.String login) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(login);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"getObjectByLogin",args,com.intersys.objects.Database.RET_OBJECT);
+        com.intersys.cache.CacheObject cobj = res.getCacheObject();
+        if (cobj == null)
+            return null;
+        return (com.intersys.classes.Persistent)(cobj.newJavaInstance());
+    }
+    /**
      <p>Runs method getPortfolios in Cache.</p>
      @throws com.intersys.objects.CacheException if any error occured while running the method.
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=userinf.AuthData#getPortfolios"> Method getPortfolios</A>
@@ -1734,7 +1655,7 @@ after the index filing is completed.
         return new com.intersys.objects.CacheQuery(db, "userinf.AuthData_Extent", 0, 0);
     }
 
-    public static Object addToBatchInsert (Object batch, java.sql.Connection con, String cos_Login, String cos_Password) throws java.sql.SQLException {
+    public static Object addToBatchInsert (Object batch, java.sql.Connection con, String cos_Login) throws java.sql.SQLException {
         if (batch == null) {
             com.intersys.jdbc.CacheConnection c = null;
             if (con != null) {
@@ -1747,9 +1668,8 @@ after the index filing is completed.
             batch = new com.intersys.jdbc.QuickStatement.Batch (c.getConnectionInfo ());
         }
         com.intersys.jdbc.QuickStatement.Batch qbatch = (com.intersys.jdbc.QuickStatement.Batch) batch;
-        com.intersys.jdbc.SysListProxy.setInteger (qbatch.list, 3); // number of columns
+        com.intersys.jdbc.SysListProxy.setInteger (qbatch.list, 2); // number of columns
         com.intersys.jdbc.SysListProxy.setString(qbatch.list, cos_Login);
-        com.intersys.jdbc.SysListProxy.setString(qbatch.list, cos_Password);
         com.intersys.jdbc.SysListProxy.setUndefined(qbatch.list); // for x__classname
         qbatch.flushRecord ();
         return qbatch;
