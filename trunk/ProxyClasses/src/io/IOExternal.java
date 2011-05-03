@@ -8,7 +8,7 @@ package io;
 **/
 
 public class IOExternal extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 5973;
+    private static final long serialVersionUID = 3637;
     private static String CACHE_CLASS_NAME = "io.IOExternal";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).

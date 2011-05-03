@@ -8,7 +8,7 @@ package portfolio;
 **/
 
 public class UserPortfolio extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 7721;
+    private static final long serialVersionUID = 6935;
     private static String CACHE_CLASS_NAME = "portfolio.UserPortfolio";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -800,9 +800,64 @@ public class UserPortfolio extends com.intersys.classes.Persistent {
         return;
     }
 
-    private static int ii_UserHref = 9;
+    private static int ii_Name = 7;
+    private static int jj_Name = 0;
+    private static int kk_Name = 7;
+    /**
+       Verifies that indexes for property <code>Name</code> in
+       zObjVal are the same as in Cache. It does not return anything
+       but it throws an exception in case of inconsistency.
+
+       <p> Please note, that if there is any inconsistency in zObjVal
+       indexes this is fatal and class can not work correctly and must
+       be regenerated.
+
+       @param db Database used for connection. Note that if you are
+       using multiple databases the class can be consistent with one
+       and inconsistent with another.
+       @throws com.intersys.objects.InvalidClassException if any inconsistency is found.
+       @throws com.intersys.objects.CacheException if any error occurred during
+       verification, e.g. communication error with Database.
+       @see #checkAllFieldsValid
+
+     */
+    public static void checkNameValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
+        checkZobjValid(db, CACHE_CLASS_NAME, "Name",ii_Name, jj_Name, kk_Name);
+    }
+    /**
+       Returns value of property <code>Name</code>.
+       <Description>
+       @return current value of <code>Name</code> represented as
+       <code>java.lang.String</code>
+
+       @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#Name"> Name</A>
+    */
+    public java.lang.String getName()  throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_Name,
+                                                jj_Name,
+                                                com.intersys.objects.Database.RET_PRIM,
+                                                "Name");
+       return dh.getString();
+    }
+
+    /**
+       Sets new value for <code>Name</code>.
+       <Description>
+       @param value new value to be set represented as
+       <code>java.lang.String</code>.
+       @throws com.intersys.objects.CacheException if any error occurred during value setting.
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#Name"> Name</A>
+    */
+    public void setName(java.lang.String value)  throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
+        mInternal.setProperty(ii_Name, jj_Name,kk_Name, com.intersys.objects.Database.RET_PRIM, "Name", dh);
+        return;
+    }
+
+    private static int ii_UserHref = 10;
     private static int jj_UserHref = 0;
-    private static int kk_UserHref = 9;
+    private static int kk_UserHref = 10;
     /**
        Verifies that indexes for property <code>UserHref</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -1534,6 +1589,46 @@ after the index filing is completed.
         return res.getString();
     }
     /**
+     <p>Runs method NameDisplayToLogical in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param _val represented as java.lang.String
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#NameDisplayToLogical"> Method NameDisplayToLogical</A>
+    */
+    public static java.lang.String NameDisplayToLogical (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(_val);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"NameDisplayToLogical",args,com.intersys.objects.Database.RET_PRIM);
+        return res.getString();
+    }
+    /**
+     <p>Runs method NameIsValid in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param _val represented as java.lang.String
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#NameIsValid"> Method NameIsValid</A>
+    */
+    public static void NameIsValid (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(_val);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"NameIsValid",args,com.intersys.objects.Database.RET_PRIM);
+        db.parseStatus(res);
+        return;
+    }
+    /**
+     <p>Runs method NameLogicalToDisplay in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param _val represented as java.lang.String
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#NameLogicalToDisplay"> Method NameLogicalToDisplay</A>
+    */
+    public static java.lang.String NameLogicalToDisplay (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(_val);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"NameLogicalToDisplay",args,com.intersys.objects.Database.RET_PRIM);
+        return res.getString();
+    }
+    /**
      <p>Runs method UserHrefGetObject in Cache.</p>
      default argument force set to 0
      @throws com.intersys.objects.CacheException if any error occured while running the method.
@@ -1663,7 +1758,7 @@ after the index filing is completed.
         return new com.intersys.objects.CacheQuery(db, "portfolio.UserPortfolio_Extent", 0, 0);
     }
 
-    public static Object addToBatchInsert (Object batch, java.sql.Connection con, java.sql.Timestamp cos_LastUpdate, Integer cos_UserHref) throws java.sql.SQLException {
+    public static Object addToBatchInsert (Object batch, java.sql.Connection con, java.sql.Timestamp cos_LastUpdate, String cos_Name, Integer cos_UserHref) throws java.sql.SQLException {
         if (batch == null) {
             com.intersys.jdbc.CacheConnection c = null;
             if (con != null) {
@@ -1676,8 +1771,9 @@ after the index filing is completed.
             batch = new com.intersys.jdbc.QuickStatement.Batch (c.getConnectionInfo ());
         }
         com.intersys.jdbc.QuickStatement.Batch qbatch = (com.intersys.jdbc.QuickStatement.Batch) batch;
-        com.intersys.jdbc.SysListProxy.setInteger (qbatch.list, 3); // number of columns
+        com.intersys.jdbc.SysListProxy.setInteger (qbatch.list, 4); // number of columns
         com.intersys.jdbc.SysListProxy.setSQLTimestamp(qbatch.list, cos_LastUpdate);
+        com.intersys.jdbc.SysListProxy.setString(qbatch.list, cos_Name);
         com.intersys.jdbc.SysListProxy.setIntegerWrapper(qbatch.list, cos_UserHref);
         com.intersys.jdbc.SysListProxy.setUndefined(qbatch.list); // for x__classname
         qbatch.flushRecord ();
