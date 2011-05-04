@@ -8,20 +8,20 @@ import exceptions.MatrixNotSquare;
 import exceptions.MatrixZeroDeterminant;
 import exceptions.VarianceOutOfBounds;
 
-public class DataContainer extends BPTAbstract{
-	private static TreeMap<Integer, DataContainer> _instances = new TreeMap();
+public class BPTMaxWealth extends BPTAbstract{
+	private static TreeMap<Integer, BPTMaxWealth> _instances = new TreeMap();
 	
-	public static DataContainer getInstance(int portfolioID){
-		if (DataContainer._instances.get(portfolioID) == null){
-			DataContainer._instances.put(portfolioID, new DataContainer());
+	public static BPTMaxWealth getInstance(int portfolioID){
+		if (BPTMaxWealth._instances.get(portfolioID) == null){
+			BPTMaxWealth._instances.put(portfolioID, new BPTMaxWealth());
 		}
-		return DataContainer._instances.get(portfolioID);
+		return BPTMaxWealth._instances.get(portfolioID);
 	}
 	
 	private double ImpliedRisk = Double.NaN;
 	private Matrix LagrangeWeigths = null;
 	
-	private DataContainer(){
+	private BPTMaxWealth(){
 		
 	}
 	
