@@ -8,7 +8,7 @@ package event;
 **/
 
 public class EventInternal extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 2573;
+    private static final long serialVersionUID = 3429;
     private static String CACHE_CLASS_NAME = "event.EventInternal";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).

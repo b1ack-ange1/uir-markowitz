@@ -8,7 +8,7 @@ package portfolio;
 **/
 
 public class CompositionInternal extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 2355;
+    private static final long serialVersionUID = 7051;
     private static String CACHE_CLASS_NAME = "portfolio.CompositionInternal";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
