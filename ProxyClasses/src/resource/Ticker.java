@@ -8,7 +8,7 @@ package resource;
 **/
 
 public class Ticker extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 4338;
+    private static final long serialVersionUID = 4686;
     private static String CACHE_CLASS_NAME = "resource.Ticker";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -2226,6 +2226,20 @@ after the index filing is completed.
         args[0] = new com.intersys.cache.Dataholder(code);
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"findTicker",args,com.intersys.objects.Database.RET_PRIM);
         return res.getInteger();
+    }
+    /**
+     <p>Runs method getAllTickers in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Ticker#getAllTickers"> Method getAllTickers</A>
+    */
+    public static java.util.List getAllTickers (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"getAllTickers",args,com.intersys.objects.Database.RET_OBJECT);
+        com.intersys.cache.CacheObject cobj = res.getCacheObject();
+        if (cobj == null)
+            return null;
+        return (java.util.List)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method hrefIOGetObject in Cache.</p>

@@ -8,7 +8,7 @@ package resource;
 **/
 
 public class Chart extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 99;
+    private static final long serialVersionUID = 3198;
     private static String CACHE_CLASS_NAME = "resource.Chart";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).

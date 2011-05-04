@@ -8,7 +8,7 @@ package portfolio;
 **/
 
 public class UserPortfolio extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 5186;
+    private static final long serialVersionUID = 6114;
     private static String CACHE_CLASS_NAME = "portfolio.UserPortfolio";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -1747,6 +1747,30 @@ after the index filing is completed.
         args[0] = new com.intersys.cache.Dataholder(newid);
         com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserSetObjectId",args,com.intersys.objects.Database.RET_PRIM);
         getDatabase().parseStatus(res);
+        return;
+    }
+    /**
+     <p>Runs method addTicker in Cache.</p>
+     @param ticker represented as resource.Ticker
+     @param weight represented as java.lang.Double
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#addTicker"> Method addTicker</A>
+    */
+    public void addTicker (resource.Ticker ticker, java.lang.Double weight) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
+        args[0] = new com.intersys.cache.Dataholder(ticker);
+        args[1] = new com.intersys.cache.Dataholder(weight);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("addTicker",args,com.intersys.objects.Database.RET_NONE);
+        return;
+    }
+    /**
+     <p>Runs method getComposition in Cache.</p>
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#getComposition"> Method getComposition</A>
+    */
+    public void getComposition () throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("getComposition",args,com.intersys.objects.Database.RET_NONE);
         return;
     }
     /**
