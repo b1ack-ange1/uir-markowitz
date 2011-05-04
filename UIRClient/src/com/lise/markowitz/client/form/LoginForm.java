@@ -9,6 +9,7 @@ import com.lise.markowitz.client.localization.Localize;
 import com.lise.markowitz.client.utils.Logger;
 import com.lise.markowitz.client.view.ClientPanel;
 import com.lise.markowitz.client.view.MainDynamicPanel;
+import com.lise.markowitz.client.view.NavigationPanel;
 import com.smartgwt.client.data.DSCallback;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
@@ -207,9 +208,10 @@ public class LoginForm extends Window {
 					RPCManager.resendTransaction();
 					hide();
 					ClientPanel.getInstance().setLogin(Cookies.getCookie("lastUserName"));
+					MainDynamicPanel.getInstance().getTree().show();
 
-					if (firstShow)
-						new PortfolioPickerForm().show();
+					/*if (firstShow)
+						new PortfolioPickerForm().show();*/
 
 					firstShow = false;
 					

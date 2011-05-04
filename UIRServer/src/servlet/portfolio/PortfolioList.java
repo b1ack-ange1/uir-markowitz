@@ -3,19 +3,19 @@ package servlet.portfolio;
 import java.sql.Connection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import portfolio.UserPortfolio;
-
 import servlet.LISEServlet;
 import userinf.AuthData;
 
 import com.intersys.classes.RelationshipObject;
-import com.jalapeno.ApplicationContext;
-import com.jalapeno.ObjectManager;
+import com.intersys.objects.CacheDatabase;
+import com.intersys.objects.Database;
 
 import db.ConnectionManager;
 
@@ -37,32 +37,19 @@ public class PortfolioList extends LISEServlet {
 
 				System.out.println("check1");
 				System.out.println("connection is null = " + (connect == null));
-
-				ObjectManager objManager = ApplicationContext
-						.createObjectManager(connect);
-				System.out.println("check2");
-				System.out.println("objManager is null = "
-						+ (objManager == null));
-
-				AuthData auth = null;
-				System.out.println("check2.5");
+				userinf.AuthData auth = null;
 				try {
-					String sql = "SELECT userinf.AuthData.%ID FROM userinf.AuthData WHERE (userinf.AuthData.Login = 'antowka'";
+					System.out.println("check2");
 
-					System.out.println("check2.6");
-					Iterator employees = objManager.openByQuery(AuthData.class,
-							sql, null);
+					Database db = CacheDatabase.getDatabase(connect);
+
+					System.out.println("database is null = " + (db == null));
+					System.out.println("check2.5");
+					auth = (AuthData) userinf.AuthData.getObjectByLogin(db,
+							request.get().getSession().getAttribute("username")
+									.toString());
+
 					System.out.println("check2.7");
-					for (Iterator it = employees; it.hasNext();) {
-						System.out.println("check2.8");
-						AuthData nextEmp = (AuthData) it.next();
-						auth = nextEmp;
-						break;
-					}
-					/*
-					 * auth = (Authorization) objManager.openById(
-					 * Authorization.class, 1);
-					 */
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -78,8 +65,9 @@ public class PortfolioList extends LISEServlet {
 					jResponse.put("data", "authorization is null");
 					return jResponse;
 				}
+				// List portList = auth.getPortfolios();
+				Map portList = (Map) auth.getPortfolios();
 
-				RelationshipObject portList = auth.getPortfolios();
 				System.out.println("check4");
 				System.out.println("portList is null = " + (portList == null));
 
@@ -87,28 +75,24 @@ public class PortfolioList extends LISEServlet {
 
 				JSONObject jRecord = null;
 
-				for (int i = 0; i < portList.size(); i++) {
-					jRecord.put("Id", ((UserPortfolio) portList.get(i)).getId());
-					jRecord.put(
-							"Name",
-							"Портфель"
-									+ ((UserPortfolio) portList.get(i)).getId());
+				Iterator iter = portList.keySet().iterator();
+				while (iter.hasNext()) {
+					UserPortfolio pn = (UserPortfolio) (portList.get(iter
+							.next()));
+					jRecord = new JSONObject();
+					jRecord.put("Id", pn.getId());
+					jRecord.put("Name", pn.getName());
+					System.out.println(jRecord);
 					jData.put(jRecord);
-				}/*
-				 * JSONObject jRecord = new JSONObject();
-				 * 
-				 * jRecord.put("Id", 123); jRecord.put("Name", "Портфель new");
-				 * jData.put(jRecord);
-				 * 
-				 * jRecord = new JSONObject();
-				 * 
-				 * jRecord.put("Id", 234); jRecord.put("Name", "Портфель new2");
-				 * jData.put(jRecord);
-				 * 
-				 * JSONObject jResponse = new JSONObject();
-				 * jResponse.put("status", 0); jResponse.put("data", jData);
-				 */
+				}
 
+				/*
+				 * for (int i=0; i<portList.size(); i++) { UserPortfolio pn =
+				 * (UserPortfolio) (portList.get(i)); jRecord = new
+				 * JSONObject(); jRecord.put("Id", pn.getId());
+				 * jRecord.put("Name", pn.getName());
+				 * System.out.println(jRecord); jData.put(jRecord); }
+				 */
 				connect.close();
 				JSONObject jResponse = new JSONObject();
 				jResponse.put("status", 0);

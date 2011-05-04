@@ -1,6 +1,10 @@
 package servlet.configuration;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +15,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import portfolio.UserPortfolio;
+
+import com.intersys.objects.CacheDatabase;
+import com.intersys.objects.Database;
+
+import db.ConnectionManager;
+
 import servlet.LISEServlet;
+import userinf.AuthData;
 import utils.Constants;
 
 public class NavigationTreeServlet extends LISEServlet {
@@ -46,7 +58,7 @@ public class NavigationTreeServlet extends LISEServlet {
 		jData.put(jRecord);
 
 		jRecord = new JSONObject();
-		jRecord.put("name", "Управление портфелем");
+		jRecord.put("name", "Портфели");
 		jRecord.put("id", 2);
 		jData.put(jRecord);
 
@@ -160,13 +172,89 @@ public class NavigationTreeServlet extends LISEServlet {
 			}
 		}
 
+		try {
+			Connection connect = ConnectionManager.getConnection(request.get()
+					.getSession().getAttribute("username").toString(), request
+					.get().getSession().getAttribute("password").toString());
+
+			System.out.println("check1");
+			System.out.println("connection is null = " + (connect == null));
+			userinf.AuthData auth = null;
+			try {
+				System.out.println("check2");
+
+				Database db = CacheDatabase.getDatabase(connect);
+
+				System.out.println("database is null = " + (db == null));
+				System.out.println("check2.5");
+				auth = (AuthData) userinf.AuthData
+						.getObjectByLogin(db, request.get().getSession()
+								.getAttribute("username").toString());
+
+				System.out.println("check2.7");
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+				connect.close();
+				proceedError(e.getMessage());
+			}
+			System.out.println("check3");
+			System.out.println("auth is null = " + (auth == null));
+
+			if (auth == null) {
+				jResponse = new JSONObject();
+				jResponse.put("status", 0);
+				jResponse.put("data", "authorization is null");
+				return jResponse;
+			}
+			/*
+			 * List portList = auth.getPortfolios();
+			 * 
+			 * System.out.println("check4");
+			 * System.out.println("portList is null = " + (portList == null));
+			 * 
+			 * for (int i = 0; i < portList.size(); i++) { UserPortfolio pn =
+			 * (UserPortfolio) (portList.get(i)); jRecord = new JSONObject();
+			 * counter++; jRecord.put("name", pn.getName()); jRecord.put("id",
+			 * counter); jRecord.put("parentId", 2); jRecord.put("code",
+			 * pn.getId()); System.out.println(jRecord); jData.put(jRecord);
+			 * 
+			 * }
+			 */
+
+			Map portList = (Map) auth.getPortfolios();
+
+			System.out.println("check4");
+			System.out.println("portList is null = " + (portList == null));
+
+			Iterator iter = portList.keySet().iterator();
+			while (iter.hasNext()) {
+				UserPortfolio pn = (UserPortfolio) (portList.get(iter.next()));
+				jRecord = new JSONObject();
+				counter++;
+				jRecord.put("name", pn.getName());
+				jRecord.put("id", counter);
+				jRecord.put("parentId", 2);
+				jRecord.put("code", pn.getId());
+				System.out.println(jRecord);
+				jData.put(jRecord);
+			}
+
+			connect.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			proceedError(e.getMessage());
+		}
+
 		jResponse.put("data", jData);
 
 		jResponse.put("status", "0");
 
-		/*jResponse.put("startRow", "0");
-		jResponse.put("endRow", counter - 1);
-		jResponse.put("totalRows", counter);*/
+		/*
+		 * jResponse.put("startRow", "0"); jResponse.put("endRow", counter - 1);
+		 * jResponse.put("totalRows", counter);
+		 */
 		return jResponse;
 	}
 }

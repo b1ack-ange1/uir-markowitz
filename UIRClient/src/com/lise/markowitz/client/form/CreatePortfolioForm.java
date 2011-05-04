@@ -116,7 +116,7 @@ public class CreatePortfolioForm extends Window {
 		cancel.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				hide();
-				new PortfolioPickerForm().show();
+				
 			}
 		});
 

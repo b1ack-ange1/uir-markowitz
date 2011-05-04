@@ -141,8 +141,8 @@ public class PortfolioPickerForm extends Window {
 						.toString(), dt);
 				ClientPanel.getInstance().setPortfolio(
 						PortfolioIdPicker.getDisplayValue());
-				((NavigationPanel) MainDynamicPanel.getInstance().getTree()).treeGrid
-						.fetchData();
+				/*((NavigationPanel) MainDynamicPanel.getInstance().getTree()).treeGrid
+						.fetchData();*/
 				MainDynamicPanel.getInstance().getTree().show();
 
 			}
