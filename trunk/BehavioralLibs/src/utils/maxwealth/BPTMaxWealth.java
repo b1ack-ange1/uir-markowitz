@@ -1,5 +1,5 @@
 package utils.maxwealth;
-import utils.*;
+import utils.BPTAbstract;
 import utils.misc.*;
 import java.util.TreeMap;
 

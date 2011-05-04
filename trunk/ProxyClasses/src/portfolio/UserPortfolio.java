@@ -8,7 +8,7 @@ package portfolio;
 **/
 
 public class UserPortfolio extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 7107;
+    private static final long serialVersionUID = 4498;
     private static String CACHE_CLASS_NAME = "portfolio.UserPortfolio";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -745,9 +745,9 @@ public class UserPortfolio extends com.intersys.classes.Persistent {
         return (com.intersys.classes.RelationshipObject)(cobj.newJavaInstance());
     }
 
-    private static int ii_LastUpdate = 3;
+    private static int ii_LastUpdate = 2;
     private static int jj_LastUpdate = 0;
-    private static int kk_LastUpdate = 3;
+    private static int kk_LastUpdate = 2;
     /**
        Verifies that indexes for property <code>LastUpdate</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -855,11 +855,11 @@ public class UserPortfolio extends com.intersys.classes.Persistent {
         return;
     }
 
-    private static int ii_UserHref = 10;
-    private static int jj_UserHref = 0;
-    private static int kk_UserHref = 10;
+    private static int ii_User = 10;
+    private static int jj_User = 0;
+    private static int kk_User = 10;
     /**
-       Verifies that indexes for property <code>UserHref</code> in
+       Verifies that indexes for property <code>User</code> in
        zObjVal are the same as in Cache. It does not return anything
        but it throws an exception in case of inconsistency.
 
@@ -876,23 +876,23 @@ public class UserPortfolio extends com.intersys.classes.Persistent {
        @see #checkAllFieldsValid
 
      */
-    public static void checkUserHrefValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
-        checkZobjValid(db, CACHE_CLASS_NAME, "UserHref",ii_UserHref, jj_UserHref, kk_UserHref);
+    public static void checkUserValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
+        checkZobjValid(db, CACHE_CLASS_NAME, "User",ii_User, jj_User, kk_User);
     }
     /**
-       Returns value of property <code>UserHref</code>.
+       Returns value of property <code>User</code>.
        <Description>
-       @return current value of <code>UserHref</code> represented as
+       @return current value of <code>User</code> represented as
        <code>userinf.AuthData</code>
 
        @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserHref"> UserHref</A>
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#User"> User</A>
     */
-    public userinf.AuthData getUserHref()  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_UserHref,
-                                                jj_UserHref,
+    public userinf.AuthData getUser()  throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_User,
+                                                jj_User,
                                                 com.intersys.objects.Database.RET_OBJECT,
-                                                "UserHref");
+                                                "User");
         com.intersys.cache.CacheObject cobj = dh.getCacheObject();
         if (cobj == null)
             return null;
@@ -900,16 +900,16 @@ public class UserPortfolio extends com.intersys.classes.Persistent {
     }
 
     /**
-       Sets new value for <code>UserHref</code>.
+       Sets new value for <code>User</code>.
        <Description>
        @param value new value to be set represented as
        <code>userinf.AuthData</code>.
        @throws com.intersys.objects.CacheException if any error occurred during value setting.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserHref"> UserHref</A>
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#User"> User</A>
     */
-    public void setUserHref(userinf.AuthData value)  throws com.intersys.objects.CacheException {
+    public void setUser(userinf.AuthData value)  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
-        mInternal.setProperty(ii_UserHref, jj_UserHref,kk_UserHref, com.intersys.objects.Database.RET_OBJECT, "UserHref", dh);
+        mInternal.setProperty(ii_User, jj_User,kk_User, com.intersys.objects.Database.RET_OBJECT, "User", dh);
         return;
     }
 
@@ -1629,123 +1629,123 @@ after the index filing is completed.
         return res.getString();
     }
     /**
-     <p>Runs method UserHrefGetObject in Cache.</p>
+     <p>Runs method UserGetObject in Cache.</p>
      default argument force set to 0
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see #UserHrefGetObject(java.lang.Integer)
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserHrefGetObject"> Method UserHrefGetObject</A>
+     @see #UserGetObject(java.lang.Integer)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserGetObject"> Method UserGetObject</A>
     */
-    public com.intersys.objects.Oid UserHrefGetObject () throws com.intersys.objects.CacheException {
+    public com.intersys.objects.Oid UserGetObject () throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserHrefGetObject",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserGetObject",args,com.intersys.objects.Database.RET_PRIM);
         return res.getOid();
     }
     /**
-     <p>Runs method UserHrefGetObject in Cache.</p>
+     <p>Runs method UserGetObject in Cache.</p>
      @param force represented as java.lang.Integer
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserHrefGetObject"> Method UserHrefGetObject</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserGetObject"> Method UserGetObject</A>
     */
-    public com.intersys.objects.Oid UserHrefGetObject (java.lang.Integer force) throws com.intersys.objects.CacheException {
+    public com.intersys.objects.Oid UserGetObject (java.lang.Integer force) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(force);
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserHrefGetObject",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserGetObject",args,com.intersys.objects.Database.RET_PRIM);
         return res.getOid();
     }
     /**
-     <p>Runs method UserHrefGetObjectId in Cache.</p>
+     <p>Runs method UserGetObjectId in Cache.</p>
      default argument force set to 0
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see #UserHrefGetObjectId(java.lang.Integer)
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserHrefGetObjectId"> Method UserHrefGetObjectId</A>
+     @see #UserGetObjectId(java.lang.Integer)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserGetObjectId"> Method UserGetObjectId</A>
     */
-    public java.lang.String UserHrefGetObjectId () throws com.intersys.objects.CacheException {
+    public java.lang.String UserGetObjectId () throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserHrefGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
         return res.getString();
     }
     /**
-     <p>Runs method UserHrefGetObjectId in Cache.</p>
+     <p>Runs method UserGetObjectId in Cache.</p>
      @param force represented as java.lang.Integer
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserHrefGetObjectId"> Method UserHrefGetObjectId</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserGetObjectId"> Method UserGetObjectId</A>
     */
-    public java.lang.String UserHrefGetObjectId (java.lang.Integer force) throws com.intersys.objects.CacheException {
+    public java.lang.String UserGetObjectId (java.lang.Integer force) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(force);
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserHrefGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
         return res.getString();
     }
     /**
-     <p>Runs method UserHrefIndexExists in Cache.</p>
+     <p>Runs method UserIndexExists in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param K1 represented as userinf.AuthData
      default argument id set to ""
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see #UserHrefIndexExists(com.intersys.objects.Database,userinf.AuthData,com.intersys.objects.StringHolder)
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserHrefIndexExists"> Method UserHrefIndexExists</A>
+     @see #UserIndexExists(com.intersys.objects.Database,userinf.AuthData,com.intersys.objects.StringHolder)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserIndexExists"> Method UserIndexExists</A>
     */
-    public static java.lang.Boolean UserHrefIndexExists (com.intersys.objects.Database db, userinf.AuthData K1) throws com.intersys.objects.CacheException {
+    public static java.lang.Boolean UserIndexExists (com.intersys.objects.Database db, userinf.AuthData K1) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"UserHrefIndexExists",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"UserIndexExists",args,com.intersys.objects.Database.RET_PRIM);
         return res.getBoolean();
     }
     /**
-     <p>Runs method UserHrefIndexExists in Cache.</p>
+     <p>Runs method UserIndexExists in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param K1 represented as userinf.AuthData
      @param id represented as com.intersys.objects.StringHolder
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserHrefIndexExists"> Method UserHrefIndexExists</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserIndexExists"> Method UserIndexExists</A>
     */
-    public static java.lang.Boolean UserHrefIndexExists (com.intersys.objects.Database db, userinf.AuthData K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
+    public static java.lang.Boolean UserIndexExists (com.intersys.objects.Database db, userinf.AuthData K1, com.intersys.objects.StringHolder id) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[2];
         int[] _refs = new int[1];
         args[0] = new com.intersys.cache.Dataholder(K1);
         args[1] = com.intersys.cache.Dataholder.create (id.value);
         _refs[0] = 2;
-        com.intersys.cache.Dataholder[] res=db.runClassMethod(CACHE_CLASS_NAME,"UserHrefIndexExists",_refs,args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder[] res=db.runClassMethod(CACHE_CLASS_NAME,"UserIndexExists",_refs,args,com.intersys.objects.Database.RET_PRIM);
         id.set(res[1].getString());
         return res[0].getBoolean();
     }
     /**
-     <p>Runs method UserHrefIsValid in Cache.</p>
+     <p>Runs method UserIsValid in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param value represented as java.lang.String
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserHrefIsValid"> Method UserHrefIsValid</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserIsValid"> Method UserIsValid</A>
     */
-    public static void UserHrefIsValid (com.intersys.objects.Database db, java.lang.String value) throws com.intersys.objects.CacheException {
+    public static void UserIsValid (com.intersys.objects.Database db, java.lang.String value) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(value);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"UserHrefIsValid",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"UserIsValid",args,com.intersys.objects.Database.RET_PRIM);
         db.parseStatus(res);
         return;
     }
     /**
-     <p>Runs method UserHrefSetObject in Cache.</p>
+     <p>Runs method UserSetObject in Cache.</p>
      @param newvalue represented as com.intersys.objects.Oid
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserHrefSetObject"> Method UserHrefSetObject</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserSetObject"> Method UserSetObject</A>
     */
-    public void UserHrefSetObject (com.intersys.objects.Oid newvalue) throws com.intersys.objects.CacheException {
+    public void UserSetObject (com.intersys.objects.Oid newvalue) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(newvalue);
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserHrefSetObject",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserSetObject",args,com.intersys.objects.Database.RET_PRIM);
         getDatabase().parseStatus(res);
         return;
     }
     /**
-     <p>Runs method UserHrefSetObjectId in Cache.</p>
+     <p>Runs method UserSetObjectId in Cache.</p>
      @param newid represented as java.lang.String
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserHrefSetObjectId"> Method UserHrefSetObjectId</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#UserSetObjectId"> Method UserSetObjectId</A>
     */
-    public void UserHrefSetObjectId (java.lang.String newid) throws com.intersys.objects.CacheException {
+    public void UserSetObjectId (java.lang.String newid) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(newid);
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserHrefSetObjectId",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("UserSetObjectId",args,com.intersys.objects.Database.RET_PRIM);
         getDatabase().parseStatus(res);
         return;
     }
@@ -1758,7 +1758,7 @@ after the index filing is completed.
         return new com.intersys.objects.CacheQuery(db, "portfolio.UserPortfolio_Extent", 0, 0);
     }
 
-    public static Object addToBatchInsert (Object batch, java.sql.Connection con, java.sql.Timestamp cos_LastUpdate, String cos_Name, Integer cos_UserHref) throws java.sql.SQLException {
+    public static Object addToBatchInsert (Object batch, java.sql.Connection con, java.sql.Timestamp cos_LastUpdate, String cos_Name, Integer cos_User) throws java.sql.SQLException {
         if (batch == null) {
             com.intersys.jdbc.CacheConnection c = null;
             if (con != null) {
@@ -1774,7 +1774,7 @@ after the index filing is completed.
         com.intersys.jdbc.SysListProxy.setInteger (qbatch.list, 4); // number of columns
         com.intersys.jdbc.SysListProxy.setSQLTimestamp(qbatch.list, cos_LastUpdate);
         com.intersys.jdbc.SysListProxy.setString(qbatch.list, cos_Name);
-        com.intersys.jdbc.SysListProxy.setIntegerWrapper(qbatch.list, cos_UserHref);
+        com.intersys.jdbc.SysListProxy.setIntegerWrapper(qbatch.list, cos_User);
         com.intersys.jdbc.SysListProxy.setUndefined(qbatch.list); // for x__classname
         qbatch.flushRecord ();
         return qbatch;
