@@ -29,7 +29,7 @@ public class Main {
 		rets[2][0] = 0.25;
 		Matrix returns = new Matrix(rets);
 		
-		DataContainer dc = DataContainer.getInstance(1);
+		BPTMaxWealth dc = BPTMaxWealth.getInstance(1);
 		dc.setCovariances(covars);
 		dc.setExpectedReturns(returns);
 		
