@@ -8,7 +8,7 @@ package portfolio;
 **/
 
 public class UserPortfolio extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 6114;
+    private static final long serialVersionUID = 4683;
     private static String CACHE_CLASS_NAME = "portfolio.UserPortfolio";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -1772,6 +1772,19 @@ after the index filing is completed.
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
         com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("getComposition",args,com.intersys.objects.Database.RET_NONE);
         return;
+    }
+    /**
+     <p>Runs method getCovariances in Cache.</p>
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#getCovariances"> Method getCovariances</A>
+    */
+    public java.util.List getCovariances () throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("getCovariances",args,com.intersys.objects.Database.RET_OBJECT);
+        com.intersys.cache.CacheObject cobj = res.getCacheObject();
+        if (cobj == null)
+            return null;
+        return (java.util.List)(cobj.newJavaInstance());
     }
     /**
      <p>Returns a CallableStatement for query Extent.</p>
