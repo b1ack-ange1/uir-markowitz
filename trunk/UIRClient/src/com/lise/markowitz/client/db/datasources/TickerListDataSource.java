@@ -1,6 +1,7 @@
 package com.lise.markowitz.client.db.datasources;
 
 import com.lise.markowitz.client.Configuration;
+import com.smartgwt.client.data.fields.DataSourceIntegerField;
 import com.smartgwt.client.data.fields.DataSourceTextField;
 
 public class TickerListDataSource extends JSONDataSource {
@@ -19,14 +20,15 @@ public class TickerListDataSource extends JSONDataSource {
 
 		DataSourceTextField idField = new DataSourceTextField("id");
 		DataSourceTextField nameField = new DataSourceTextField("name");
+		DataSourceIntegerField cacheIdField = new DataSourceIntegerField(
+				"cacheId");
 
 		idField.setPrimaryKey(true);
 		setTitleField("Name");
 
-		setFields(nameField, idField);
+		setFields(nameField, idField, cacheIdField);
 
-		setDataURL(Configuration.getWebServiceAddr(false, false)
-				+ "TickerList");
-		
+		setDataURL(Configuration.getWebServiceAddr(false, false) + "TickerList");
+
 	}
 }

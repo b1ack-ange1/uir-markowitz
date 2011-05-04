@@ -6,6 +6,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window.Location;
 import com.lise.markowitz.client.Configuration;
 import com.lise.markowitz.client.form.ChangePasswordForm;
+import com.lise.markowitz.client.form.CreatePortfolioForm;
 import com.lise.markowitz.client.form.PortfolioPickerForm;
 import com.lise.markowitz.client.form.WorkPanel;
 import com.lise.markowitz.client.localization.LocalizeConstant;
@@ -106,6 +107,15 @@ public class ClientPanel extends VLayout {
 					}
 				});
 
+		MenuItem createPortfolioItem = new MenuItem(
+				localizeConstant.newPortfolio());
+		changePortfolioItem
+				.addClickHandler(new com.smartgwt.client.widgets.menu.events.ClickHandler() {
+					public void onClick(MenuItemClickEvent event) {
+						new CreatePortfolioForm().show();
+					}
+				});
+
 		MenuItem aboutItem = new MenuItem(localizeConstant.about());
 		aboutItem
 				.addClickHandler(new com.smartgwt.client.widgets.menu.events.ClickHandler() {
@@ -117,7 +127,8 @@ public class ClientPanel extends VLayout {
 
 		MenuItemSeparator separator = new MenuItemSeparator();
 		serviceMenu.setItems(changePasswordItem, separator,
-				changePortfolioItem, separator, aboutItem);
+				changePortfolioItem, separator, createPortfolioItem, separator,
+				aboutItem);
 
 		serviceMenuButton = new MenuButton(localizeConstant.service(),
 				serviceMenu);
