@@ -8,7 +8,7 @@ package portfolio;
 **/
 
 public class UserPortfolio extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 4498;
+    private static final long serialVersionUID = 5186;
     private static String CACHE_CLASS_NAME = "portfolio.UserPortfolio";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
