@@ -84,6 +84,7 @@ public class CreatePortfolioForm extends Window {
 
 		ListGridField idField = new ListGridField("id", "Ticker");
 		ListGridField nameField = new ListGridField("name", "Name");
+		ListGridField weightField = new ListGridField("weight", "Weight");
 
 		tickerGrid.setFields(idField, nameField);
 		tickerGrid.setDataSource(TickerListDataSource.getInstance());
@@ -93,12 +94,12 @@ public class CreatePortfolioForm extends Window {
 		portfolioGrid.setWidth(300);
 		portfolioGrid.setHeight(224);
 		portfolioGrid.setShowAllRecords(true);
-		portfolioGrid.setEmptyMessage("Добавьте тиккер");
+		portfolioGrid.setEmptyMessage("Добавьте тикер");
 		portfolioGrid.setCanReorderFields(true);
 		portfolioGrid.setCanDragRecordsOut(true);
 		portfolioGrid.setCanAcceptDroppedRecords(true);
 		portfolioGrid.setDragDataAction(DragDataAction.MOVE);
-		portfolioGrid.setFields(idField, nameField);
+		portfolioGrid.setFields(idField, nameField, weightField);
 		portfolioGrid.setDataSource(PortfolioInitDataSource.getInstance());
 
 		HLayout buttons = new HLayout(5);
@@ -149,7 +150,9 @@ public class CreatePortfolioForm extends Window {
 		for (int i = 0; i < recordList.getLength(); i++) {
 			JSONObject record = new JSONObject();
 			record.put("id", new JSONString(recordList.get(i)
-					.getAttribute("id")));
+					.getAttribute("cacheId")));
+			record.put("weight", new JSONString(recordList.get(i)
+					.getAttribute("weight")));
 			records.set(i, record);
 		}
 		requestData.put("records", records);
@@ -159,7 +162,7 @@ public class CreatePortfolioForm extends Window {
 					RPCRequest request) {
 
 				hide();
-				new PortfolioPickerForm().show();
+				//new PortfolioPickerForm().show();
 
 			}
 		}, requestParams);
