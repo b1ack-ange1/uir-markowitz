@@ -65,8 +65,8 @@ public class PortfolioList extends LISEServlet {
 					jResponse.put("data", "authorization is null");
 					return jResponse;
 				}
-				// List portList = auth.getPortfolios();
-				Map portList = (Map) auth.getPortfolios();
+				List portList = auth.getPortfoliosList();
+				// Map portList = (Map) auth.getPortfolios();
 
 				System.out.println("check4");
 				System.out.println("portList is null = " + (portList == null));
@@ -75,10 +75,16 @@ public class PortfolioList extends LISEServlet {
 
 				JSONObject jRecord = null;
 
-				Iterator iter = portList.keySet().iterator();
-				while (iter.hasNext()) {
-					UserPortfolio pn = (UserPortfolio) (portList.get(iter
-							.next()));
+				/*
+				 * Iterator iter = portList.keySet().iterator(); while
+				 * (iter.hasNext()) { UserPortfolio pn = (UserPortfolio)
+				 * (portList.get(iter .next())); jRecord = new JSONObject();
+				 * jRecord.put("Id", pn.getId()); jRecord.put("Name",
+				 * pn.getName()); System.out.println(jRecord);
+				 * jData.put(jRecord); }
+				 */
+				for (int i = 0; i < portList.size(); i++) {
+					UserPortfolio pn = (UserPortfolio) (portList.get(i));
 					jRecord = new JSONObject();
 					jRecord.put("Id", pn.getId());
 					jRecord.put("Name", pn.getName());
@@ -86,13 +92,6 @@ public class PortfolioList extends LISEServlet {
 					jData.put(jRecord);
 				}
 
-				/*
-				 * for (int i=0; i<portList.size(); i++) { UserPortfolio pn =
-				 * (UserPortfolio) (portList.get(i)); jRecord = new
-				 * JSONObject(); jRecord.put("Id", pn.getId());
-				 * jRecord.put("Name", pn.getName());
-				 * System.out.println(jRecord); jData.put(jRecord); }
-				 */
 				connect.close();
 				JSONObject jResponse = new JSONObject();
 				jResponse.put("status", 0);

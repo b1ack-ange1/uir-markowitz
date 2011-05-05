@@ -109,7 +109,7 @@ public class ClientPanel extends VLayout {
 
 		MenuItem createPortfolioItem = new MenuItem(
 				localizeConstant.newPortfolio());
-		changePortfolioItem
+		createPortfolioItem
 				.addClickHandler(new com.smartgwt.client.widgets.menu.events.ClickHandler() {
 					public void onClick(MenuItemClickEvent event) {
 						new CreatePortfolioForm().show();
