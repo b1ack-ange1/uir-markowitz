@@ -18,11 +18,13 @@ public class PortfolioInit extends LISEServlet {
 			JSONObject jRecord = new JSONObject();
 			jRecord.put("name", "РусГидро");
 			jRecord.put("id", "HYDR");
+			jRecord.put("weight", 0.6);
 			jData.put(jRecord);
 
 			jRecord = new JSONObject();
 			jRecord.put("name", "Лукойл");
 			jRecord.put("id", "LUK");
+			jRecord.put("weight", 0.4);
 			jData.put(jRecord);
 		} else if (jRequest.get("operationType").equals("add")) {
 			
