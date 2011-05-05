@@ -1,0 +1,1290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="24" zv="Cache for Windows (x86-32) 2010.1.4 (Build 803)" ts="2011-05-05 21:02:59">
+<Class name="event.EventAbstract">
+<Abstract>1</Abstract>
+<TimeChanged>62216,75575.199753</TimeChanged>
+<TimeCreated>62213,80395.425291</TimeCreated>
+
+<Property name="Happened">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Index name="HappenedIndex">
+<Properties>Happened</Properties>
+</Index>
+
+<Property name="ChangeAmount">
+<Type>%Double</Type>
+</Property>
+
+<Property name="ChangePersent">
+<Type>%Double</Type>
+</Property>
+
+<UDLText name="T">
+<Content><![CDATA[
+//+, - или 0. ноль пока создаться не может
+
+]]></Content>
+</UDLText>
+
+<Property name="ChangingDirection">
+<Type>%EnumString</Type>
+<Parameter name="VALUELIST" value=",+,-,0"/>
+</Property>
+
+<Index name="ChangingDirectionIndex">
+<Properties>ChangingDirection</Properties>
+</Index>
+</Class>
+
+
+<Class name="event.EventExternal">
+<Super>%Persistent,event.EventAbstract</Super>
+<TimeChanged>62216,63577.543804</TimeChanged>
+<TimeCreated>62213,80397.539879</TimeCreated>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^event.EventExternalD</DataLocation>
+<DefaultData>EventExternalDefaultData</DefaultData>
+<IdLocation>^event.EventExternalD</IdLocation>
+<IndexLocation>^event.EventExternalI</IndexLocation>
+<StreamLocation>^event.EventExternalS</StreamLocation>
+<Data name="EventExternalDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>HappenedDate</Value>
+</Value>
+<Value name="3">
+<Value>HappenedTime</Value>
+</Value>
+<Value name="4">
+<Value>ChangeAmount</Value>
+</Value>
+<Value name="5">
+<Value>ChangePersent</Value>
+</Value>
+<Value name="6">
+<Value>ChangingDirection</Value>
+</Value>
+<Value name="7">
+<Value>Happened</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="event.EventInternal">
+<Super>%Persistent,event.EventAbstract</Super>
+<TimeChanged>62216,74873.21442</TimeChanged>
+<TimeCreated>62215,40372.653882</TimeCreated>
+
+<Property name="IONew">
+<Type>io.IOInternal</Type>
+<Cardinality>one</Cardinality>
+<Inverse>EventNew</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="IONewIndex">
+<Properties>IONew</Properties>
+</Index>
+
+<Property name="IOold">
+<Type>io.IOInternal</Type>
+<Cardinality>one</Cardinality>
+<Inverse>EventOld</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="IOoldIndex">
+<Properties>IOold</Properties>
+</Index>
+
+<Property name="Ticker">
+<Type>resource.Ticker</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Events</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="TickerIndex">
+<Properties>Ticker</Properties>
+</Index>
+
+<Method name="%OnBeforeSave">
+<FormalSpec>insert:%Boolean</FormalSpec>
+<Private>1</Private>
+<ReturnType>%Status</ReturnType>
+<ServerOnly>1</ServerOnly>
+<Implementation><![CDATA[
+	//тыркаем отметку времени, если она не была проставлена
+	if (..Happened = ""){
+		s ..Happened = $zdatetime($ztimestamp, 3, 1, -1, 6)
+	}
+	Quit $$$OK
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^event.EventInternalD</DataLocation>
+<DefaultData>EventInternalDefaultData</DefaultData>
+<IdLocation>^event.EventInternalD</IdLocation>
+<IndexLocation>^event.EventInternalI</IndexLocation>
+<StreamLocation>^event.EventInternalS</StreamLocation>
+<Data name="EventInternalDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>HappenedDate</Value>
+</Value>
+<Value name="3">
+<Value>HappenedTime</Value>
+</Value>
+<Value name="4">
+<Value>IOold</Value>
+</Value>
+<Value name="5">
+<Value>ChangeAmount</Value>
+</Value>
+<Value name="6">
+<Value>ChangePersent</Value>
+</Value>
+<Value name="7">
+<Value>ChangingDirection</Value>
+</Value>
+<Value name="8">
+<Value>IONew</Value>
+</Value>
+<Value name="9">
+<Value>Ticker</Value>
+</Value>
+<Value name="10">
+<Value>Happened</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="io.IOAbstract">
+<Abstract>1</Abstract>
+<TimeChanged>62216,74295.882808</TimeChanged>
+<TimeCreated>62213,80783.521501</TimeCreated>
+
+<Property name="Open">
+<Type>%Double</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="High">
+<Type>%Double</Type>
+</Property>
+
+<Property name="Low">
+<Type>%Double</Type>
+</Property>
+
+<Property name="Close">
+<Type>%Double</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Volume">
+<Type>%Double</Type>
+</Property>
+
+<Property name="Created">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Index name="CreatedIndex">
+<Properties>Created</Properties>
+</Index>
+</Class>
+
+
+<Class name="io.IOExternal">
+<Super>%Persistent,io.IOAbstract</Super>
+<TimeChanged>62216,74956.663344</TimeChanged>
+<TimeCreated>62213,80819.390153</TimeCreated>
+
+<Property name="Chart">
+<Type>resource.Chart</Type>
+<Cardinality>one</Cardinality>
+<Inverse>IOs</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="ChartIndex">
+<Properties>Chart</Properties>
+</Index>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^io.IOExternalD</DataLocation>
+<DefaultData>IOExternalDefaultData</DefaultData>
+<IdLocation>^io.IOExternalD</IdLocation>
+<IndexLocation>^io.IOExternalI</IndexLocation>
+<StreamLocation>^io.IOExternalS</StreamLocation>
+<Data name="IOExternalDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Chart</Value>
+</Value>
+<Value name="3">
+<Value>High</Value>
+</Value>
+<Value name="4">
+<Value>Low</Value>
+</Value>
+<Value name="5">
+<Value>Close</Value>
+</Value>
+<Value name="6">
+<Value>Volume</Value>
+</Value>
+<Value name="7">
+<Value>CreatedDate</Value>
+</Value>
+<Value name="8">
+<Value>CreatedTime</Value>
+</Value>
+<Value name="9">
+<Value>Open</Value>
+</Value>
+<Value name="10">
+<Value>Created</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="io.IOInternal">
+<Super>%Persistent,io.IOAbstract</Super>
+<TimeChanged>62216,74836.14851</TimeChanged>
+<TimeCreated>62215,40398.505689</TimeCreated>
+
+<Property name="EventOld">
+<Type>event.EventInternal</Type>
+<Cardinality>many</Cardinality>
+<Inverse>IOold</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="EventNew">
+<Type>event.EventInternal</Type>
+<Cardinality>many</Cardinality>
+<Inverse>IONew</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Ticker">
+<Type>resource.Ticker</Type>
+<Cardinality>one</Cardinality>
+<Inverse>IOs</Inverse>
+<Relationship>1</Relationship>
+<Required>1</Required>
+</Property>
+
+<Index name="TickerIndex">
+<Properties>Ticker</Properties>
+</Index>
+
+<Projection name="JavaInternalIO">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Method name="getLast">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>ticker:%Integer</FormalSpec>
+<ReturnType>%Integer</ReturnType>
+<Implementation><![CDATA[
+	&sql(SELECT max(ID) into :res FROM io.IOInternal WHERE Ticker=:ticker AND ID IN (SELECT event.EventInternal.IONew AS ID FROM event.EventInternal))
+	if (SQLCODE'=0) {q 0}
+	q res
+]]></Implementation>
+</Method>
+
+<Method name="getFirst">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>ticker:%Integer</FormalSpec>
+<ReturnType>%Integer</ReturnType>
+<Implementation><![CDATA[
+	&sql(SELECT min(ID) into :res FROM io.IOInternal WHERE Ticker=:ticker)
+	if (SQLCODE'=0) {q 0}
+	q res
+]]></Implementation>
+</Method>
+
+<Method name="getPoorLast">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>ticker:%Integer</FormalSpec>
+<ReturnType>%Integer</ReturnType>
+<Implementation><![CDATA[
+	&sql(SELECT max(ID) into :res FROM io.IOInternal WHERE Ticker=:ticker)
+	if (SQLCODE'=0) {q 0}
+	q res
+]]></Implementation>
+</Method>
+
+<Method name="parseFile">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>file:%String</FormalSpec>
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+	s stream=##class(%FileCharacterStream).%New()
+	s stream.Filename=file
+	
+	While 'stream.AtEnd {
+		s line=stream.ReadLine()
+		s list=$listfromstring(line,",")
+		
+		s tid = ##class(resource.Ticker).findTicker($lg(list,1))
+		// если 0 или "", то такого тикера еще нет. Добавляем
+		if ((tid = 0) || (tid = "")){
+			s tick = ##class(resource.Ticker).%New()	
+			s tick.Code = $lg(list,1)
+			d tick.%Save()
+		}
+		else{
+			s tick = ##class(resource.Ticker).%OpenId(tid)
+		}
+		s tick.Price = $lg(list,7)
+		
+		//открываем предыдущий ИО
+		s oioid = ##class(io.IOInternal).getLast(tid)
+		//если нет событий, проверка, было ли что-нибудь по тикеру
+		if ((oioid = 0) || (oioid = "")){
+			s oioid = ##class(io.IOInternal).getFirst(tid)
+		}
+		if ((oioid '= 0) && (oioid '= "")){
+			s oio = ##class(io.IOInternal).%OpenId(oioid)
+		}
+		else{
+			s oio = 0
+		}
+		
+		s nio = ##class(io.IOInternal).%New()
+		
+		//обрабатываем даты
+		s nio.Created = $ZDATETIME($ZDATETIMEH($lg(list, 3)_" "_$lg(list, 4), 4, 2, -1, 6), 3, 1, -1, 6) //формат получаемой даты dd/mm/yy. при этом мы хотим 2011 год, а не 1911; формат получаемого времени hh:ii
+		
+		s nio.Open = $lg(list, 5), nio.High = $lg(list,6)
+		s nio.Low = $lg(list,7), nio.Close = $lg(list,8)
+		s nio.Volume = $lg(list,9), nio.Ticker = tick
+		
+		d nio.%Save()
+		d tick.%Save()
+		
+		if ((oioid = 0) || (oioid = "")){
+			//событие не создается, если по тикеру еще нет информации
+		}
+		else{
+			s perc = (nio.Close - oio.Close) / oio.Close
+			//значимое изменение: пишем событие, иначе ничего не делаем
+			if (((perc * 100) > 0.1) || ((perc * 100) < -0.1)){
+				s ev = ##class(event.EventInternal).%New()
+				s ev.Ticker = tick
+				s ev.Happened = nio.Created
+	
+				if (perc > 0){
+					s ev.ChangingDirection = "+"
+				}
+				else {
+					s ev.ChangingDirection = "-"
+				}
+				s ev.ChangePersent = perc
+				s ev.ChangeAmount = (nio.Close - oio.Close)
+				
+				s ev.IONew = nio
+				s ev.IOold = oio
+				
+				d ev.%Save(), nio.%Save(), oio.%Save()
+			}
+		}
+	}
+	d ##class(resource.Ticker).countProfits()
+	q $$$OK
+]]></Implementation>
+</Method>
+
+<Method name="%OnBeforeSave">
+<FormalSpec>insert:%Boolean</FormalSpec>
+<Private>1</Private>
+<ReturnType>%Status</ReturnType>
+<ServerOnly>1</ServerOnly>
+<Implementation><![CDATA[
+	//тыркаем отметку времени, если она не была проставлена
+	if (..Created = ""){
+		s ..Created = $zdatetime($ztimestamp, 3, 1, -1, 6)
+	}
+	Quit $$$OK
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^io.IOInternalD</DataLocation>
+<DefaultData>IOInternalDefaultData</DefaultData>
+<IdLocation>^io.IOInternalD</IdLocation>
+<IndexLocation>^io.IOInternalI</IndexLocation>
+<StreamLocation>^io.IOInternalS</StreamLocation>
+<Data name="IOInternalDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Open</Value>
+</Value>
+<Value name="3">
+<Value>High</Value>
+</Value>
+<Value name="4">
+<Value>Low</Value>
+</Value>
+<Value name="5">
+<Value>Close</Value>
+</Value>
+<Value name="6">
+<Value>Volume</Value>
+</Value>
+<Value name="7">
+<Value>CreatedDate</Value>
+</Value>
+<Value name="8">
+<Value>CreatedTime</Value>
+</Value>
+<Value name="9">
+<Value>Ticker</Value>
+</Value>
+<Value name="10">
+<Value>Created</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="portfolio.CompositionExternal">
+<Super>%Persistent</Super>
+<TimeChanged>62216,74960.708668</TimeChanged>
+<TimeCreated>62213,80992.957886</TimeCreated>
+
+<Property name="Percentage">
+<Type>%Double</Type>
+</Property>
+
+<Property name="Chart">
+<Type>resource.Chart</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Portfolios</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="ChartIndex">
+<Properties>Chart</Properties>
+</Index>
+
+<Property name="Portfolio">
+<Type>portfolio.UserPortfolio</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Externals</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="PortfolioIndex">
+<Properties>Portfolio</Properties>
+</Index>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^portfolio.CompositionExternalD</DataLocation>
+<DefaultData>CompositionExternalDefaultData</DefaultData>
+<IdLocation>^portfolio.CompositionExternalD</IdLocation>
+<IndexLocation>^portfolio.CompositionExternalI</IndexLocation>
+<StreamLocation>^portfolio.CompositionExternalS</StreamLocation>
+<Data name="CompositionExternalDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Percentage</Value>
+</Value>
+<Value name="3">
+<Value>Chart</Value>
+</Value>
+<Value name="4">
+<Value>Portfolio</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="portfolio.CompositionInternal">
+<Super>%Persistent</Super>
+<TimeChanged>62216,74959.134297</TimeChanged>
+<TimeCreated>62213,80990.661171</TimeCreated>
+
+<Property name="Percentage">
+<Type>%Double</Type>
+</Property>
+
+<Property name="Ticker">
+<Type>resource.Ticker</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Portfolios</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="TickerIndex">
+<Properties>Ticker</Properties>
+</Index>
+
+<Property name="Portfolio">
+<Type>portfolio.UserPortfolio</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Internals</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="PortfolioIndex">
+<Properties>Portfolio</Properties>
+</Index>
+
+<Projection name="JavaCompositionInternal">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^portfolio.CompositionInternalD</DataLocation>
+<DefaultData>CompositionInternalDefaultData</DefaultData>
+<IdLocation>^portfolio.CompositionInternalD</IdLocation>
+<IndexLocation>^portfolio.CompositionInternalI</IndexLocation>
+<StreamLocation>^portfolio.CompositionInternalS</StreamLocation>
+<Data name="CompositionInternalDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Percentage</Value>
+</Value>
+<Value name="3">
+<Value>Ticker</Value>
+</Value>
+<Value name="4">
+<Value>Portfolio</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="portfolio.UserPortfolio">
+<Super>%Persistent</Super>
+<TimeChanged>62216,75061.162587</TimeChanged>
+<TimeCreated>62213,80933.57255</TimeCreated>
+
+<Property name="LastUpdate">
+<Type>%TimeStamp</Type>
+</Property>
+
+<Property name="Name">
+<Type>%String</Type>
+</Property>
+
+<UDLText name="T">
+<Content><![CDATA[
+//толпа внешних или внутренних ИО
+
+]]></Content>
+</UDLText>
+
+<Property name="Internals">
+<Type>portfolio.CompositionInternal</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Portfolio</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Externals">
+<Type>portfolio.CompositionExternal</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Portfolio</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="User">
+<Type>userinf.AuthData</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Portfolios</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="UserIndex">
+<Properties>User</Properties>
+</Index>
+
+<Method name="%OnBeforeSave">
+<FormalSpec>insert:%Boolean</FormalSpec>
+<Private>1</Private>
+<ReturnType>%Status</ReturnType>
+<ServerOnly>1</ServerOnly>
+<Implementation><![CDATA[
+	s ..LastUpdate = $zdatetime($ztimestamp, 3, 1, -1, 6)
+	Quit $$$OK
+]]></Implementation>
+</Method>
+
+<Method name="getComposition">
+<Implementation><![CDATA[
+	s pars = ..Internals
+	s out = ##class(%ListOfObjects).%New()
+	
+	if (pars.IsEmpty()) q out
+	
+	s key = pars.Next()
+	while ("" = ""){
+		s temp = pars.GetAt(key)
+		d out.Insert(temp)
+		s key = pars.Next(key)
+		if (key = "") q
+	}
+	q out
+]]></Implementation>
+</Method>
+
+<Method name="getCovariances">
+<ReturnType>%ListOfDataTypes</ReturnType>
+<Implementation><![CDATA[
+	s pID = ..%Id()
+	&sql(DECLARE C1 CURSOR FOR 
+		SELECT Ticker1, Ticker2, Covariance INTO :tick1, :tick2, :cov 
+		FROM resource.TickerCovariance
+		WHERE Ticker1 IN (SELECT Ticker FROM CompositionInternal WHERE Portfolio = :pID)
+		AND Ticker2 IN (SELECT Ticker FROM CompositionInternal WHERE Portfolio = :pID))
+	&sql(OPEN C1)
+ 	&sql(FETCH C1)
+		
+	s out = ##class(%ListOfDataTypes).%New()
+	While (SQLCODE = 0) {
+		s temp = ##class(%ArrayOfDataTypes).%New()
+		d temp.SetAt(tick1, "Ticker1"), temp.SetAt(tick2, "Ticker2"), temp.SetAt(cov, "Covariance")
+		d out.Insert(temp)
+   		&sql(FETCH C1)
+ 	}
+	&sql(CLOSE C1)
+	q out
+]]></Implementation>
+</Method>
+
+<Method name="addTicker">
+<FormalSpec>ticker:resource.Ticker,weight:%Double</FormalSpec>
+<Implementation><![CDATA[
+	s comp = ##class(portfolio.CompositionInternal).%New()
+	s comp.Percentage = weight, comp.Ticker = ticker, comp.Portfolio = $THIS
+	d comp.%Save(), ..%Save()
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^portfolio.UserPortfolioD</DataLocation>
+<DefaultData>UserPortfolioDefaultData</DefaultData>
+<IdLocation>^portfolio.UserPortfolioD</IdLocation>
+<IndexLocation>^portfolio.UserPortfolioI</IndexLocation>
+<StreamLocation>^portfolio.UserPortfolioS</StreamLocation>
+<Data name="UserPortfolioDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>LastUpdate</Value>
+</Value>
+<Value name="3">
+<Value>UserHref</Value>
+</Value>
+<Value name="4">
+<Value>Name</Value>
+</Value>
+<Value name="5">
+<Value>User</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="resource.Chart">
+<Super>%Persistent</Super>
+<TimeChanged>62216,74914.778833</TimeChanged>
+<TimeCreated>62213,81215.503997</TimeCreated>
+
+<Property name="Code">
+<Type>%String</Type>
+</Property>
+
+<Index name="CodeIndex">
+<Data>Code</Data>
+<Properties>Code</Properties>
+<Unique>1</Unique>
+</Index>
+
+<Property name="Name">
+<Type>%String</Type>
+</Property>
+
+<UDLText name="T">
+<Content><![CDATA[
+//цена на данный момент
+
+]]></Content>
+</UDLText>
+
+<Property name="Cost">
+<Type>%Double</Type>
+</Property>
+
+<Property name="IOs">
+<Type>io.IOExternal</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Chart</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Portfolios">
+<Type>portfolio.CompositionExternal</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Chart</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^resource.ChartD</DataLocation>
+<DefaultData>ChartDefaultData</DefaultData>
+<IdLocation>^resource.ChartD</IdLocation>
+<IndexLocation>^resource.ChartI</IndexLocation>
+<StreamLocation>^resource.ChartS</StreamLocation>
+<Data name="ChartDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Code</Value>
+</Value>
+<Value name="3">
+<Value>Name</Value>
+</Value>
+<Value name="4">
+<Value>Cost</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="resource.Ticker">
+<Super>%Persistent</Super>
+<TimeChanged>62216,74884.103594</TimeChanged>
+<TimeCreated>62213,81195.596179</TimeCreated>
+
+<Property name="Code">
+<Type>%String</Type>
+</Property>
+
+<Index name="CodeIndex">
+<Data>Code</Data>
+<Properties>Code</Properties>
+<Unique>1</Unique>
+</Index>
+
+<Property name="Name">
+<Type>%String</Type>
+</Property>
+
+<UDLText name="T">
+<Content><![CDATA[
+//цена на данный момент
+
+]]></Content>
+</UDLText>
+
+<Property name="Price">
+<Type>%Double</Type>
+</Property>
+
+<UDLText name="T">
+<Content><![CDATA[
+//ожидаемная доходность по Марковицу
+
+]]></Content>
+</UDLText>
+
+<Property name="ExpectedProfitMarkovitz">
+<Type>%Double</Type>
+</Property>
+
+<Property name="IOs">
+<Type>io.IOInternal</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Ticker</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Portfolios">
+<Type>portfolio.CompositionInternal</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Ticker</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Events">
+<Type>event.EventInternal</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Ticker</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Covariances1">
+<Type>resource.TickerCovariance</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Ticker1</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Covariances2">
+<Type>resource.TickerCovariance</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Ticker2</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Projection name="JavaTicker">
+<Type>%Projection.Java</Type>
+</Projection>
+
+<Method name="findTicker">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>code</FormalSpec>
+<ReturnType>%Integer</ReturnType>
+<Implementation><![CDATA[
+	&sql(SELECT ID INTO :res FROM resource.Ticker WHERE Code = :code)
+	if (SQLCODE'=0) {q 0}
+	q res
+]]></Implementation>
+</Method>
+
+<Method name="countProfits">
+<ClassMethod>1</ClassMethod>
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+	s tickerId = 0, id = 0
+	&sql(DECLARE C2 CURSOR FOR SELECT ID INTO :id FROM resource.Ticker)
+	&sql(OPEN C2)
+ 	&sql(FETCH C2)
+		
+	s tickers = ##class(%ListOfDataTypes).%New()
+	s i=1
+	While (SQLCODE = 0) {  
+		d tickers.InsertAt(id, i)
+		s i = i + 1 
+   		&sql(FETCH C2)
+ 	}
+	&sql(CLOSE C2)
+	
+	for i=1:1:tickers.Count(){
+		s tickerId = tickers.GetAt(i)
+		&sql(DECLARE C3 CURSOR FOR SELECT io.IOInternal."Close" INTO :cost 
+			FROM io.IOInternal 
+			WHERE Ticker = :tickerId)
+		&sql(OPEN C3)
+ 		&sql(FETCH C3)
+		s pcost = 0
+		s j = 0, ps = 0, am = 0
+		While (SQLCODE = 0) {  
+			if (j>0){
+				s ps = (cost - pcost) / pcost
+				s am = am + ps
+			}
+			s pcost = cost
+			s j = j + 1
+   			&sql(FETCH C3)
+ 		}
+ 		if (j>1){
+	 		s am = am / (j - 1)
+	 		s curtick = ##class(resource.Ticker).%OpenId(tickerId)
+ 			s curtick.ExpectedProfitMarkovitz = am
+ 			d curtick.%Save()
+ 		} 
+		&sql(CLOSE C3)
+	}
+	q $$$OK
+]]></Implementation>
+</Method>
+
+<Method name="getAllTickers">
+<ClassMethod>1</ClassMethod>
+<ReturnType>%ListOfObjects</ReturnType>
+<Implementation><![CDATA[
+	&sql(DECLARE C4 CURSOR FOR SELECT ID INTO :id FROM resource.Ticker)
+	&sql(OPEN C4)
+ 	&sql(FETCH C4)
+		
+	s tickers = ##class(%ListOfObjects).%New()
+	While (SQLCODE = 0) {  
+		s tick = ##class(resource.Ticker).%OpenId(id)
+		d tickers.Insert(tick)
+   		&sql(FETCH C4)
+ 	}
+	&sql(CLOSE C4)
+	q tickers
+]]></Implementation>
+</Method>
+
+<Method name="getPrices">
+<FormalSpec>from:%TimeStamp,to:%TimeStamp</FormalSpec>
+<ReturnType>%ArrayOfDataTypes</ReturnType>
+<Implementation><![CDATA[
+	&sql(DECLARE C5 CURSOR FOR SELECT "Close", Created INTO :price, :ts 
+		FROM io.IOInternal
+		WHERE Created BETWEEN :from AND :to)
+	&sql(OPEN C5)
+ 	&sql(FETCH C5)
+		
+	s prices = ##class(%ArrayOfDataTypes).%New()
+	While (SQLCODE = 0) {  
+		d prices.SetAt(price, ts)
+   		&sql(FETCH C5)
+ 	}
+	&sql(CLOSE C5)
+	q prices
+]]></Implementation>
+</Method>
+
+<Method name="getProfits">
+<FormalSpec>from:%TimeStamp,to:%TimeStamp</FormalSpec>
+<ReturnType>%ArrayOfDataTypes</ReturnType>
+<Implementation><![CDATA[
+	&sql(DECLARE C6 CURSOR FOR SELECT ChangePersent, Happened INTO :profit, :ts 
+		FROM event.EventInternal
+		WHERE Happened BETWEEN :from AND :to)
+	&sql(OPEN C6)
+ 	&sql(FETCH C6)
+		
+	s profits = ##class(%ArrayOfDataTypes).%New()
+	While (SQLCODE = 0) {  
+		d profits.SetAt(profit, ts)
+   		&sql(FETCH C6)
+ 	}
+	&sql(CLOSE C6)
+	q profits
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^resource.TickerD</DataLocation>
+<DefaultData>TickerDefaultData</DefaultData>
+<IdLocation>^resource.TickerD</IdLocation>
+<IndexLocation>^resource.TickerI</IndexLocation>
+<StreamLocation>^resource.TickerS</StreamLocation>
+<Data name="TickerDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Code</Value>
+</Value>
+<Value name="3">
+<Value>Name</Value>
+</Value>
+<Value name="4">
+<Value>Cost</Value>
+</Value>
+<Value name="5">
+<Value>ExpectedProfitMarkovitz</Value>
+</Value>
+<Value name="6">
+<Value>Price</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="resource.TickerCovariance">
+<Super>%Persistent</Super>
+<TimeChanged>62216,75027.121473</TimeChanged>
+<TimeCreated>62213,81265.908691</TimeCreated>
+
+<Property name="Covariance">
+<Type>%Double</Type>
+</Property>
+
+<Property name="Ticker1">
+<Type>resource.Ticker</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Covariances1</Inverse>
+<Relationship>1</Relationship>
+<Required>1</Required>
+</Property>
+
+<Index name="Ticker1Index">
+<Properties>Ticker1</Properties>
+</Index>
+
+<Property name="Ticker2">
+<Type>resource.Ticker</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Covariances2</Inverse>
+<Relationship>1</Relationship>
+<Required>1</Required>
+</Property>
+
+<Index name="Ticker2Index">
+<Properties>Ticker2</Properties>
+</Index>
+
+<Method name="countCovariances">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>tickerIds:%ListOfDataTypes</FormalSpec>
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+	&sql(DELETE FROM resource.TickerCovariance)
+	s i=1, j=1
+	for i=1:1:tickerIds.Count(){	
+		for j=1:1:i-1{
+			s costi = 0, costj = 0
+			s tick1 = tickerIds.GetAt(i)
+			s tick2 = tickerIds.GetAt(j)
+			
+			&sql(DECLARE C1 CURSOR FOR SELECT tb1."Close", tb2."Close" INTO :costi, :costj
+				FROM (SELECT io.IOInternal."Close", io.IOInternal.Created
+				FROM io.IOInternal 
+				WHERE Ticker = :tick1) as tb1, (SELECT io.IOInternal."Close", io.IOInternal.Created
+				FROM io.IOInternal 
+				WHERE Ticker = :tick2) as tb2
+				WHERE tb1.Created = tb2.Created)
+				
+			&sql(OPEN C1)
+ 			&sql(FETCH C1)
+ 			
+ 			s lri = ##class(%ListOfDataTypes).%New()
+ 			s lrj = ##class(%ListOfDataTypes).%New()
+			s pcosti = 0
+			s ki = 0, psi = 0, ami = 0
+			s pcostj = 0
+			s kj = 0, psj = 0, amj = 0
+			While (SQLCODE = 0) {  
+				
+				if (ki>0){
+					s ps = (costi - pcosti) / pcosti
+					d lri.InsertAt(ps,ki)
+					s ami = ami + ps
+				}
+				s pcosti = costi
+				s ki = ki + 1
+				
+				if (kj>0){
+					s ps = (costj - pcostj) / pcostj
+					d lrj.InsertAt(ps,kj)
+					s amj = amj + ps
+				}
+				s pcostj = costj
+				s kj = kj + 1
+				
+   				&sql(FETCH C1)
+ 			}
+ 			s Ei = 0
+ 			s Ej = 0
+ 			if ((kj>1) && (ki>1)){
+	 			s Ei = ami / (ki - 1)
+	 			s Ej = amj / (kj - 1)
+	 			
+	 			s sum = 0, add = 0
+	 			//в lri столько же записей, сколько и в lrj
+	 			for k=1:1:lri.Count(){
+		 			s add = (lri.GetAt(k) - Ei) * (lrj.GetAt(k) - Ej)
+		 			s sum = sum + add
+		 		}
+		 		if (lri.Count() > 1) {
+			 		s sum = sum / (lri.Count() - 1)
+			 	}
+		 		else{
+			 		s sum = 0
+			 	}
+		 		s cov = ##class(resource.TickerCovariance).%New()
+		 		s restick1 = ##class(resource.Ticker).%OpenId(tick1)
+		 		s restick2 = ##class(resource.Ticker).%OpenId(tick2)
+		 		s cov.Covariance = sum, cov.Ticker1 = restick1, cov.Ticker2 = restick2
+		 		d cov.%Save()
+ 			}
+			&sql(CLOSE C1)
+		}
+	}
+	q $$$OK
+]]></Implementation>
+</Method>
+
+<Method name="callCountCovariances">
+<ClassMethod>1</ClassMethod>
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+	s tick = 0
+	&sql(DECLARE C4 CURSOR FOR SELECT %ID INTO :tick FROM resource.Ticker)
+	
+	&sql(OPEN C4)
+ 	&sql(FETCH C4)
+ 	
+ 	s tickers = ##class(%ListOfDataTypes).%New()
+ 	While (SQLCODE=0){
+	 	d tickers.Insert(tick)
+	 	&sql(FETCH C4)
+	}
+	&sql(CLOSE C4)
+	d ##class(resource.TickerCovariance).countCovariances(tickers)
+	
+	q $$$OK
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^resource.TickerCovarianceD</DataLocation>
+<DefaultData>TickerCovarianceDefaultData</DefaultData>
+<IdLocation>^resource.TickerCovarianceD</IdLocation>
+<IndexLocation>^resource.TickerCovarianceI</IndexLocation>
+<StreamLocation>^resource.TickerCovarianceS</StreamLocation>
+<Data name="TickerCovarianceDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Covariance</Value>
+</Value>
+<Value name="3">
+<Value>Ticker1</Value>
+</Value>
+<Value name="4">
+<Value>Ticker2</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="userinf.AuthData">
+<Super>%Persistent</Super>
+<TimeChanged>62216,61415.737261</TimeChanged>
+<TimeCreated>62213,81637.506366</TimeCreated>
+
+<Property name="Login">
+<Type>%String</Type>
+</Property>
+
+<Index name="LgnIndex">
+<Data>Login</Data>
+<Properties>Login</Properties>
+<Unique>1</Unique>
+</Index>
+
+<Property name="Portfolios">
+<Type>portfolio.UserPortfolio</Type>
+<Cardinality>many</Cardinality>
+<Inverse>User</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Method name="getPortfoliosList">
+<ReturnType>%ListOfObjects</ReturnType>
+<Implementation><![CDATA[
+	s pars =..Portfolios
+	s out = ##class(%ListOfObjects).%New()
+	
+	if (pars.IsEmpty()) q out
+	
+	s key = pars.Next()
+	while ("" = ""){
+		s temp = pars.GetAt(key)
+		d out.Insert(temp)
+		s key = pars.Next(key)
+		if (key = "") q
+	}
+	q out
+]]></Implementation>
+</Method>
+
+<Method name="getObjectByLogin">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>login:%String</FormalSpec>
+<ReturnType>%Persistent</ReturnType>
+<Implementation><![CDATA[
+	&sql(SELECT ID into :res FROM userinf.AuthData WHERE Login=:login)
+	if (SQLCODE'=0) {q $$$ERROR()}
+	q ##class(userinf.AuthData).%OpenId(res)
+]]></Implementation>
+</Method>
+
+<Method name="addPortfolio">
+<FormalSpec>portfolio:portfolio.UserPortfolio</FormalSpec>
+<Implementation><![CDATA[
+	s portfolio.User = $THIS
+	d portfolio.%Save(), ..%Save()
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^userinf.AuthDataD</DataLocation>
+<DefaultData>AuthDataDefaultData</DefaultData>
+<IdLocation>^userinf.AuthDataD</IdLocation>
+<IndexLocation>^userinf.AuthDataI</IndexLocation>
+<StreamLocation>^userinf.AuthDataS</StreamLocation>
+<Data name="AuthDataDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Login</Value>
+</Value>
+<Value name="3">
+<Value>Password</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+</Export>

@@ -8,7 +8,7 @@ package io;
 **/
 
 public class IOExternal extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 7535;
+    private static final long serialVersionUID = 5716;
     private static String CACHE_CLASS_NAME = "io.IOExternal";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -770,11 +770,11 @@ public class IOExternal extends com.intersys.classes.Persistent {
         return;
     }
 
-    private static int ii_CreatedDate = 10;
-    private static int jj_CreatedDate = 0;
-    private static int kk_CreatedDate = 10;
+    private static int ii_Created = 5;
+    private static int jj_Created = 0;
+    private static int kk_Created = 5;
     /**
-       Verifies that indexes for property <code>CreatedDate</code> in
+       Verifies that indexes for property <code>Created</code> in
        zObjVal are the same as in Cache. It does not return anything
        but it throws an exception in case of inconsistency.
 
@@ -791,98 +791,43 @@ public class IOExternal extends com.intersys.classes.Persistent {
        @see #checkAllFieldsValid
 
      */
-    public static void checkCreatedDateValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
-        checkZobjValid(db, CACHE_CLASS_NAME, "CreatedDate",ii_CreatedDate, jj_CreatedDate, kk_CreatedDate);
+    public static void checkCreatedValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
+        checkZobjValid(db, CACHE_CLASS_NAME, "Created",ii_Created, jj_Created, kk_Created);
     }
     /**
-       Returns value of property <code>CreatedDate</code>.
+       Returns value of property <code>Created</code>.
        <Description>
-       @return current value of <code>CreatedDate</code> represented as
-       <code>java.sql.Date</code>
+       @return current value of <code>Created</code> represented as
+       <code>java.sql.Timestamp</code>
 
        @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedDate"> CreatedDate</A>
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#Created"> Created</A>
     */
-    public java.sql.Date getCreatedDate()  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_CreatedDate,
-                                                jj_CreatedDate,
+    public java.sql.Timestamp getCreated()  throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_Created,
+                                                jj_Created,
                                                 com.intersys.objects.Database.RET_PRIM,
-                                                "CreatedDate");
-       return dh.getDate();
+                                                "Created");
+       return dh.getTimestamp();
     }
 
     /**
-       Sets new value for <code>CreatedDate</code>.
+       Sets new value for <code>Created</code>.
        <Description>
        @param value new value to be set represented as
-       <code>java.sql.Date</code>.
+       <code>java.sql.Timestamp</code>.
        @throws com.intersys.objects.CacheException if any error occurred during value setting.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedDate"> CreatedDate</A>
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#Created"> Created</A>
     */
-    public void setCreatedDate(java.sql.Date value)  throws com.intersys.objects.CacheException {
+    public void setCreated(java.sql.Timestamp value)  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
-        mInternal.setProperty(ii_CreatedDate, jj_CreatedDate,kk_CreatedDate, com.intersys.objects.Database.RET_PRIM, "CreatedDate", dh);
+        mInternal.setProperty(ii_Created, jj_Created,kk_Created, com.intersys.objects.Database.RET_PRIM, "Created", dh);
         return;
     }
 
-    private static int ii_CreatedTime = 3;
-    private static int jj_CreatedTime = 0;
-    private static int kk_CreatedTime = 3;
-    /**
-       Verifies that indexes for property <code>CreatedTime</code> in
-       zObjVal are the same as in Cache. It does not return anything
-       but it throws an exception in case of inconsistency.
-
-       <p> Please note, that if there is any inconsistency in zObjVal
-       indexes this is fatal and class can not work correctly and must
-       be regenerated.
-
-       @param db Database used for connection. Note that if you are
-       using multiple databases the class can be consistent with one
-       and inconsistent with another.
-       @throws com.intersys.objects.InvalidClassException if any inconsistency is found.
-       @throws com.intersys.objects.CacheException if any error occurred during
-       verification, e.g. communication error with Database.
-       @see #checkAllFieldsValid
-
-     */
-    public static void checkCreatedTimeValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
-        checkZobjValid(db, CACHE_CLASS_NAME, "CreatedTime",ii_CreatedTime, jj_CreatedTime, kk_CreatedTime);
-    }
-    /**
-       Returns value of property <code>CreatedTime</code>.
-       <Description>
-       @return current value of <code>CreatedTime</code> represented as
-       <code>java.sql.Time</code>
-
-       @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedTime"> CreatedTime</A>
-    */
-    public java.sql.Time getCreatedTime()  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_CreatedTime,
-                                                jj_CreatedTime,
-                                                com.intersys.objects.Database.RET_PRIM,
-                                                "CreatedTime");
-       return dh.getTime();
-    }
-
-    /**
-       Sets new value for <code>CreatedTime</code>.
-       <Description>
-       @param value new value to be set represented as
-       <code>java.sql.Time</code>.
-       @throws com.intersys.objects.CacheException if any error occurred during value setting.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedTime"> CreatedTime</A>
-    */
-    public void setCreatedTime(java.sql.Time value)  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
-        mInternal.setProperty(ii_CreatedTime, jj_CreatedTime,kk_CreatedTime, com.intersys.objects.Database.RET_PRIM, "CreatedTime", dh);
-        return;
-    }
-
-    private static int ii_High = 4;
+    private static int ii_High = 3;
     private static int jj_High = 0;
-    private static int kk_High = 4;
+    private static int kk_High = 3;
     /**
        Verifies that indexes for property <code>High</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -935,9 +880,9 @@ public class IOExternal extends com.intersys.classes.Persistent {
         return;
     }
 
-    private static int ii_Low = 5;
+    private static int ii_Low = 4;
     private static int jj_Low = 0;
-    private static int kk_Low = 5;
+    private static int kk_Low = 4;
     /**
        Verifies that indexes for property <code>Low</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -990,9 +935,9 @@ public class IOExternal extends com.intersys.classes.Persistent {
         return;
     }
 
-    private static int ii_Open = 11;
+    private static int ii_Open = 10;
     private static int jj_Open = 0;
-    private static int kk_Open = 11;
+    private static int kk_Open = 10;
     /**
        Verifies that indexes for property <code>Open</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -1646,83 +1591,43 @@ after the index filing is completed.
         return res.getString();
     }
     /**
-     <p>Runs method CreatedDateDisplayToLogical in Cache.</p>
+     <p>Runs method CreatedDisplayToLogical in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param _val represented as java.lang.String
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedDateDisplayToLogical"> Method CreatedDateDisplayToLogical</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedDisplayToLogical"> Method CreatedDisplayToLogical</A>
     */
-    public static java.sql.Date CreatedDateDisplayToLogical (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
+    public static java.sql.Timestamp CreatedDisplayToLogical (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CreatedDateDisplayToLogical",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getDate();
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CreatedDisplayToLogical",args,com.intersys.objects.Database.RET_PRIM);
+        return res.getTimestamp();
     }
     /**
-     <p>Runs method CreatedDateIsValid in Cache.</p>
+     <p>Runs method CreatedIsValid in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param _val represented as java.lang.String
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedDateIsValid"> Method CreatedDateIsValid</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedIsValid"> Method CreatedIsValid</A>
     */
-    public static void CreatedDateIsValid (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
+    public static void CreatedIsValid (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CreatedDateIsValid",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CreatedIsValid",args,com.intersys.objects.Database.RET_PRIM);
         db.parseStatus(res);
         return;
     }
     /**
-     <p>Runs method CreatedDateLogicalToDisplay in Cache.</p>
+     <p>Runs method CreatedLogicalToDisplay in Cache.</p>
      @param db represented as com.intersys.objects.Database
-     @param _val represented as java.sql.Date
+     @param _val represented as java.sql.Timestamp
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedDateLogicalToDisplay"> Method CreatedDateLogicalToDisplay</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedLogicalToDisplay"> Method CreatedLogicalToDisplay</A>
     */
-    public static java.lang.String CreatedDateLogicalToDisplay (com.intersys.objects.Database db, java.sql.Date _val) throws com.intersys.objects.CacheException {
+    public static java.lang.String CreatedLogicalToDisplay (com.intersys.objects.Database db, java.sql.Timestamp _val) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CreatedDateLogicalToDisplay",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getString();
-    }
-    /**
-     <p>Runs method CreatedTimeDisplayToLogical in Cache.</p>
-     @param db represented as com.intersys.objects.Database
-     @param _val represented as java.lang.String
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedTimeDisplayToLogical"> Method CreatedTimeDisplayToLogical</A>
-    */
-    public static java.sql.Time CreatedTimeDisplayToLogical (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CreatedTimeDisplayToLogical",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getTime();
-    }
-    /**
-     <p>Runs method CreatedTimeIsValid in Cache.</p>
-     @param db represented as com.intersys.objects.Database
-     @param _val represented as java.lang.String
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedTimeIsValid"> Method CreatedTimeIsValid</A>
-    */
-    public static void CreatedTimeIsValid (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CreatedTimeIsValid",args,com.intersys.objects.Database.RET_PRIM);
-        db.parseStatus(res);
-        return;
-    }
-    /**
-     <p>Runs method CreatedTimeLogicalToDisplay in Cache.</p>
-     @param db represented as com.intersys.objects.Database
-     @param _val represented as java.sql.Time
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=io.IOExternal#CreatedTimeLogicalToDisplay"> Method CreatedTimeLogicalToDisplay</A>
-    */
-    public static java.lang.String CreatedTimeLogicalToDisplay (com.intersys.objects.Database db, java.sql.Time _val) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CreatedTimeLogicalToDisplay",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"CreatedLogicalToDisplay",args,com.intersys.objects.Database.RET_PRIM);
         return res.getString();
     }
     /**
@@ -2021,7 +1926,7 @@ after the index filing is completed.
         return new com.intersys.objects.CacheQuery(db, "io.IOExternal_Extent", 0, 0);
     }
 
-    public static Object addToBatchInsert (Object batch, java.sql.Connection con, Integer cos_Chart, Double cos_Close, java.sql.Date cos_CreatedDate, java.sql.Time cos_CreatedTime, Double cos_High, Double cos_Low, Double cos_Open, Double cos_Volume) throws java.sql.SQLException {
+    public static Object addToBatchInsert (Object batch, java.sql.Connection con, Integer cos_Chart, Double cos_Close, java.sql.Timestamp cos_Created, Double cos_High, Double cos_Low, Double cos_Open, Double cos_Volume) throws java.sql.SQLException {
         if (batch == null) {
             com.intersys.jdbc.CacheConnection c = null;
             if (con != null) {
@@ -2034,11 +1939,10 @@ after the index filing is completed.
             batch = new com.intersys.jdbc.QuickStatement.Batch (c.getConnectionInfo ());
         }
         com.intersys.jdbc.QuickStatement.Batch qbatch = (com.intersys.jdbc.QuickStatement.Batch) batch;
-        com.intersys.jdbc.SysListProxy.setInteger (qbatch.list, 9); // number of columns
+        com.intersys.jdbc.SysListProxy.setInteger (qbatch.list, 8); // number of columns
         com.intersys.jdbc.SysListProxy.setIntegerWrapper(qbatch.list, cos_Chart);
         com.intersys.jdbc.SysListProxy.setDoubleWrapper(qbatch.list, cos_Close);
-        com.intersys.jdbc.SysListProxy.setSQLDate(qbatch.list, cos_CreatedDate);
-        com.intersys.jdbc.SysListProxy.setSQLTime(qbatch.list, cos_CreatedTime);
+        com.intersys.jdbc.SysListProxy.setSQLTimestamp(qbatch.list, cos_Created);
         com.intersys.jdbc.SysListProxy.setDoubleWrapper(qbatch.list, cos_High);
         com.intersys.jdbc.SysListProxy.setDoubleWrapper(qbatch.list, cos_Low);
         com.intersys.jdbc.SysListProxy.setDoubleWrapper(qbatch.list, cos_Open);

@@ -8,7 +8,7 @@ package event;
 **/
 
 public class EventInternal extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 924;
+    private static final long serialVersionUID = 6363;
     private static String CACHE_CLASS_NAME = "event.EventInternal";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -767,9 +767,9 @@ public class EventInternal extends com.intersys.classes.Persistent {
         return;
     }
 
-    private static int ii_ChangingDirection = 10;
+    private static int ii_ChangingDirection = 9;
     private static int jj_ChangingDirection = 0;
-    private static int kk_ChangingDirection = 10;
+    private static int kk_ChangingDirection = 9;
     /**
        Verifies that indexes for property <code>ChangingDirection</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -822,11 +822,11 @@ public class EventInternal extends com.intersys.classes.Persistent {
         return;
     }
 
-    private static int ii_HappenedDate = 1;
-    private static int jj_HappenedDate = 0;
-    private static int kk_HappenedDate = 1;
+    private static int ii_Happened = 3;
+    private static int jj_Happened = 0;
+    private static int kk_Happened = 3;
     /**
-       Verifies that indexes for property <code>HappenedDate</code> in
+       Verifies that indexes for property <code>Happened</code> in
        zObjVal are the same as in Cache. It does not return anything
        but it throws an exception in case of inconsistency.
 
@@ -843,98 +843,43 @@ public class EventInternal extends com.intersys.classes.Persistent {
        @see #checkAllFieldsValid
 
      */
-    public static void checkHappenedDateValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
-        checkZobjValid(db, CACHE_CLASS_NAME, "HappenedDate",ii_HappenedDate, jj_HappenedDate, kk_HappenedDate);
+    public static void checkHappenedValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
+        checkZobjValid(db, CACHE_CLASS_NAME, "Happened",ii_Happened, jj_Happened, kk_Happened);
     }
     /**
-       Returns value of property <code>HappenedDate</code>.
+       Returns value of property <code>Happened</code>.
        <Description>
-       @return current value of <code>HappenedDate</code> represented as
-       <code>java.sql.Date</code>
+       @return current value of <code>Happened</code> represented as
+       <code>java.sql.Timestamp</code>
 
        @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedDate"> HappenedDate</A>
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#Happened"> Happened</A>
     */
-    public java.sql.Date getHappenedDate()  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_HappenedDate,
-                                                jj_HappenedDate,
+    public java.sql.Timestamp getHappened()  throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_Happened,
+                                                jj_Happened,
                                                 com.intersys.objects.Database.RET_PRIM,
-                                                "HappenedDate");
-       return dh.getDate();
+                                                "Happened");
+       return dh.getTimestamp();
     }
 
     /**
-       Sets new value for <code>HappenedDate</code>.
+       Sets new value for <code>Happened</code>.
        <Description>
        @param value new value to be set represented as
-       <code>java.sql.Date</code>.
+       <code>java.sql.Timestamp</code>.
        @throws com.intersys.objects.CacheException if any error occurred during value setting.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedDate"> HappenedDate</A>
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#Happened"> Happened</A>
     */
-    public void setHappenedDate(java.sql.Date value)  throws com.intersys.objects.CacheException {
+    public void setHappened(java.sql.Timestamp value)  throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
-        mInternal.setProperty(ii_HappenedDate, jj_HappenedDate,kk_HappenedDate, com.intersys.objects.Database.RET_PRIM, "HappenedDate", dh);
+        mInternal.setProperty(ii_Happened, jj_Happened,kk_Happened, com.intersys.objects.Database.RET_PRIM, "Happened", dh);
         return;
     }
 
-    private static int ii_HappenedTime = 7;
-    private static int jj_HappenedTime = 0;
-    private static int kk_HappenedTime = 7;
-    /**
-       Verifies that indexes for property <code>HappenedTime</code> in
-       zObjVal are the same as in Cache. It does not return anything
-       but it throws an exception in case of inconsistency.
-
-       <p> Please note, that if there is any inconsistency in zObjVal
-       indexes this is fatal and class can not work correctly and must
-       be regenerated.
-
-       @param db Database used for connection. Note that if you are
-       using multiple databases the class can be consistent with one
-       and inconsistent with another.
-       @throws com.intersys.objects.InvalidClassException if any inconsistency is found.
-       @throws com.intersys.objects.CacheException if any error occurred during
-       verification, e.g. communication error with Database.
-       @see #checkAllFieldsValid
-
-     */
-    public static void checkHappenedTimeValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
-        checkZobjValid(db, CACHE_CLASS_NAME, "HappenedTime",ii_HappenedTime, jj_HappenedTime, kk_HappenedTime);
-    }
-    /**
-       Returns value of property <code>HappenedTime</code>.
-       <Description>
-       @return current value of <code>HappenedTime</code> represented as
-       <code>java.sql.Time</code>
-
-       @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedTime"> HappenedTime</A>
-    */
-    public java.sql.Time getHappenedTime()  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_HappenedTime,
-                                                jj_HappenedTime,
-                                                com.intersys.objects.Database.RET_PRIM,
-                                                "HappenedTime");
-       return dh.getTime();
-    }
-
-    /**
-       Sets new value for <code>HappenedTime</code>.
-       <Description>
-       @param value new value to be set represented as
-       <code>java.sql.Time</code>.
-       @throws com.intersys.objects.CacheException if any error occurred during value setting.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedTime"> HappenedTime</A>
-    */
-    public void setHappenedTime(java.sql.Time value)  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = new com.intersys.cache.Dataholder (value);
-        mInternal.setProperty(ii_HappenedTime, jj_HappenedTime,kk_HappenedTime, com.intersys.objects.Database.RET_PRIM, "HappenedTime", dh);
-        return;
-    }
-
-    private static int ii_IONew = 11;
+    private static int ii_IONew = 10;
     private static int jj_IONew = 0;
-    private static int kk_IONew = 11;
+    private static int kk_IONew = 10;
     /**
        Verifies that indexes for property <code>IONew</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -990,9 +935,9 @@ public class EventInternal extends com.intersys.classes.Persistent {
         return;
     }
 
-    private static int ii_IOold = 2;
+    private static int ii_IOold = 1;
     private static int jj_IOold = 0;
-    private static int kk_IOold = 2;
+    private static int kk_IOold = 1;
     /**
        Verifies that indexes for property <code>IOold</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -1611,83 +1556,43 @@ after the index filing is completed.
         return res.getString();
     }
     /**
-     <p>Runs method HappenedDateDisplayToLogical in Cache.</p>
+     <p>Runs method HappenedDisplayToLogical in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param _val represented as java.lang.String
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedDateDisplayToLogical"> Method HappenedDateDisplayToLogical</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedDisplayToLogical"> Method HappenedDisplayToLogical</A>
     */
-    public static java.sql.Date HappenedDateDisplayToLogical (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
+    public static java.sql.Timestamp HappenedDisplayToLogical (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"HappenedDateDisplayToLogical",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getDate();
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"HappenedDisplayToLogical",args,com.intersys.objects.Database.RET_PRIM);
+        return res.getTimestamp();
     }
     /**
-     <p>Runs method HappenedDateIsValid in Cache.</p>
+     <p>Runs method HappenedIsValid in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param _val represented as java.lang.String
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedDateIsValid"> Method HappenedDateIsValid</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedIsValid"> Method HappenedIsValid</A>
     */
-    public static void HappenedDateIsValid (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
+    public static void HappenedIsValid (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"HappenedDateIsValid",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"HappenedIsValid",args,com.intersys.objects.Database.RET_PRIM);
         db.parseStatus(res);
         return;
     }
     /**
-     <p>Runs method HappenedDateLogicalToDisplay in Cache.</p>
+     <p>Runs method HappenedLogicalToDisplay in Cache.</p>
      @param db represented as com.intersys.objects.Database
-     @param _val represented as java.sql.Date
+     @param _val represented as java.sql.Timestamp
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedDateLogicalToDisplay"> Method HappenedDateLogicalToDisplay</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedLogicalToDisplay"> Method HappenedLogicalToDisplay</A>
     */
-    public static java.lang.String HappenedDateLogicalToDisplay (com.intersys.objects.Database db, java.sql.Date _val) throws com.intersys.objects.CacheException {
+    public static java.lang.String HappenedLogicalToDisplay (com.intersys.objects.Database db, java.sql.Timestamp _val) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"HappenedDateLogicalToDisplay",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getString();
-    }
-    /**
-     <p>Runs method HappenedTimeDisplayToLogical in Cache.</p>
-     @param db represented as com.intersys.objects.Database
-     @param _val represented as java.lang.String
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedTimeDisplayToLogical"> Method HappenedTimeDisplayToLogical</A>
-    */
-    public static java.sql.Time HappenedTimeDisplayToLogical (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"HappenedTimeDisplayToLogical",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getTime();
-    }
-    /**
-     <p>Runs method HappenedTimeIsValid in Cache.</p>
-     @param db represented as com.intersys.objects.Database
-     @param _val represented as java.lang.String
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedTimeIsValid"> Method HappenedTimeIsValid</A>
-    */
-    public static void HappenedTimeIsValid (com.intersys.objects.Database db, java.lang.String _val) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"HappenedTimeIsValid",args,com.intersys.objects.Database.RET_PRIM);
-        db.parseStatus(res);
-        return;
-    }
-    /**
-     <p>Runs method HappenedTimeLogicalToDisplay in Cache.</p>
-     @param db represented as com.intersys.objects.Database
-     @param _val represented as java.sql.Time
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=event.EventInternal#HappenedTimeLogicalToDisplay"> Method HappenedTimeLogicalToDisplay</A>
-    */
-    public static java.lang.String HappenedTimeLogicalToDisplay (com.intersys.objects.Database db, java.sql.Time _val) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(_val);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"HappenedTimeLogicalToDisplay",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"HappenedLogicalToDisplay",args,com.intersys.objects.Database.RET_PRIM);
         return res.getString();
     }
     /**
@@ -2189,7 +2094,7 @@ after the index filing is completed.
         return new com.intersys.objects.CacheQuery(db, "event.EventInternal_Extent", 0, 0);
     }
 
-    public static Object addToBatchInsert (Object batch, java.sql.Connection con, Double cos_ChangeAmount, Double cos_ChangePersent, String cos_ChangingDirection, java.sql.Date cos_HappenedDate, java.sql.Time cos_HappenedTime, Integer cos_IONew, Integer cos_IOold, Integer cos_Ticker) throws java.sql.SQLException {
+    public static Object addToBatchInsert (Object batch, java.sql.Connection con, Double cos_ChangeAmount, Double cos_ChangePersent, String cos_ChangingDirection, java.sql.Timestamp cos_Happened, Integer cos_IONew, Integer cos_IOold, Integer cos_Ticker) throws java.sql.SQLException {
         if (batch == null) {
             com.intersys.jdbc.CacheConnection c = null;
             if (con != null) {
@@ -2202,12 +2107,11 @@ after the index filing is completed.
             batch = new com.intersys.jdbc.QuickStatement.Batch (c.getConnectionInfo ());
         }
         com.intersys.jdbc.QuickStatement.Batch qbatch = (com.intersys.jdbc.QuickStatement.Batch) batch;
-        com.intersys.jdbc.SysListProxy.setInteger (qbatch.list, 9); // number of columns
+        com.intersys.jdbc.SysListProxy.setInteger (qbatch.list, 8); // number of columns
         com.intersys.jdbc.SysListProxy.setDoubleWrapper(qbatch.list, cos_ChangeAmount);
         com.intersys.jdbc.SysListProxy.setDoubleWrapper(qbatch.list, cos_ChangePersent);
         com.intersys.jdbc.SysListProxy.setString(qbatch.list, cos_ChangingDirection);
-        com.intersys.jdbc.SysListProxy.setSQLDate(qbatch.list, cos_HappenedDate);
-        com.intersys.jdbc.SysListProxy.setSQLTime(qbatch.list, cos_HappenedTime);
+        com.intersys.jdbc.SysListProxy.setSQLTimestamp(qbatch.list, cos_Happened);
         com.intersys.jdbc.SysListProxy.setIntegerWrapper(qbatch.list, cos_IONew);
         com.intersys.jdbc.SysListProxy.setIntegerWrapper(qbatch.list, cos_IOold);
         com.intersys.jdbc.SysListProxy.setIntegerWrapper(qbatch.list, cos_Ticker);

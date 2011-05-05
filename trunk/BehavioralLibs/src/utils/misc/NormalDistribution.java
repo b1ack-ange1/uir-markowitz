@@ -6,12 +6,12 @@ import exceptions.*;
 public class NormalDistribution {
 	private static NormalDistribution _singleton = null;
 	private TreeMap<Double, Double> Table;
-	
+
 	public static NormalDistribution singleton(){
 		if (NormalDistribution._singleton == null) NormalDistribution._singleton = new NormalDistribution();
 		return NormalDistribution._singleton;
 	}
-	
+
 	//метод получения значения функции, обратной функции нормального распределения
 	//точности до 0.01 нам вполне хватит
 	public double getCoordinate(double value) throws VarianceOutOfBounds {
@@ -22,19 +22,19 @@ public class NormalDistribution {
 			value = 1.0 - value;
 			isNegative = true;
 		}
-		
+
 		if (Table.containsKey(value)){
 			result = Table.get(value);
 		}
 		else{
-				result = Table.get(Table.floorKey(value));
+			result = Table.get(Table.floorKey(value));
 		}
-		
+
 		return isNegative ? -result : result;
 	}
 	private NormalDistribution(){
 		//а нам похрену: мы пихнем таблицу нормального распределения
-		Table = new TreeMap();
+		Table = new TreeMap<Double, Double>();
 		Table.put(0.5,0.0);
 		Table.put(0.50399,0.01);
 		Table.put(0.50798,0.02);
