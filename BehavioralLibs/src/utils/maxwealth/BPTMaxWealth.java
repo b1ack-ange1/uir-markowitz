@@ -9,7 +9,7 @@ import exceptions.MatrixZeroDeterminant;
 import exceptions.VarianceOutOfBounds;
 
 public class BPTMaxWealth extends BPTAbstract{
-	private static TreeMap<Integer, BPTMaxWealth> _instances = new TreeMap();
+	private static TreeMap<Integer, BPTMaxWealth> _instances = new TreeMap<Integer, BPTMaxWealth>();
 	
 	public static BPTMaxWealth getInstance(int portfolioID){
 		if (BPTMaxWealth._instances.get(portfolioID) == null){
@@ -19,7 +19,6 @@ public class BPTMaxWealth extends BPTAbstract{
 	}
 	
 	private double ImpliedRisk = Double.NaN;
-	private Matrix LagrangeWeigths = null;
 	
 	private BPTMaxWealth(){
 		
@@ -28,11 +27,13 @@ public class BPTMaxWealth extends BPTAbstract{
 	public void setCovariances(Matrix covs){
 		Covariances = covs;
 		ImpliedRisk = Double.NaN;
+		LagrangeWeigths = null;
 	}
 	
 	public void setExpectedReturns(Matrix costs){
 		ExpectedReturns = costs;
 		ImpliedRisk = Double.NaN;
+		LagrangeWeigths = null;
 	}
 	
 	public double getImpliedRisk(){

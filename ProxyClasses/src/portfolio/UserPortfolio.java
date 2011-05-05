@@ -8,7 +8,7 @@ package portfolio;
 **/
 
 public class UserPortfolio extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 6264;
+    private static final long serialVersionUID = 6080;
     private static String CACHE_CLASS_NAME = "portfolio.UserPortfolio";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -657,11 +657,11 @@ public class UserPortfolio extends com.intersys.classes.Persistent {
     public static void checkAllMethods(com.intersys.objects.Database db ) throws com.intersys.objects.CacheException {
         checkAllMethods(db, CACHE_CLASS_NAME, UserPortfolio.class);
     }
-    private static int ii_ExternalsList = 4;
-    private static int jj_ExternalsList = 0;
-    private static int kk_ExternalsList = 4;
+    private static int ii_Externals = 5;
+    private static int jj_Externals = 0;
+    private static int kk_Externals = 5;
     /**
-       Verifies that indexes for property <code>ExternalsList</code> in
+       Verifies that indexes for property <code>Externals</code> in
        zObjVal are the same as in Cache. It does not return anything
        but it throws an exception in case of inconsistency.
 
@@ -678,34 +678,34 @@ public class UserPortfolio extends com.intersys.classes.Persistent {
        @see #checkAllFieldsValid
 
      */
-    public static void checkExternalsListValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
-        checkZobjValid(db, CACHE_CLASS_NAME, "ExternalsList",ii_ExternalsList, jj_ExternalsList, kk_ExternalsList);
+    public static void checkExternalsValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
+        checkZobjValid(db, CACHE_CLASS_NAME, "Externals",ii_Externals, jj_Externals, kk_Externals);
     }
     /**
-       Returns value of property <code>ExternalsList</code>.
+       Returns value of property <code>Externals</code>.
        <Description>
-       @return current value of <code>ExternalsList</code> represented as
+       @return current value of <code>Externals</code> represented as
        <code>com.intersys.classes.RelationshipObject</code>
 
        @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#ExternalsList"> ExternalsList</A>
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#Externals"> Externals</A>
     */
-    public com.intersys.classes.RelationshipObject getExternalsList()  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_ExternalsList,
-                                                jj_ExternalsList,
+    public com.intersys.classes.RelationshipObject getExternals()  throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_Externals,
+                                                jj_Externals,
                                                 com.intersys.objects.Database.RET_OBJECT,
-                                                "ExternalsList");
+                                                "Externals");
         com.intersys.cache.CacheObject cobj = dh.getCacheObject();
         if (cobj == null)
             return null;
         return (com.intersys.classes.RelationshipObject)(cobj.newJavaInstance());
     }
 
-    private static int ii_InternalsList = 6;
-    private static int jj_InternalsList = 0;
-    private static int kk_InternalsList = 6;
+    private static int ii_Internals = 1;
+    private static int jj_Internals = 0;
+    private static int kk_Internals = 1;
     /**
-       Verifies that indexes for property <code>InternalsList</code> in
+       Verifies that indexes for property <code>Internals</code> in
        zObjVal are the same as in Cache. It does not return anything
        but it throws an exception in case of inconsistency.
 
@@ -722,32 +722,32 @@ public class UserPortfolio extends com.intersys.classes.Persistent {
        @see #checkAllFieldsValid
 
      */
-    public static void checkInternalsListValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
-        checkZobjValid(db, CACHE_CLASS_NAME, "InternalsList",ii_InternalsList, jj_InternalsList, kk_InternalsList);
+    public static void checkInternalsValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
+        checkZobjValid(db, CACHE_CLASS_NAME, "Internals",ii_Internals, jj_Internals, kk_Internals);
     }
     /**
-       Returns value of property <code>InternalsList</code>.
+       Returns value of property <code>Internals</code>.
        <Description>
-       @return current value of <code>InternalsList</code> represented as
+       @return current value of <code>Internals</code> represented as
        <code>com.intersys.classes.RelationshipObject</code>
 
        @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#InternalsList"> InternalsList</A>
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#Internals"> Internals</A>
     */
-    public com.intersys.classes.RelationshipObject getInternalsList()  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_InternalsList,
-                                                jj_InternalsList,
+    public com.intersys.classes.RelationshipObject getInternals()  throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_Internals,
+                                                jj_Internals,
                                                 com.intersys.objects.Database.RET_OBJECT,
-                                                "InternalsList");
+                                                "Internals");
         com.intersys.cache.CacheObject cobj = dh.getCacheObject();
         if (cobj == null)
             return null;
         return (com.intersys.classes.RelationshipObject)(cobj.newJavaInstance());
     }
 
-    private static int ii_LastUpdate = 2;
+    private static int ii_LastUpdate = 3;
     private static int jj_LastUpdate = 0;
-    private static int kk_LastUpdate = 2;
+    private static int kk_LastUpdate = 3;
     /**
        Verifies that indexes for property <code>LastUpdate</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -1298,64 +1298,64 @@ after the index filing is completed.
         return;
     }
     /**
-     <p>Runs method ExternalsListGetObject in Cache.</p>
+     <p>Runs method ExternalsGetObject in Cache.</p>
      default argument force set to 0
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see #ExternalsListGetObject(java.lang.Integer)
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#ExternalsListGetObject"> Method ExternalsListGetObject</A>
+     @see #ExternalsGetObject(java.lang.Integer)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#ExternalsGetObject"> Method ExternalsGetObject</A>
     */
-    public com.intersys.objects.Oid ExternalsListGetObject () throws com.intersys.objects.CacheException {
+    public com.intersys.objects.Oid ExternalsGetObject () throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("ExternalsListGetObject",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("ExternalsGetObject",args,com.intersys.objects.Database.RET_PRIM);
         return res.getOid();
     }
     /**
-     <p>Runs method ExternalsListGetObject in Cache.</p>
+     <p>Runs method ExternalsGetObject in Cache.</p>
      @param force represented as java.lang.Integer
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#ExternalsListGetObject"> Method ExternalsListGetObject</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#ExternalsGetObject"> Method ExternalsGetObject</A>
     */
-    public com.intersys.objects.Oid ExternalsListGetObject (java.lang.Integer force) throws com.intersys.objects.CacheException {
+    public com.intersys.objects.Oid ExternalsGetObject (java.lang.Integer force) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(force);
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("ExternalsListGetObject",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("ExternalsGetObject",args,com.intersys.objects.Database.RET_PRIM);
         return res.getOid();
     }
     /**
-     <p>Runs method ExternalsListGetObjectId in Cache.</p>
+     <p>Runs method ExternalsGetObjectId in Cache.</p>
      default argument force set to 0
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see #ExternalsListGetObjectId(java.lang.Integer)
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#ExternalsListGetObjectId"> Method ExternalsListGetObjectId</A>
+     @see #ExternalsGetObjectId(java.lang.Integer)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#ExternalsGetObjectId"> Method ExternalsGetObjectId</A>
     */
-    public java.lang.String ExternalsListGetObjectId () throws com.intersys.objects.CacheException {
+    public java.lang.String ExternalsGetObjectId () throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("ExternalsListGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("ExternalsGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
         return res.getString();
     }
     /**
-     <p>Runs method ExternalsListGetObjectId in Cache.</p>
+     <p>Runs method ExternalsGetObjectId in Cache.</p>
      @param force represented as java.lang.Integer
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#ExternalsListGetObjectId"> Method ExternalsListGetObjectId</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#ExternalsGetObjectId"> Method ExternalsGetObjectId</A>
     */
-    public java.lang.String ExternalsListGetObjectId (java.lang.Integer force) throws com.intersys.objects.CacheException {
+    public java.lang.String ExternalsGetObjectId (java.lang.Integer force) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(force);
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("ExternalsListGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("ExternalsGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
         return res.getString();
     }
     /**
-     <p>Runs method ExternalsListIsValid in Cache.</p>
+     <p>Runs method ExternalsIsValid in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param value represented as java.lang.String
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#ExternalsListIsValid"> Method ExternalsListIsValid</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#ExternalsIsValid"> Method ExternalsIsValid</A>
     */
-    public static void ExternalsListIsValid (com.intersys.objects.Database db, java.lang.String value) throws com.intersys.objects.CacheException {
+    public static void ExternalsIsValid (com.intersys.objects.Database db, java.lang.String value) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(value);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"ExternalsListIsValid",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"ExternalsIsValid",args,com.intersys.objects.Database.RET_PRIM);
         db.parseStatus(res);
         return;
     }
@@ -1487,64 +1487,64 @@ after the index filing is completed.
         return (portfolio.UserPortfolio)(cobj.newJavaInstance());
     }
     /**
-     <p>Runs method InternalsListGetObject in Cache.</p>
+     <p>Runs method InternalsGetObject in Cache.</p>
      default argument force set to 0
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see #InternalsListGetObject(java.lang.Integer)
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#InternalsListGetObject"> Method InternalsListGetObject</A>
+     @see #InternalsGetObject(java.lang.Integer)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#InternalsGetObject"> Method InternalsGetObject</A>
     */
-    public com.intersys.objects.Oid InternalsListGetObject () throws com.intersys.objects.CacheException {
+    public com.intersys.objects.Oid InternalsGetObject () throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("InternalsListGetObject",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("InternalsGetObject",args,com.intersys.objects.Database.RET_PRIM);
         return res.getOid();
     }
     /**
-     <p>Runs method InternalsListGetObject in Cache.</p>
+     <p>Runs method InternalsGetObject in Cache.</p>
      @param force represented as java.lang.Integer
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#InternalsListGetObject"> Method InternalsListGetObject</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#InternalsGetObject"> Method InternalsGetObject</A>
     */
-    public com.intersys.objects.Oid InternalsListGetObject (java.lang.Integer force) throws com.intersys.objects.CacheException {
+    public com.intersys.objects.Oid InternalsGetObject (java.lang.Integer force) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(force);
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("InternalsListGetObject",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("InternalsGetObject",args,com.intersys.objects.Database.RET_PRIM);
         return res.getOid();
     }
     /**
-     <p>Runs method InternalsListGetObjectId in Cache.</p>
+     <p>Runs method InternalsGetObjectId in Cache.</p>
      default argument force set to 0
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see #InternalsListGetObjectId(java.lang.Integer)
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#InternalsListGetObjectId"> Method InternalsListGetObjectId</A>
+     @see #InternalsGetObjectId(java.lang.Integer)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#InternalsGetObjectId"> Method InternalsGetObjectId</A>
     */
-    public java.lang.String InternalsListGetObjectId () throws com.intersys.objects.CacheException {
+    public java.lang.String InternalsGetObjectId () throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("InternalsListGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("InternalsGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
         return res.getString();
     }
     /**
-     <p>Runs method InternalsListGetObjectId in Cache.</p>
+     <p>Runs method InternalsGetObjectId in Cache.</p>
      @param force represented as java.lang.Integer
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#InternalsListGetObjectId"> Method InternalsListGetObjectId</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#InternalsGetObjectId"> Method InternalsGetObjectId</A>
     */
-    public java.lang.String InternalsListGetObjectId (java.lang.Integer force) throws com.intersys.objects.CacheException {
+    public java.lang.String InternalsGetObjectId (java.lang.Integer force) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(force);
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("InternalsListGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("InternalsGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
         return res.getString();
     }
     /**
-     <p>Runs method InternalsListIsValid in Cache.</p>
+     <p>Runs method InternalsIsValid in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param value represented as java.lang.String
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#InternalsListIsValid"> Method InternalsListIsValid</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#InternalsIsValid"> Method InternalsIsValid</A>
     */
-    public static void InternalsListIsValid (com.intersys.objects.Database db, java.lang.String value) throws com.intersys.objects.CacheException {
+    public static void InternalsIsValid (com.intersys.objects.Database db, java.lang.String value) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(value);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"InternalsListIsValid",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"InternalsIsValid",args,com.intersys.objects.Database.RET_PRIM);
         db.parseStatus(res);
         return;
     }

@@ -8,4 +8,5 @@ public abstract class BPTAbstract {
 	
 	protected Matrix Covariances = null;
 	protected Matrix ExpectedReturns = null;
+	protected Matrix LagrangeWeigths = null;
 }

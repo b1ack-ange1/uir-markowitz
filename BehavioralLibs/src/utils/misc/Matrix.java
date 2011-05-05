@@ -63,6 +63,18 @@ public class Matrix {
 		return Values;
 	}
 	
+	public double[] getRow (int index){
+		return Values[index];
+	}
+	
+	public double[] getCol (int index){
+		double[] res = new double[Rows];
+		for(int i = 0; i < Rows; ++i){
+			res[i] = Values [i][index];
+		}
+		return res;
+	}
+	
 	public Matrix add (Matrix operand) throws MatricesNotMatch{
 		if ((Cols != operand.Cols) || (Rows != operand.Rows)) throw new MatricesNotMatch();
 		Matrix result = new Matrix(Rows, Cols);
@@ -224,6 +236,16 @@ public class Matrix {
 
 		Inverted = result;
 		result.Inverted = this;
+		return result;
+	}
+	
+	public Matrix copy(){
+		Matrix result = new Matrix(Rows, Cols);
+		for(int i = 0; i < Rows; ++i){
+			for(int j = 0; j < Cols; ++j){
+				result.Values[i][j] = Values[i][j];
+			}
+		}
 		return result;
 	}
 

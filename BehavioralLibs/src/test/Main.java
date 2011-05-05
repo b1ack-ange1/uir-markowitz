@@ -3,6 +3,7 @@ package test;
 import exceptions.*;
 import utils.misc.*;
 import utils.maxwealth.*;
+import utils.minloss.*;
 
 public class Main {
 
@@ -29,11 +30,11 @@ public class Main {
 		rets[2][0] = 0.25;
 		Matrix returns = new Matrix(rets);
 		
-		BPTMaxWealth dc = BPTMaxWealth.getInstance(1);
+		BPTMinLoss dc = BPTMinLoss.getInstance(1);
 		dc.setCovariances(covars);
 		dc.setExpectedReturns(returns);
-		
 		System.out.println((dc.getLagrangeWeights()).toString());
+		System.out.println((dc.getOptimalH(dc.getLagrangeWeights())));
 	}
 
 }

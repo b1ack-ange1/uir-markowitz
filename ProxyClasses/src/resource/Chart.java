@@ -8,7 +8,7 @@ package resource;
 **/
 
 public class Chart extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 6955;
+    private static final long serialVersionUID = 975;
     private static String CACHE_CLASS_NAME = "resource.Chart";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -778,9 +778,9 @@ public class Chart extends com.intersys.classes.Persistent {
     public static void checkAllMethods(com.intersys.objects.Database db ) throws com.intersys.objects.CacheException {
         checkAllMethods(db, CACHE_CLASS_NAME, Chart.class);
     }
-    private static int ii_Code = 6;
+    private static int ii_Code = 8;
     private static int jj_Code = 0;
-    private static int kk_Code = 6;
+    private static int kk_Code = 8;
     /**
        Verifies that indexes for property <code>Code</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -833,9 +833,9 @@ public class Chart extends com.intersys.classes.Persistent {
         return;
     }
 
-    private static int ii_Cost = 2;
+    private static int ii_Cost = 3;
     private static int jj_Cost = 0;
-    private static int kk_Cost = 2;
+    private static int kk_Cost = 3;
     /**
        Verifies that indexes for property <code>Cost</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -888,9 +888,53 @@ public class Chart extends com.intersys.classes.Persistent {
         return;
     }
 
-    private static int ii_Name = 3;
+    private static int ii_IOs = 1;
+    private static int jj_IOs = 0;
+    private static int kk_IOs = 1;
+    /**
+       Verifies that indexes for property <code>IOs</code> in
+       zObjVal are the same as in Cache. It does not return anything
+       but it throws an exception in case of inconsistency.
+
+       <p> Please note, that if there is any inconsistency in zObjVal
+       indexes this is fatal and class can not work correctly and must
+       be regenerated.
+
+       @param db Database used for connection. Note that if you are
+       using multiple databases the class can be consistent with one
+       and inconsistent with another.
+       @throws com.intersys.objects.InvalidClassException if any inconsistency is found.
+       @throws com.intersys.objects.CacheException if any error occurred during
+       verification, e.g. communication error with Database.
+       @see #checkAllFieldsValid
+
+     */
+    public static void checkIOsValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
+        checkZobjValid(db, CACHE_CLASS_NAME, "IOs",ii_IOs, jj_IOs, kk_IOs);
+    }
+    /**
+       Returns value of property <code>IOs</code>.
+       <Description>
+       @return current value of <code>IOs</code> represented as
+       <code>com.intersys.classes.RelationshipObject</code>
+
+       @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#IOs"> IOs</A>
+    */
+    public com.intersys.classes.RelationshipObject getIOs()  throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_IOs,
+                                                jj_IOs,
+                                                com.intersys.objects.Database.RET_OBJECT,
+                                                "IOs");
+        com.intersys.cache.CacheObject cobj = dh.getCacheObject();
+        if (cobj == null)
+            return null;
+        return (com.intersys.classes.RelationshipObject)(cobj.newJavaInstance());
+    }
+
+    private static int ii_Name = 5;
     private static int jj_Name = 0;
-    private static int kk_Name = 3;
+    private static int kk_Name = 5;
     /**
        Verifies that indexes for property <code>Name</code> in
        zObjVal are the same as in Cache. It does not return anything
@@ -943,11 +987,11 @@ public class Chart extends com.intersys.classes.Persistent {
         return;
     }
 
-    private static int ii_hrefIO = 1;
-    private static int jj_hrefIO = 0;
-    private static int kk_hrefIO = 1;
+    private static int ii_Portfolios = 9;
+    private static int jj_Portfolios = 0;
+    private static int kk_Portfolios = 9;
     /**
-       Verifies that indexes for property <code>hrefIO</code> in
+       Verifies that indexes for property <code>Portfolios</code> in
        zObjVal are the same as in Cache. It does not return anything
        but it throws an exception in case of inconsistency.
 
@@ -964,67 +1008,23 @@ public class Chart extends com.intersys.classes.Persistent {
        @see #checkAllFieldsValid
 
      */
-    public static void checkhrefIOValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
-        checkZobjValid(db, CACHE_CLASS_NAME, "hrefIO",ii_hrefIO, jj_hrefIO, kk_hrefIO);
+    public static void checkPortfoliosValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
+        checkZobjValid(db, CACHE_CLASS_NAME, "Portfolios",ii_Portfolios, jj_Portfolios, kk_Portfolios);
     }
     /**
-       Returns value of property <code>hrefIO</code>.
+       Returns value of property <code>Portfolios</code>.
        <Description>
-       @return current value of <code>hrefIO</code> represented as
+       @return current value of <code>Portfolios</code> represented as
        <code>com.intersys.classes.RelationshipObject</code>
 
        @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#hrefIO"> hrefIO</A>
+       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#Portfolios"> Portfolios</A>
     */
-    public com.intersys.classes.RelationshipObject gethrefIO()  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_hrefIO,
-                                                jj_hrefIO,
+    public com.intersys.classes.RelationshipObject getPortfolios()  throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_Portfolios,
+                                                jj_Portfolios,
                                                 com.intersys.objects.Database.RET_OBJECT,
-                                                "hrefIO");
-        com.intersys.cache.CacheObject cobj = dh.getCacheObject();
-        if (cobj == null)
-            return null;
-        return (com.intersys.classes.RelationshipObject)(cobj.newJavaInstance());
-    }
-
-    private static int ii_hrefPortfolio = 8;
-    private static int jj_hrefPortfolio = 0;
-    private static int kk_hrefPortfolio = 8;
-    /**
-       Verifies that indexes for property <code>hrefPortfolio</code> in
-       zObjVal are the same as in Cache. It does not return anything
-       but it throws an exception in case of inconsistency.
-
-       <p> Please note, that if there is any inconsistency in zObjVal
-       indexes this is fatal and class can not work correctly and must
-       be regenerated.
-
-       @param db Database used for connection. Note that if you are
-       using multiple databases the class can be consistent with one
-       and inconsistent with another.
-       @throws com.intersys.objects.InvalidClassException if any inconsistency is found.
-       @throws com.intersys.objects.CacheException if any error occurred during
-       verification, e.g. communication error with Database.
-       @see #checkAllFieldsValid
-
-     */
-    public static void checkhrefPortfolioValid (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
-        checkZobjValid(db, CACHE_CLASS_NAME, "hrefPortfolio",ii_hrefPortfolio, jj_hrefPortfolio, kk_hrefPortfolio);
-    }
-    /**
-       Returns value of property <code>hrefPortfolio</code>.
-       <Description>
-       @return current value of <code>hrefPortfolio</code> represented as
-       <code>com.intersys.classes.RelationshipObject</code>
-
-       @throws com.intersys.objects.CacheException if any error occurred during value retrieval.
-       @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#hrefPortfolio"> hrefPortfolio</A>
-    */
-    public com.intersys.classes.RelationshipObject gethrefPortfolio()  throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder dh = mInternal.getProperty(ii_hrefPortfolio,
-                                                jj_hrefPortfolio,
-                                                com.intersys.objects.Database.RET_OBJECT,
-                                                "hrefPortfolio");
+                                                "Portfolios");
         com.intersys.cache.CacheObject cobj = dh.getCacheObject();
         if (cobj == null)
             return null;
@@ -1750,6 +1750,68 @@ after the index filing is completed.
         return (resource.Chart)(cobj.newJavaInstance());
     }
     /**
+     <p>Runs method IOsGetObject in Cache.</p>
+     default argument force set to 0
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see #IOsGetObject(java.lang.Integer)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#IOsGetObject"> Method IOsGetObject</A>
+    */
+    public com.intersys.objects.Oid IOsGetObject () throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("IOsGetObject",args,com.intersys.objects.Database.RET_PRIM);
+        return res.getOid();
+    }
+    /**
+     <p>Runs method IOsGetObject in Cache.</p>
+     @param force represented as java.lang.Integer
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#IOsGetObject"> Method IOsGetObject</A>
+    */
+    public com.intersys.objects.Oid IOsGetObject (java.lang.Integer force) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(force);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("IOsGetObject",args,com.intersys.objects.Database.RET_PRIM);
+        return res.getOid();
+    }
+    /**
+     <p>Runs method IOsGetObjectId in Cache.</p>
+     default argument force set to 0
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see #IOsGetObjectId(java.lang.Integer)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#IOsGetObjectId"> Method IOsGetObjectId</A>
+    */
+    public java.lang.String IOsGetObjectId () throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("IOsGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
+        return res.getString();
+    }
+    /**
+     <p>Runs method IOsGetObjectId in Cache.</p>
+     @param force represented as java.lang.Integer
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#IOsGetObjectId"> Method IOsGetObjectId</A>
+    */
+    public java.lang.String IOsGetObjectId (java.lang.Integer force) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(force);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("IOsGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
+        return res.getString();
+    }
+    /**
+     <p>Runs method IOsIsValid in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @param value represented as java.lang.String
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#IOsIsValid"> Method IOsIsValid</A>
+    */
+    public static void IOsIsValid (com.intersys.objects.Database db, java.lang.String value) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
+        args[0] = new com.intersys.cache.Dataholder(value);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"IOsIsValid",args,com.intersys.objects.Database.RET_PRIM);
+        db.parseStatus(res);
+        return;
+    }
+    /**
      <p>Runs method NameDisplayToLogical in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param _val represented as java.lang.String
@@ -1790,126 +1852,64 @@ after the index filing is completed.
         return res.getString();
     }
     /**
-     <p>Runs method hrefIOGetObject in Cache.</p>
+     <p>Runs method PortfoliosGetObject in Cache.</p>
      default argument force set to 0
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see #hrefIOGetObject(java.lang.Integer)
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#hrefIOGetObject"> Method hrefIOGetObject</A>
+     @see #PortfoliosGetObject(java.lang.Integer)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#PortfoliosGetObject"> Method PortfoliosGetObject</A>
     */
-    public com.intersys.objects.Oid hrefIOGetObject () throws com.intersys.objects.CacheException {
+    public com.intersys.objects.Oid PortfoliosGetObject () throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("hrefIOGetObject",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("PortfoliosGetObject",args,com.intersys.objects.Database.RET_PRIM);
         return res.getOid();
     }
     /**
-     <p>Runs method hrefIOGetObject in Cache.</p>
+     <p>Runs method PortfoliosGetObject in Cache.</p>
      @param force represented as java.lang.Integer
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#hrefIOGetObject"> Method hrefIOGetObject</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#PortfoliosGetObject"> Method PortfoliosGetObject</A>
     */
-    public com.intersys.objects.Oid hrefIOGetObject (java.lang.Integer force) throws com.intersys.objects.CacheException {
+    public com.intersys.objects.Oid PortfoliosGetObject (java.lang.Integer force) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(force);
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("hrefIOGetObject",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("PortfoliosGetObject",args,com.intersys.objects.Database.RET_PRIM);
         return res.getOid();
     }
     /**
-     <p>Runs method hrefIOGetObjectId in Cache.</p>
+     <p>Runs method PortfoliosGetObjectId in Cache.</p>
      default argument force set to 0
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see #hrefIOGetObjectId(java.lang.Integer)
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#hrefIOGetObjectId"> Method hrefIOGetObjectId</A>
+     @see #PortfoliosGetObjectId(java.lang.Integer)
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#PortfoliosGetObjectId"> Method PortfoliosGetObjectId</A>
     */
-    public java.lang.String hrefIOGetObjectId () throws com.intersys.objects.CacheException {
+    public java.lang.String PortfoliosGetObjectId () throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("hrefIOGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("PortfoliosGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
         return res.getString();
     }
     /**
-     <p>Runs method hrefIOGetObjectId in Cache.</p>
+     <p>Runs method PortfoliosGetObjectId in Cache.</p>
      @param force represented as java.lang.Integer
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#hrefIOGetObjectId"> Method hrefIOGetObjectId</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#PortfoliosGetObjectId"> Method PortfoliosGetObjectId</A>
     */
-    public java.lang.String hrefIOGetObjectId (java.lang.Integer force) throws com.intersys.objects.CacheException {
+    public java.lang.String PortfoliosGetObjectId (java.lang.Integer force) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(force);
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("hrefIOGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("PortfoliosGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
         return res.getString();
     }
     /**
-     <p>Runs method hrefIOIsValid in Cache.</p>
+     <p>Runs method PortfoliosIsValid in Cache.</p>
      @param db represented as com.intersys.objects.Database
      @param value represented as java.lang.String
      @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#hrefIOIsValid"> Method hrefIOIsValid</A>
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#PortfoliosIsValid"> Method PortfoliosIsValid</A>
     */
-    public static void hrefIOIsValid (com.intersys.objects.Database db, java.lang.String value) throws com.intersys.objects.CacheException {
+    public static void PortfoliosIsValid (com.intersys.objects.Database db, java.lang.String value) throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
         args[0] = new com.intersys.cache.Dataholder(value);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"hrefIOIsValid",args,com.intersys.objects.Database.RET_PRIM);
-        db.parseStatus(res);
-        return;
-    }
-    /**
-     <p>Runs method hrefPortfolioGetObject in Cache.</p>
-     default argument force set to 0
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see #hrefPortfolioGetObject(java.lang.Integer)
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#hrefPortfolioGetObject"> Method hrefPortfolioGetObject</A>
-    */
-    public com.intersys.objects.Oid hrefPortfolioGetObject () throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("hrefPortfolioGetObject",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getOid();
-    }
-    /**
-     <p>Runs method hrefPortfolioGetObject in Cache.</p>
-     @param force represented as java.lang.Integer
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#hrefPortfolioGetObject"> Method hrefPortfolioGetObject</A>
-    */
-    public com.intersys.objects.Oid hrefPortfolioGetObject (java.lang.Integer force) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(force);
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("hrefPortfolioGetObject",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getOid();
-    }
-    /**
-     <p>Runs method hrefPortfolioGetObjectId in Cache.</p>
-     default argument force set to 0
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see #hrefPortfolioGetObjectId(java.lang.Integer)
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#hrefPortfolioGetObjectId"> Method hrefPortfolioGetObjectId</A>
-    */
-    public java.lang.String hrefPortfolioGetObjectId () throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("hrefPortfolioGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getString();
-    }
-    /**
-     <p>Runs method hrefPortfolioGetObjectId in Cache.</p>
-     @param force represented as java.lang.Integer
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#hrefPortfolioGetObjectId"> Method hrefPortfolioGetObjectId</A>
-    */
-    public java.lang.String hrefPortfolioGetObjectId (java.lang.Integer force) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(force);
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("hrefPortfolioGetObjectId",args,com.intersys.objects.Database.RET_PRIM);
-        return res.getString();
-    }
-    /**
-     <p>Runs method hrefPortfolioIsValid in Cache.</p>
-     @param db represented as com.intersys.objects.Database
-     @param value represented as java.lang.String
-     @throws com.intersys.objects.CacheException if any error occured while running the method.
-     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.Chart#hrefPortfolioIsValid"> Method hrefPortfolioIsValid</A>
-    */
-    public static void hrefPortfolioIsValid (com.intersys.objects.Database db, java.lang.String value) throws com.intersys.objects.CacheException {
-        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[1];
-        args[0] = new com.intersys.cache.Dataholder(value);
-        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"hrefPortfolioIsValid",args,com.intersys.objects.Database.RET_PRIM);
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"PortfoliosIsValid",args,com.intersys.objects.Database.RET_PRIM);
         db.parseStatus(res);
         return;
     }
