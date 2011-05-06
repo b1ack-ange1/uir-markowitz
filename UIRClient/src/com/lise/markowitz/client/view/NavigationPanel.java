@@ -3,6 +3,7 @@ package com.lise.markowitz.client.view;
 import com.google.gwt.core.client.GWT;
 import com.lise.markowitz.client.db.datasources.NavigationTreeDataSource;
 import com.lise.markowitz.client.form.MethodPanel;
+import com.lise.markowitz.client.form.PortfolioPanel;
 import com.lise.markowitz.client.form.StatsPanel;
 import com.lise.markowitz.client.form.WelcomePanel;
 import com.lise.markowitz.client.form.WorkPanel;
@@ -62,7 +63,9 @@ public class NavigationPanel extends VLayout {
 
 				String title = event.getLeaf().getAttributeAsString("name");
 				String code = event.getLeaf().getAttributeAsString("code");
-
+				String parentId = event.getLeaf().getAttributeAsString(
+						"parentId");
+				SC.logWarn("parentId = " + parentId);
 				WorkPanel panel = null;
 
 				if (code.equalsIgnoreCase("values")
@@ -80,9 +83,22 @@ public class NavigationPanel extends VLayout {
 					panel = new MethodPanel(code);
 
 				}
+				if (parentId.equalsIgnoreCase("2")) {
+					SC.logWarn("check1.5");
+					try {
+						panel = new PortfolioPanel(code);
+					} catch (Exception e) {
+						SC.logWarn(e.getMessage());
+					}
+				}
+
+				SC.logWarn("check2");
 				panel.setGroupTitle(title);
-				((UniversalTabPanel) MainDynamicPanel.getInstance().getMainArea()).addMember(panel);
-								
+				SC.logWarn("check3");
+				((UniversalTabPanel) MainDynamicPanel.getInstance()
+						.getMainArea()).addMember(panel);
+				SC.logWarn("check4");
+
 			}
 
 		});
