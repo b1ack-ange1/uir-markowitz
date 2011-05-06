@@ -8,5 +8,22 @@ public abstract class BPTAbstract {
 	
 	protected Matrix Covariances = null;
 	protected Matrix ExpectedReturns = null;
-	protected Matrix LagrangeWeigths = null;
+	protected Matrix LagrangeWeights = null;
+	protected Matrix ScanWeights = null;
+	
+	public double getH(){
+		return H;
+	}
+	
+	public double getAlpha(){
+		return Alpha;
+	}
+	
+	public Matrix getCovariances(){
+		return Covariances;
+	}
+	
+	public Matrix getExpectedReturns(){
+		return ExpectedReturns;
+	}
 }

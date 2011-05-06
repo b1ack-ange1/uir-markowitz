@@ -31,10 +31,13 @@ public class Main {
 		Matrix returns = new Matrix(rets);
 		
 		BPTMinLoss dc = BPTMinLoss.getInstance(1);
+		/*
+		System.out.println((dc.getOptimalH(dc.getLagrangeWeights())));*/
+		//BPTMaxWealth dc = BPTMaxWealth.getInstance(1);
 		dc.setCovariances(covars);
 		dc.setExpectedReturns(returns);
-		System.out.println((dc.getLagrangeWeights()).toString());
-		System.out.println((dc.getOptimalH(dc.getLagrangeWeights())));
+		System.out.println(dc.getLagrangeWeights());
+		System.out.println(dc.getScanWeights());
 	}
 
 }
