@@ -10,10 +10,10 @@ public class ScanMaxWealth extends ScanMethod{
 	public ScanMaxWealth(BPTMaxWealth bmw){
 		DataContainer = bmw;
 		N = (DataContainer.getExpectedReturns()).getRows();
-		Epsilon = 0.02;
+		init();
 	}
 	
-	protected double getScanAimFunction(Matrix w){
+	protected double getAimFunction(Matrix w){
 		double result = 0.0;
 		try {
 			result = (((w.getTransposed()).multiply(DataContainer.getExpectedReturns())).getValues())[0][0];

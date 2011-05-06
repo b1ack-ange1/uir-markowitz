@@ -11,6 +11,8 @@ public abstract class PeanoMethod {
 	protected int N;
 	protected double Epsilon;
 	
+	protected abstract double getAimFunction(Matrix x);
+	
 	protected Matrix getPeaks(double v){ 
 		double[][] resVals = new double[S][1];
 		double temp;
@@ -53,9 +55,5 @@ public abstract class PeanoMethod {
 	
 	protected double getScanAimFunction(double v){
 		return this.getAimFunction(this.getHyperCubeCenter(this.getPeaks(v)));
-	}
-	
-	protected double getAimFunction(Matrix x){
-		return 0.0;
 	}
 }

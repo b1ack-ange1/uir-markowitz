@@ -4,6 +4,10 @@ import exceptions.MatricesNotMatch;
 import utils.misc.Matrix;
 import utils.optimization.PeanoMethod;
 
+/**
+ * @todo доделать родителя. когда-нибудь :)
+ */
+
 public class PeanoMaxWealth extends PeanoMethod{
 	private BPTMaxWealth DataContainer;
 	private final double OptConst = 200.0;

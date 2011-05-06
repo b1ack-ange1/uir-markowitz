@@ -12,13 +12,13 @@ public class ScanMinLoss extends ScanMethod{
 	public ScanMinLoss(BPTMinLoss bml){
 		DataContainer = bml;
 		N = (DataContainer.getExpectedReturns()).getRows();
-		Epsilon = 0.02;
+		init();
 	}
 
-	protected double getScanAimFunction(Matrix w){
+	protected double getAimFunction(Matrix w){
 		double result = 0.0;
 		try {
-			if (!Double.isNaN(AlphaFunc)) AlphaFunc = (NormalDistribution.singleton()).getCoordinate(DataContainer.getAlpha());
+			if (Double.isNaN(AlphaFunc)) AlphaFunc = (NormalDistribution.singleton()).getCoordinate(DataContainer.getFailingProbability());
 			
 			result = (((w.getTransposed()).multiply(DataContainer.getExpectedReturns())).getValues())[0][0];
 			result += AlphaFunc * Math.sqrt(((((w.getTransposed()).multiply(DataContainer.getCovariances())).multiply(w)).getValues())[0][0]);
