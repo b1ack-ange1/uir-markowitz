@@ -109,16 +109,6 @@
 	</servlet-mapping>
 	<servlet>
 		<description></description>
-		<display-name>PortfolioInit</display-name>
-		<servlet-name>PortfolioInit</servlet-name>
-		<servlet-class>servlet.portfolio.PortfolioInit</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>PortfolioInit</servlet-name>
-		<url-pattern>/sc/PortfolioInit</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<description></description>
 		<display-name>TickerList</display-name>
 		<servlet-name>TickerList</servlet-name>
 		<servlet-class>servlet.ticker.TickerList</servlet-class>

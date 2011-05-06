@@ -47,7 +47,7 @@ public abstract class LISEServlet extends HttpServlet {
 
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		req.setCharacterEncoding("cp1251");
+		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		request.set(req);
 		String jRequest = "";

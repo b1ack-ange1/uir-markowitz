@@ -51,6 +51,7 @@ public class PortfolioNew extends LISEServlet {
 				port.addTicker((Ticker) Ticker.open(db, new Id(id)), weight);
 				System.out.println("ticker = " + id + " " + weight);
 			}
+			port.setName(name);
 			port.save();
 			auth = (AuthData) userinf.AuthData.getObjectByLogin(db, request
 					.get().getSession().getAttribute("username").toString());
