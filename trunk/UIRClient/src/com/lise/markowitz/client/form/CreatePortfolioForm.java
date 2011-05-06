@@ -1,20 +1,14 @@
 package com.lise.markowitz.client.form;
 
-import java.util.Date;
 import java.util.HashMap;
 
 import com.google.gwt.json.client.JSONArray;
-import com.google.gwt.json.client.JSONNumber;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONString;
-import com.google.gwt.user.client.Cookies;
-import com.google.gwt.user.client.Window.Location;
 import com.lise.markowitz.client.Configuration;
-import com.lise.markowitz.client.db.datasources.PortfolioInitDataSource;
 import com.lise.markowitz.client.db.datasources.TickerListDataSource;
 import com.lise.markowitz.client.localization.Localize;
 import com.lise.markowitz.client.utils.Logger;
-import com.lise.markowitz.client.view.ClientPanel;
 import com.lise.markowitz.client.view.MainDynamicPanel;
 import com.lise.markowitz.client.view.NavigationPanel;
 import com.smartgwt.client.data.RecordList;
@@ -25,7 +19,6 @@ import com.smartgwt.client.rpc.RPCResponse;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.DragDataAction;
 import com.smartgwt.client.types.HeaderControls;
-import com.smartgwt.client.types.ListGridFieldType;
 import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.Window;
 import com.smartgwt.client.widgets.events.ClickEvent;
@@ -85,7 +78,8 @@ public class CreatePortfolioForm extends Window {
 		ListGridField idField = new ListGridField("id", "Ticker");
 		ListGridField nameField = new ListGridField("name", "Name");
 		ListGridField weightField = new ListGridField("weight", "Weight");
-
+		weightField.setCanEdit(true);
+		
 		tickerGrid.setFields(idField, nameField);
 		tickerGrid.setDataSource(TickerListDataSource.getInstance());
 		tickerGrid.setAutoFetchData(true);
@@ -100,7 +94,7 @@ public class CreatePortfolioForm extends Window {
 		portfolioGrid.setCanAcceptDroppedRecords(true);
 		portfolioGrid.setDragDataAction(DragDataAction.MOVE);
 		portfolioGrid.setFields(idField, nameField, weightField);
-		portfolioGrid.setDataSource(PortfolioInitDataSource.getInstance());
+		//portfolioGrid.setDataSource(PortfolioInitDataSource.getInstance());
 
 		HLayout buttons = new HLayout(5);
 		buttons.setPadding(5);
@@ -117,7 +111,7 @@ public class CreatePortfolioForm extends Window {
 		cancel.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				hide();
-				
+
 			}
 		});
 
@@ -149,10 +143,10 @@ public class CreatePortfolioForm extends Window {
 
 		for (int i = 0; i < recordList.getLength(); i++) {
 			JSONObject record = new JSONObject();
-			record.put("id", new JSONString(recordList.get(i)
-					.getAttribute("cacheId")));
-			record.put("weight", new JSONString(recordList.get(i)
-					.getAttribute("weight")));
+			record.put("id",
+					new JSONString(recordList.get(i).getAttribute("cacheId")));
+			record.put("weight",
+					new JSONString(recordList.get(i).getAttribute("weight")));
 			records.set(i, record);
 		}
 		requestData.put("records", records);
@@ -162,7 +156,8 @@ public class CreatePortfolioForm extends Window {
 					RPCRequest request) {
 
 				hide();
-				//new PortfolioPickerForm().show();
+				((NavigationPanel) MainDynamicPanel.getInstance().getTree()).treeGrid
+						.fetchData();
 
 			}
 		}, requestParams);
