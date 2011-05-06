@@ -10,12 +10,9 @@ public abstract class BPTAbstract {
 	protected Matrix ExpectedReturns = null;
 	protected Matrix LagrangeWeights = null;
 	protected Matrix ScanWeights = null;
+	protected Matrix MCWeights = null;
 	
-	public double getH(){
-		return H;
-	}
-	
-	public double getAlpha(){
+	public double getFailingProbability(){
 		return Alpha;
 	}
 	

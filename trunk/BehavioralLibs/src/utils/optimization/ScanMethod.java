@@ -4,18 +4,22 @@ import utils.misc.Matrix;
 
 public abstract class ScanMethod {
 	protected int N;
-	protected double Epsilon;
+	protected double Epsilon = 0.005;
 	protected double Step;
 	
-	protected ScanMethod(){
+	protected abstract double getAimFunction(Matrix w);
+	
+	protected void init(){
 		Step = Epsilon * Math.pow(N, 0.5);
+		double ints = Math.ceil(1.0 / Step);
+		Step = 1.0 / ints;
 	}
 	
 	public Matrix scan(){
 		double[] scanVals = new double[N];
 		double sum = 0.0;
-		double min = Double.NEGATIVE_INFINITY;
-		double tempMin;
+		double max = Double.NEGATIVE_INFINITY;
+		double tempMax;
 		Matrix temp, result = null;
 		boolean cont = true;
 		
@@ -25,9 +29,9 @@ public abstract class ScanMethod {
 			}
 			if (Math.round(sum * 1000) == 1000){
 				temp = new Matrix(scanVals);
-				tempMin = this.getScanAimFunction(temp);
-				if (tempMin > min){
-					min = tempMin;
+				tempMax = this.getAimFunction(temp);
+				if (tempMax > max){
+					max = tempMax;
 					result = temp.copy();
 				}
 			}
@@ -54,9 +58,4 @@ public abstract class ScanMethod {
 			}
 		}
 	}
-	
-	protected double getScanAimFunction(Matrix w){
-		return 0.0;
-	}
-	
 }

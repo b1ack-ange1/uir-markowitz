@@ -12,9 +12,13 @@ import utils.misc.*;
 public class BPTMinLoss extends BPTAbstract{
 
 	private static TreeMap<Integer, BPTMinLoss> _instances = new TreeMap<Integer, BPTMinLoss>();
-	public static BPTMinLoss getInstance(int portfolioID){
-		if (BPTMinLoss._instances.get(portfolioID) == null){
-			BPTMinLoss._instances.put(portfolioID, new BPTMinLoss());
+	public static BPTMinLoss getInstance(int portfolioID, double failingProbability){
+		BPTMinLoss inst = BPTMinLoss._instances.get(portfolioID);
+		if (inst == null){
+			BPTMinLoss._instances.put(portfolioID, new BPTMinLoss(failingProbability));
+		}
+		else if (inst.getFailingProbability() != failingProbability){
+			BPTMinLoss._instances.put(portfolioID, new BPTMinLoss(failingProbability));
 		}
 		return BPTMinLoss._instances.get(portfolioID);
 	}
@@ -27,19 +31,23 @@ public class BPTMinLoss extends BPTAbstract{
 	private double Sigma = Double.NaN;
 	private Double Epsilon;
 
-	private BPTMinLoss(){
+	private BPTMinLoss(double failingProbability){
 		Epsilon = 0.05;
-		Alpha = 0.15;
+		Alpha = failingProbability;
 	}
 
 	public void setCovariances(Matrix covs){
 		Covariances = covs;
 		LagrangeWeights = null;
+		ScanWeights = null;
+		MCWeights = null;
 	}
 
 	public void setExpectedReturns(Matrix costs){
 		ExpectedReturns = costs;
 		LagrangeWeights = null;
+		ScanWeights = null;
+		MCWeights = null;
 	}
 
 	private Matrix getLagrangeJacobian(Matrix x){
@@ -177,7 +185,7 @@ public class BPTMinLoss extends BPTAbstract{
 				diffVals = diff.getCol(0);
 				exit = true;
 				for (int i = 0; i < diff.getRows(); ++i){
-					exit = exit & (Math.abs(diffVals[i]) < Epsilon);
+					exit = (Math.abs(diffVals[i]) < Epsilon);
 					if (!exit) break;
 				}
 				if (exit) break;
@@ -200,7 +208,7 @@ public class BPTMinLoss extends BPTAbstract{
 		return LagrangeWeights;
 	}
 
-	public double getOptimalH(Matrix weights){
+	public double getOptimalSecurityLevel(Matrix weights){
 		if ((Covariances == null) || (ExpectedReturns == null)) return Double.NaN;
 		if ((weights.getRows() != ExpectedReturns.getRows()) || (weights.getCols() != 1)) return Double.NaN;
 		if (weights.getRows() != Covariances.getCols()) return Double.NaN;
@@ -230,5 +238,15 @@ public class BPTMinLoss extends BPTAbstract{
 		ScanWeights = scw.scan();
 		
 		return ScanWeights;
+	}
+	
+	public Matrix getMonteCarloWeights(){
+		if (MCWeights != null) return MCWeights;
+		if ((Covariances == null) || (ExpectedReturns == null)) return null;
+		
+		MonteCarloMinLoss mcw = new MonteCarloMinLoss(this);
+		MCWeights = mcw.scan();
+		
+		return MCWeights;
 	}
 }
