@@ -34,12 +34,12 @@ public class BPTMinLoss extends BPTAbstract{
 
 	public void setCovariances(Matrix covs){
 		Covariances = covs;
-		LagrangeWeigths = null;
+		LagrangeWeights = null;
 	}
 
 	public void setExpectedReturns(Matrix costs){
 		ExpectedReturns = costs;
-		LagrangeWeigths = null;
+		LagrangeWeights = null;
 	}
 
 	private Matrix getLagrangeJacobian(Matrix x){
@@ -49,6 +49,7 @@ public class BPTMinLoss extends BPTAbstract{
 		double underSqr = 0.0;
 		double[] ksiVals;
 		double[] invSigmaVals;
+		double[] invSigmaRetVals;
 		double[] xVals = x.getCol(0);
 		try {
 			if (Ksi == null){
@@ -60,11 +61,18 @@ public class BPTMinLoss extends BPTAbstract{
 			if (InvSigmaSums == null){
 				InvSigmaSums = (Covariances.getInvertible()).multiply(single);
 			}
+			if (InvSigmaRetSums == null){
+				InvSigmaRetSums = (Covariances.getInvertible()).multiply(ExpectedReturns);
+			}
 			if (Double.isNaN(Sigma)){
 				Sigma = ((((single.getTransposed()).multiply(Covariances.getInvertible())).multiply(single)).getValues())[0][0];
 			}
+			if (Double.isNaN(Beta)){
+				Beta = ((((single.getTransposed()).multiply(Covariances.getInvertible())).multiply(ExpectedReturns)).getValues())[0][0];
+			}
 			ksiVals = Ksi.getRow(0);
 			invSigmaVals = InvSigmaSums.getCol(0);
+			invSigmaRetVals = InvSigmaRetSums.getCol(0);
 
 			for (int i = 0; i < ExpectedReturns.getRows(); ++i){
 				underSqr += ksiVals[i] * xVals[i] * xVals[i];
@@ -73,15 +81,9 @@ public class BPTMinLoss extends BPTAbstract{
 
 			for (int i = 0; i < Covariances.getRows(); ++i){
 				for (int j = 0; j < Covariances.getCols(); ++j){
-					//матрица симметричная. сокращаем количество операций
-					if (i > j){
-						vals[i][j] = vals[j][i];
-					}
-					else{
-						vals[i][j] = ((xVals[j] *ksiVals[j]) / (underSqr * AlphaFunc)) * ((-(AlphaFunc / Sigma)) * ((xVals[j] *ksiVals[j]) / underSqr)) * invSigmaVals[i];
-						if (i == j){
-							vals[i][j] -= 1.0;
-						}
+					vals[i][j] = ((xVals[j] * ksiVals[j]) / (underSqr * AlphaFunc)) * (invSigmaRetVals[i] - ((Beta * invSigmaVals[i]) / Sigma));
+					if (i == j){
+						vals[i][j] -= 1.0;
 					}
 				}
 			}
@@ -159,19 +161,19 @@ public class BPTMinLoss extends BPTAbstract{
 	}
 
 	public Matrix getLagrangeWeights(){
-		if (LagrangeWeigths != null) return LagrangeWeigths;
+		if (LagrangeWeights != null) return LagrangeWeights;
 		if ((Covariances == null) || (ExpectedReturns == null)) return null;
 
 		int iterations = 0;
 		boolean exit;
 		double[] diffVals;
 		Matrix diff;
-		LagrangeWeigths = new Matrix(ExpectedReturns.getRows(), 1, 0.5, true);
+		LagrangeWeights = new Matrix(ExpectedReturns.getRows(), 1, 1.5, true);
 		try {
 			while (true){
-				Matrix prev = LagrangeWeigths.copy();
-				LagrangeWeigths = prev.sub(((this.getLagrangeJacobian(prev)).getInvertible()).multiply(this.getLagrangeFunction(prev)));
-				diff = LagrangeWeigths.sub(prev);
+				Matrix prev = LagrangeWeights.copy();
+				LagrangeWeights = prev.sub(((this.getLagrangeJacobian(prev)).getInvertible()).multiply(this.getLagrangeFunction(prev)));
+				diff = LagrangeWeights.sub(prev);
 				diffVals = diff.getCol(0);
 				exit = true;
 				for (int i = 0; i < diff.getRows(); ++i){
@@ -195,7 +197,7 @@ public class BPTMinLoss extends BPTAbstract{
 			e.printStackTrace();
 		}
 
-		return LagrangeWeigths;
+		return LagrangeWeights;
 	}
 
 	public double getOptimalH(Matrix weights){
@@ -218,5 +220,15 @@ public class BPTMinLoss extends BPTAbstract{
 		}
 
 		return result;
+	}
+	
+	public Matrix getScanWeights(){
+		if (ScanWeights != null) return ScanWeights;
+		if ((Covariances == null) || (ExpectedReturns == null)) return null;
+		
+		ScanMinLoss scw = new ScanMinLoss(this);
+		ScanWeights = scw.scan();
+		
+		return ScanWeights;
 	}
 }

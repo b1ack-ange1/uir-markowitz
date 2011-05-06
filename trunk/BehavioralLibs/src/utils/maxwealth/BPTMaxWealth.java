@@ -21,19 +21,22 @@ public class BPTMaxWealth extends BPTAbstract{
 	private double ImpliedRisk = Double.NaN;
 	
 	private BPTMaxWealth(){
-		
+		H = - 0.10;
+		Alpha = 0.05;
 	}
 	
 	public void setCovariances(Matrix covs){
 		Covariances = covs;
 		ImpliedRisk = Double.NaN;
-		LagrangeWeigths = null;
+		LagrangeWeights = null;
+		ScanWeights = null;
 	}
 	
 	public void setExpectedReturns(Matrix costs){
 		ExpectedReturns = costs;
 		ImpliedRisk = Double.NaN;
-		LagrangeWeigths = null;
+		LagrangeWeights = null;
+		ScanWeights = null;
 	}
 	
 	public double getImpliedRisk(){
@@ -69,8 +72,6 @@ public class BPTMaxWealth extends BPTAbstract{
 			kapa5 = (((single.getTransposed()).multiply(ro)).getValues())[0][0] / (sigma * sigma);
 			kapa4 = ((temp.getValues())[0][0] / sigma - kapa5 * beta) + kapa2;
 			
-			H = - 0.15;
-			Alpha = 0.2;
 			double funcAlphaOrig = (NormalDistribution.singleton()).getCoordinate(Alpha);
 			double funcAlpha = funcAlphaOrig * funcAlphaOrig;
 			//это именно квадратное уравнение
@@ -108,7 +109,7 @@ public class BPTMaxWealth extends BPTAbstract{
 	}
 	
 	public Matrix getLagrangeWeights(){
-		if (LagrangeWeigths != null) return LagrangeWeigths;
+		if (LagrangeWeights != null) return LagrangeWeights;
 		if ((Covariances == null) || (ExpectedReturns == null)) return null;
 		if (Double.isNaN(ImpliedRisk)){
 			ImpliedRisk = this.getImpliedRisk();
@@ -139,5 +140,18 @@ public class BPTMaxWealth extends BPTAbstract{
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public Matrix getScanWeights(){
+		if (ScanWeights != null) return ScanWeights;
+		if ((Covariances == null) || (ExpectedReturns == null)) return null;
+		if (Double.isNaN(ImpliedRisk)){
+			ImpliedRisk = this.getImpliedRisk();
+			if (Double.isNaN(ImpliedRisk)) return null;
+		}
+		ScanMaxWealth scw = new ScanMaxWealth(this);
+		ScanWeights = scw.scan();
+		
+		return ScanWeights;
 	}
 }

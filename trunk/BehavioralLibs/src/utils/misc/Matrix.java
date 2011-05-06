@@ -41,6 +41,15 @@ public class Matrix {
 		}
 	}
 	
+	public Matrix (double[] col){
+		Rows = col.length;
+		Cols = 1;
+		Values = new double[Rows][1];
+		for (int i = 0; i < Rows; ++i){
+			Values[i][0] = col[i];
+		}
+	}
+	
 	private double[][] copyValues(double[][] vals){
 		double[][] res = new double[vals.length][vals[0].length];
 		for (int i = 0; i < vals.length; ++i){
