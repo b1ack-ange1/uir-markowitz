@@ -8,7 +8,7 @@ package portfolio;
 **/
 
 public class UserPortfolio extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 6080;
+    private static final long serialVersionUID = 4902;
     private static String CACHE_CLASS_NAME = "portfolio.UserPortfolio";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -1768,10 +1768,13 @@ after the index filing is completed.
      @throws com.intersys.objects.CacheException if any error occured while running the method.
      @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=portfolio.UserPortfolio#getComposition"> Method getComposition</A>
     */
-    public void getComposition () throws com.intersys.objects.CacheException {
+    public java.util.List getComposition () throws com.intersys.objects.CacheException {
         com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
-        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("getComposition",args,com.intersys.objects.Database.RET_NONE);
-        return;
+        com.intersys.cache.Dataholder res=mInternal.runInstanceMethod("getComposition",args,com.intersys.objects.Database.RET_OBJECT);
+        com.intersys.cache.CacheObject cobj = res.getCacheObject();
+        if (cobj == null)
+            return null;
+        return (java.util.List)(cobj.newJavaInstance());
     }
     /**
      <p>Runs method getCovariances in Cache.</p>

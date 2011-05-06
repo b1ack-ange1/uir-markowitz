@@ -8,7 +8,7 @@ package resource;
 **/
 
 public class TickerCovariance extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 5241;
+    private static final long serialVersionUID = 1790;
     private static String CACHE_CLASS_NAME = "resource.TickerCovariance";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
