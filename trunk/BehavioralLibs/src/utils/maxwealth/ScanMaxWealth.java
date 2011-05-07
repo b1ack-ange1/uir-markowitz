@@ -10,6 +10,8 @@ public class ScanMaxWealth extends ScanMethod{
 	public ScanMaxWealth(BPTMaxWealth bmw){
 		DataContainer = bmw;
 		N = (DataContainer.getExpectedReturns()).getRows();
+		Epsilon = DataContainer.getScanEpsilon();
+		
 		init();
 	}
 	
