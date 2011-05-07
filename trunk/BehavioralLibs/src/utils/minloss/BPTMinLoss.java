@@ -89,7 +89,7 @@ public class BPTMinLoss extends BPTAbstract{
 
 			for (int i = 0; i < Covariances.getRows(); ++i){
 				for (int j = 0; j < Covariances.getCols(); ++j){
-					vals[i][j] = ((xVals[j] * ksiVals[j]) / (underSqr * AlphaFunc)) * (invSigmaRetVals[i] - ((Beta * invSigmaVals[i]) / Sigma));
+					vals[i][j] = ((xVals[j] * ksiVals[j]) / (underSqr * AlphaFunc)) * (((Beta * invSigmaVals[i]) / Sigma) - invSigmaRetVals[i]);
 					if (i == j){
 						vals[i][j] -= 1.0;
 					}
@@ -149,7 +149,7 @@ public class BPTMinLoss extends BPTAbstract{
 			funcHead = (underSqr / AlphaFunc);
 
 			for (int i = 0; i < ExpectedReturns.getRows(); ++i){
-				vals[i][0] = funcHead * ((InvSigmaRetSums.getValues())[i][0] - ((InvSigmaSums.getValues())[i][0] * ((Beta / Sigma) + (AlphaFunc / (Sigma * underSqr))))) - xVals[i];
+				vals[i][0] = funcHead * (((InvSigmaSums.getValues())[i][0] * ((Beta / Sigma) + (AlphaFunc / (Sigma * underSqr)))) - (InvSigmaRetSums.getValues())[i][0]) - xVals[i];
 			}
 		} catch (MatricesNotMatch e) {
 			// TODO Auto-generated catch block

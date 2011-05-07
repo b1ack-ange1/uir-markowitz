@@ -38,7 +38,7 @@ public class Main {
 		System.out.println(dc.getScanWeights());
 		System.out.println(dc.getMonteCarloWeights());
 		
-		System.out.println((dc.getOptimalSecurityLevel(dc.getLagrangeWeights().multiplyNumber(-1.0))));
+		System.out.println((dc.getOptimalSecurityLevel(dc.getLagrangeWeights())));
 		System.out.println((dc.getOptimalSecurityLevel(dc.getScanWeights())));
 		System.out.println((dc.getOptimalSecurityLevel(dc.getMonteCarloWeights())));
 	}
