@@ -29,10 +29,9 @@ public class BPTMinLoss extends BPTAbstract{
 	private double AlphaFunc = Double.NaN;
 	private double Beta = Double.NaN;
 	private double Sigma = Double.NaN;
-	private Double Epsilon;
+	private Double LagrangeEpsilon = 0.005;
 
 	private BPTMinLoss(double failingProbability){
-		Epsilon = 0.05;
 		Alpha = failingProbability;
 	}
 
@@ -48,6 +47,11 @@ public class BPTMinLoss extends BPTAbstract{
 		LagrangeWeights = null;
 		ScanWeights = null;
 		MCWeights = null;
+	}
+	
+	public void setLagrangeEpsilon(double epsilon){
+		LagrangeWeights = null;
+		LagrangeEpsilon = epsilon;
 	}
 
 	private Matrix getLagrangeJacobian(Matrix x){
@@ -185,7 +189,7 @@ public class BPTMinLoss extends BPTAbstract{
 				diffVals = diff.getCol(0);
 				exit = true;
 				for (int i = 0; i < diff.getRows(); ++i){
-					exit = (Math.abs(diffVals[i]) < Epsilon);
+					exit = (Math.abs(diffVals[i]) < LagrangeEpsilon);
 					if (!exit) break;
 				}
 				if (exit) break;

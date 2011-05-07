@@ -12,6 +12,8 @@ public class ScanMinLoss extends ScanMethod{
 	public ScanMinLoss(BPTMinLoss bml){
 		DataContainer = bml;
 		N = (DataContainer.getExpectedReturns()).getRows();
+		Epsilon = DataContainer.getScanEpsilon();
+		
 		init();
 	}
 

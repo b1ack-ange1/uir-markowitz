@@ -4,7 +4,7 @@ import utils.misc.Matrix;
 
 public abstract class ScanMethod {
 	protected int N;
-	protected double Epsilon = 0.005;
+	protected double Epsilon;
 	protected double Step;
 	
 	protected abstract double getAimFunction(Matrix w);
