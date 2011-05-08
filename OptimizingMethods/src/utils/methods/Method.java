@@ -135,4 +135,5 @@ public abstract class Method {
 			risk += x[i] * sumCovarIndex(i);
 		}
 	}
+
 }
