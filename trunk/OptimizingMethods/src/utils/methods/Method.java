@@ -128,12 +128,12 @@ public abstract class Method {
 	private void countRisk() {
 		risk = 0;
 		for (int i = 0; i < x.length; i++) {
-			risk += Math.sqrt(x[i]);
+			risk += Math.pow(x[i],2);
 		}
 
 		for (int i = 0; i < x.length; i++) {
 			risk += x[i] * sumCovarIndex(i);
 		}
 	}
-
+	
 }
