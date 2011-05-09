@@ -94,7 +94,7 @@ public class ArrowGurvic extends Method {
 			}
 
 			isTheEnd = stopCriteria();
-			isTheEnd = isTheEnd || (risk <= this.risk);
+			//isTheEnd = isTheEnd || (risk <= this.risk);
 			risk = this.risk;
 
 		}
