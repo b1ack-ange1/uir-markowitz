@@ -83,6 +83,10 @@ public class Zoitendake extends Method {
 				x[i] += alpha * s[i];
 			x[xLength - 1] = 1 - sumWeights();
 
+			for (int i = 0; i < xLength; i++)
+				System.out.print("x" + i + "=" + x[i] + ";");
+			System.out.println("Current risk =" + getRisk());
+
 			list.clear();
 			gradientZero = checkGradient();
 		}
@@ -145,6 +149,15 @@ public class Zoitendake extends Method {
 
 			}
 
+			for (int j = 0; j < xLength - 1; j++) {
+				temp = new double[xLength - 1];
+				temp[j] = 1;
+				constraints
+						.add(new LinearConstraint(temp, Relationship.GEQ, -1));
+				constraints
+						.add(new LinearConstraint(temp, Relationship.LEQ, 1));
+			}
+
 		}
 
 		// create and run the solver
@@ -159,10 +172,132 @@ public class Zoitendake extends Method {
 
 	private double getMaxAlpha(final ArrayList<Integer> list) {
 		double alpha1 = 0.001;
+		double[] temp = new double[xLength];
+		for (int i = 0; i < xLength; i++)
+			temp[i] = x[i] + alpha1 * s[i];
 
-		double alpha2 = 0.001;
+		while (checkRestraines(temp, list)) {
+			alpha1 += 0.001;
+			for (int i = 0; i < xLength; i++)
+				temp[i] += alpha1 * s[i];
+
+		}
+
+		double alpha2 = Double.MAX_VALUE;
+		for (int i = 0; i < 2 * xLength; i++) {
+			if (!list.contains(i)) {
+				double down = checkDirectionRestrainedAlpha2S(i, s);
+				if (down > 0) {
+					double up = checkDirectionRestrainedAlpha2X(i, x);
+					alpha2 = Math.min(up / down, alpha2);
+				}
+			}
+
+		}
 
 		return Math.min(alpha1, alpha2);
+	}
+
+	private boolean checkRestraines(double[] temp, ArrayList<Integer> list) {
+		for (int i = 0; i < 2 * xLength; i++) {
+			if (!list.contains(i))
+				if (!checkDirectionRestrained(i, temp))
+					return false;
+		}
+		return true;
+	}
+
+	private double checkDirectionRestrainedAlpha2S(int index, double[] temp2) {
+		if (index == 0) {
+			// доходности
+			double temp = 0;
+			for (int i = 0; i < temp2.length - 1; i++) {
+				temp += temp2[i] * profit[i];
+			}
+
+			return temp;
+		} else if ((index > 0) && (index < xLength)) {
+			// xi<=1
+			return temp2[index];
+		} else if (index == xLength) {
+			// sum(xi)<=1
+			double sumWeights = 0.0;
+			for (int i = 0; i < temp2.length - 1; i++) {
+				sumWeights += temp2[i];
+			}
+
+			return sumWeights;
+		} else {
+			// xi>=0
+			return temp2[index - xLength];
+		}
+	}
+
+	private double checkDirectionRestrainedAlpha2X(int index, double[] temp2) {
+		if (index == 0) {
+			// доходности
+			double temp = 0;
+			for (int i = 0; i < temp2.length - 1; i++) {
+				temp += temp2[i] * profit[i];
+			}
+
+			return temp - expectedProfit;
+		} else if ((index > 0) && (index < xLength)) {
+			// xi<=1
+			return 1 - temp2[index];
+		} else if (index == xLength) {
+			// sum(xi)<=1
+			double sumWeights = 0.0;
+			for (int i = 0; i < temp2.length - 1; i++) {
+				sumWeights += temp2[i];
+			}
+
+			return 1 - sumWeights;
+		} else {
+			// xi>=0
+			return temp2[index - xLength];
+		}
+	}
+
+	private boolean checkDirectionRestrained(int index, double[] temp2) {
+		if (index == 0) {
+			// доходности
+			double temp = 0;
+			for (int i = 0; i < temp2.length - 1; i++) {
+				temp += temp2[i] * profit[i];
+			}
+
+			if (temp >= expectedProfit) {
+				return true;
+			} else {
+				return false;
+			}
+		} else if ((index > 0) && (index < xLength)) {
+			// xi<=1
+			if (temp2[index] <= 1)
+				return true;
+			else
+				return false;
+		} else if (index == xLength) {
+			// sum(xi)<=1
+			double sumWeights = 0.0;
+			for (int i = 0; i < temp2.length - 1; i++) {
+				sumWeights += temp2[i];
+			}
+
+			if (sumWeights <= 1) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			// xi>=0
+			if (temp2[index - xLength] >= 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 
 	private void countGradient() {
