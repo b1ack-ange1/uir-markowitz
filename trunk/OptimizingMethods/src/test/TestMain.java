@@ -1,8 +1,6 @@
 package test;
 
-import utils.methods.convex.ArrowGurvic;
-import utils.methods.nonlinear.MonteCarlo;
-import utils.methods.nonlinear.Zoitendake;
+import utils.methods.square.WolfFrank;
 import utils.portfolio.Portfolio;
 
 public class TestMain {
@@ -12,13 +10,13 @@ public class TestMain {
 	 */
 	public static void main(String[] args) {
 		Portfolio port = new Portfolio(4);
-		double[] data = { 5.0, 3.2, 0.2, 9.0 };
+		double[] data = { 5.0, 3.2, 0.2, 2.0 };
 		port.setProfit(data);
 		double[][] data2 = { { 1.0, 0.7, -0.3, 0.6 }, { 0.7, 1.0, 0.2, 0.3 },
 				{ -0.3, 0.2, 1.0, -0.45 }, { 0.6, 0.3, -0.45, 1.0 } };
 		port.setCovariance(data2);
 		try {
-			Zoitendake method = new Zoitendake(port, 6, 0.000000001);
+			WolfFrank method = new WolfFrank(port, 1, 0.0001);
 			method.evaluate();
 			double[] x = method.getX();
 			for (int i = 0; i < x.length; i++) {
