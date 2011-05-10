@@ -60,6 +60,7 @@ public class WolfFrank extends Method {
 		double delta = 0;
 		double extra = 0;
 		while (flag) {
+			extra = 0;
 			x_new = new double[xLength];
 			for (int i = 0; i < xLength; i++) {
 				x_new[i] = x[i];
@@ -81,6 +82,12 @@ public class WolfFrank extends Method {
 			x_new[xLength - 1] = 1 - extra;
 			delta += Math.pow(x_new[xLength - 1] - x[xLength - 1], 2);
 			x = x_new;
+
+			for (int i = 0; i < x.length; i++) {
+				System.out.print("X" + i + " = " + x[i] + "; ");
+			}
+			System.out.println("risk = " + getRisk());
+
 			if (delta < epsilon)
 				flag = false;
 		}
@@ -90,7 +97,7 @@ public class WolfFrank extends Method {
 	private double[] getDifArray() {
 		double[] out = new double[xLength - 1];
 		for (int i = 0; i < xLength - 1; i++)
-			out[i] = difMainOnX(i);
+			out[i] = -difMainOnX(i);
 		return out;
 	}
 
@@ -100,7 +107,8 @@ public class WolfFrank extends Method {
 		out += 2 * sumCovarIndex(index);
 		out -= 2 * x[xLength - 1];
 		out -= 2 * sumCovarIndex(xLength - 1);
-		out += 2 * x[xLength - 1] * covariances[index][xLength - 1];
+		out += 2 * (x[xLength - 1] - x[index])
+				* covariances[index][xLength - 1];
 		return out;
 	}
 
@@ -116,18 +124,20 @@ public class WolfFrank extends Method {
 		}
 
 		double[] temp = new double[xLength - 1];
-		for (int i = 0; i < xLength - 1; i++)
+		for (int i = 0; i < xLength - 1; i++) {
 			temp[i] = 1.0;
+		}
 		constraints.add(new LinearConstraint(temp, Relationship.LEQ, 1));
 
-		for (int i = 0; i < xLength - 1; i++)
+		temp = new double[xLength - 1];
+		for (int i = 0; i < xLength - 1; i++) {
 			temp[i] = profit[i] - profit[xLength - 1];
-		constraints.add(new LinearConstraint(temp, Relationship.GEQ,
-				expectedProfit - profit[xLength - 1]));
-
+			constraints.add(new LinearConstraint(temp, Relationship.GEQ,
+					expectedProfit - profit[xLength - 1]));
+		}
 		// create and run the solver
 		RealPointValuePair solution = new SimplexSolver().optimize(f,
-				constraints, GoalType.MINIMIZE, false);
+				constraints, GoalType.MAXIMIZE, true);
 
 		for (int i = 0; i < xLength - 1; i++)
 			z[i] = solution.getPoint()[i];
