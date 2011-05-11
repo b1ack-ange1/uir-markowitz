@@ -101,23 +101,22 @@ public class KunTakker extends Method {
 					// x
 					for (int j = 0; j < xLength - 1; j++) {
 						if (i != j) {
-							matrixArray[i][j] = 2 * covariances[i][j] + 2 - 2
-									* covariances[i][xLength - 1];
+							matrixArray[i][j] = 2 * (covariances[i][j] - covariances[i][xLength - 1]);
 						} else {
-							matrixArray[i][i] = 4 - 4 * covariances[i][xLength - 1];
+							matrixArray[i][i] = 2 - 4 * covariances[i][xLength - 1];
 						}
 					}
 
 					matrixArray[i][xLength - 1] = (profit[xLength - 1] - profit[i]);
 					matrixArray[i][xLength] = 1.0;
 
-					matrixFree[i][0] = -2 - 2 * covariances[i][xLength - 1];
+					matrixFree[i][0] =  - 2 * covariances[i][xLength - 1];
 				} else if (i == xLength - 1) {
 					// l1
 					for (int j = 0; j < xLength - 1; j++) {
 						matrixArray[i][j] = (profit[xLength - 1] - profit[j]);
 					}
-					matrixFree[i][0] = 1 - expectedProfit;
+					matrixFree[i][0] = profit[xLength-1] - expectedProfit;
 				} else {
 					// l2
 					for (int j = 0; j < xLength - 1; j++) {
