@@ -1,5 +1,6 @@
 package utils.methods;
 
+import utils.exceptions.OptimizingException;
 import utils.portfolio.Portfolio;
 
 public abstract class Method {
@@ -87,7 +88,7 @@ public abstract class Method {
 		this.covariances = covariances;
 	}
 
-	public abstract void evaluate();
+	public abstract void evaluate() throws OptimizingException;
 
 	public void startTime() {
 		time = System.nanoTime();
