@@ -12,6 +12,8 @@ import org.apache.commons.math.optimization.linear.LinearObjectiveFunction;
 import org.apache.commons.math.optimization.linear.Relationship;
 import org.apache.commons.math.optimization.linear.SimplexSolver;
 
+import utils.Methods;
+import utils.exceptions.OptimizingException;
 import utils.methods.Method;
 import utils.portfolio.Portfolio;
 
@@ -52,7 +54,7 @@ public class WolfFrank extends Method {
 	}
 
 	@Override
-	public void evaluate() {
+	public void evaluate() throws OptimizingException {
 		final double[] z = new double[xLength - 1];
 		double[] x_new;
 		boolean flag = true;
@@ -69,8 +71,10 @@ public class WolfFrank extends Method {
 			try {
 				solveLinear(z, getDifArray());
 			} catch (OptimizationException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				throw (new OptimizingException("Can't solve linear problem",
+						Methods.METOD_WOLFFRANK));
+
 			}
 
 			delta = 0;
