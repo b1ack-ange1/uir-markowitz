@@ -144,4 +144,13 @@ public abstract class Method {
 		}
 		return (temp == 1);
 	}
+
+	protected void normalize() {
+		double sum = 0;
+		for (int i = 0; i < xLength; i++)
+			sum += x[i];
+
+		for (int i = 0; i < xLength; i++)
+			x[i] /= sum;
+	}
 }
