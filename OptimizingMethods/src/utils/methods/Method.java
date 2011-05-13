@@ -13,21 +13,19 @@ public abstract class Method {
 	public double epsilon;
 	public int xLength;
 
-
-
 	private long time;
 	private int memory;
 	private int operations;
-
 
 	public double[] getX() {
 		return x;
 	}
 
 	public double getFinalProfit() {
+		finalProfit = sumProfit();
 		return finalProfit;
 	}
-	
+
 	public Method(final Portfolio challenge, double epsilon) {
 		time = 0;
 		memory = 0;
@@ -35,17 +33,18 @@ public abstract class Method {
 		profit = challenge.getProfit();
 		covariances = challenge.getCovariance();
 		expectedProfit = 0;
-		this.epsilon=epsilon;
+		this.epsilon = epsilon;
 	}
 
-	public Method(final Portfolio challenge, double expectedProfit, double epsilon) {
+	public Method(final Portfolio challenge, double expectedProfit,
+			double epsilon) {
 		time = 0;
 		memory = 0;
 		operations = 0;
 		profit = challenge.getProfit();
 		covariances = challenge.getCovariance();
 		this.expectedProfit = expectedProfit;
-		this.epsilon=epsilon;
+		this.epsilon = epsilon;
 	}
 
 	public long getTime() {
@@ -100,7 +99,7 @@ public abstract class Method {
 
 	protected double sumArray(double[] arr, int j) {
 		double out = 0;
-		for (int i = 0; i < arr.length-3; i++)
+		for (int i = 0; i < arr.length - 3; i++)
 			out += arr[i];
 		return out;
 	}
@@ -116,7 +115,8 @@ public abstract class Method {
 	protected double sumCovarIndex(int i) {
 		double out = 0;
 		for (int j = 0; j < x.length; j++) {
-			if (j!=i) out += covariances[i][j] * x[j];
+			if (j != i)
+				out += covariances[i][j] * x[j];
 		}
 		return out;
 	}
@@ -129,12 +129,19 @@ public abstract class Method {
 	private void countRisk() {
 		risk = 0;
 		for (int i = 0; i < x.length; i++) {
-			risk += Math.pow(x[i],2);
+			risk += Math.pow(x[i], 2);
 		}
 
 		for (int i = 0; i < x.length; i++) {
 			risk += x[i] * sumCovarIndex(i);
 		}
 	}
-	
+
+	protected boolean isSumCorrect() {
+		double temp = 0.0;
+		for (int i = 0; i < xLength; i++) {
+			temp += x[i];
+		}
+		return (temp == 1);
+	}
 }

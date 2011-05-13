@@ -110,13 +110,13 @@ public class KunTakker extends Method {
 					matrixArray[i][xLength - 1] = (profit[xLength - 1] - profit[i]);
 					matrixArray[i][xLength] = 1.0;
 
-					matrixFree[i][0] =  - 2 * covariances[i][xLength - 1];
+					matrixFree[i][0] = -2 * covariances[i][xLength - 1];
 				} else if (i == xLength - 1) {
 					// l1
 					for (int j = 0; j < xLength - 1; j++) {
 						matrixArray[i][j] = (profit[xLength - 1] - profit[j]);
 					}
-					matrixFree[i][0] = profit[xLength-1] - expectedProfit;
+					matrixFree[i][0] = profit[xLength - 1] - expectedProfit;
 				} else {
 					// l2
 					for (int j = 0; j < xLength - 1; j++) {
@@ -151,22 +151,6 @@ public class KunTakker extends Method {
 
 	}
 
-	private int tryFindSimpleSolutionOld() {
-		double minimumRisk = Double.MAX_VALUE;
-		double currentRisk = 0;
-		int out = -1;
-		for (int i = 0; i < xLength; i++) {
-			x = new double[xLength];
-			x[i] = 1.0;
-			currentRisk = getRisk();
-			if (currentRisk < minimumRisk) {
-				minimumRisk = currentRisk;
-				out = i;
-			}
-		}
-		return out;
-	}
-
 	private int tryFindSimpleSolution() {
 		double temp = -1.0;
 		int out = -1;
@@ -186,14 +170,13 @@ public class KunTakker extends Method {
 		if ((l1 < 0) || (l2 < 0))
 			return false;
 
-	/*	for (int i = 0; i < xLength - 1; i++) {
+		for (int i = 0; i < xLength - 1; i++) {
 			// Дополняющая нежесткость
 			double temp = difMainOnX(i) + l1
 					* (profit[xLength - 1] - profit[i]) + l2;
-			if (temp < 0)
+			if (temp < -epsilon)
 				return false;
 		}
-*/
 
 		if (sumProfit() < this.expectedProfit)
 			return false;
@@ -203,12 +186,26 @@ public class KunTakker extends Method {
 
 	private double difMainOnX(int index) {
 		double out = 0;
-		out += 2 * x[index];
-		out += 2 * sumCovarIndex(index);
-		out -= 2 * x[xLength - 1];
-		out -= 2 * sumCovarIndex(xLength - 1);
-		out += 2 * (x[xLength - 1] - x[index])
-				* covariances[index][xLength - 1];
+		for (int j = 0; j < xLength - 1; j++) {
+			if (index != j) {
+				out += 2
+						* (covariances[index][j] - covariances[index][xLength - 1])
+						* x[j];
+			} else {
+				out += (2 - 4 * covariances[index][xLength - 1]) * x[index];
+			}
+		}
+
+		out += 2 * covariances[index][xLength - 1];
+		return out;
+	}
+
+	protected double sumCovarIndex(int i) {
+		double out = 0;
+		for (int j = 0; j < xLength - 1; j++) {
+			if (j != i)
+				out += covariances[i][j] * x[j];
+		}
 		return out;
 	}
 
