@@ -109,6 +109,16 @@
 	</servlet-mapping>
 	<servlet>
 		<description></description>
+		<display-name>ValueList</display-name>
+		<servlet-name>ValueList</servlet-name>
+		<servlet-class>servlet.ticker.ValueList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ValueList</servlet-name>
+		<url-pattern>/secure/sc/ValueList</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
 		<display-name>TickerList</display-name>
 		<servlet-name>TickerList</servlet-name>
 		<servlet-class>servlet.ticker.TickerList</servlet-class>
