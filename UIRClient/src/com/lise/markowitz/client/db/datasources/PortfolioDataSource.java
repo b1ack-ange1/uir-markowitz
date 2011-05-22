@@ -1,7 +1,6 @@
 package com.lise.markowitz.client.db.datasources;
 
-import java.util.HashMap;
-
+import com.google.gwt.json.client.JSONString;
 import com.lise.markowitz.client.Configuration;
 import com.smartgwt.client.data.fields.DataSourceFloatField;
 import com.smartgwt.client.data.fields.DataSourceTextField;
@@ -20,7 +19,7 @@ public class PortfolioDataSource extends JSONDataSource {
 		super();
 
 		setID("Portfolio");
-		
+
 		DataSourceTextField idField = new DataSourceTextField("id");
 		DataSourceTextField nameField = new DataSourceTextField("name");
 		DataSourceFloatField weightField = new DataSourceFloatField("weight");
@@ -30,10 +29,9 @@ public class PortfolioDataSource extends JSONDataSource {
 		setTitleField("Name");
 
 		setFields(nameField, idField, weightField);
-		
-		HashMap<String, String> params = new HashMap<String, String>();
-		params.put("code", code);
-		setDefaultParams(params);
+
+		getCustomData().put("code", new JSONString(code));
+
 		setDataURL(Configuration.getWebServiceAddr(true, false) + "Portfolio");
 	}
 }

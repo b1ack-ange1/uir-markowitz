@@ -52,4 +52,8 @@ public interface LocalizeConstant extends Messages {
 	String newPortfolio();
 
 	String changePortfolio();
+
+	String chooseTickerList();
+
+	String chooseDatePeriod();
 }
