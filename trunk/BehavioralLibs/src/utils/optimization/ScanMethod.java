@@ -6,15 +6,16 @@ public abstract class ScanMethod {
 	protected int N;
 	protected double Epsilon;
 	protected double Step;
-	
+
 	protected abstract double getAimFunction(Matrix w);
-	
+	protected boolean checkWeights(Matrix w) {return true;}
+
 	protected void init(){
 		Step = Epsilon * Math.pow(N, 0.5);
 		double ints = Math.ceil(1.0 / Step);
 		Step = 1.0 / ints;
 	}
-	
+
 	public Matrix scan(){
 		double[] scanVals = new double[N];
 		double sum = 0.0;
@@ -22,17 +23,19 @@ public abstract class ScanMethod {
 		double tempMax;
 		Matrix temp, result = null;
 		boolean cont = true;
-		
+
 		while (cont){
 			for (int i = 0; i < N; ++i){
 				sum += scanVals[i];
 			}
 			if (Math.round(sum * 1000) == 1000){
-				temp = new Matrix(scanVals);
-				tempMax = this.getAimFunction(temp);
-				if (tempMax > max){
-					max = tempMax;
-					result = temp.copy();
+				if (this.checkWeights(new Matrix(scanVals))){
+					temp = new Matrix(scanVals);
+					tempMax = this.getAimFunction(temp);
+					if (tempMax > max){
+						max = tempMax;
+						result = temp.copy();
+					}
 				}
 			}
 			sum = 0;
@@ -41,7 +44,7 @@ public abstract class ScanMethod {
 		}
 		return result;
 	}
-	
+
 	protected double[] getNextVal(double[] scanVals){
 		int tempN = 0;
 		while(true){

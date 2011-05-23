@@ -12,6 +12,7 @@ public abstract class MonteCarloMethod {
 	}
 	
 	protected abstract double getAimFunction(Matrix w);
+	protected boolean checkWeights(Matrix w) {return true;}
 	
 	protected Matrix generatePoint(){
 		double[] vals = new double[N];
@@ -32,10 +33,12 @@ public abstract class MonteCarloMethod {
 		
 		for (int i = 0; i < (int)Math.pow(N, 4.0); ++i){
 			temp = this.generatePoint();
-			tempMax = this.getAimFunction(temp);
-			if (tempMax > max){
-				max = tempMax;
-				result = temp.copy();
+			if (this.checkWeights(temp)){
+				tempMax = this.getAimFunction(temp);
+				if (tempMax > max){
+					max = tempMax;
+					result = temp.copy();
+				}
 			}
 		}
 		

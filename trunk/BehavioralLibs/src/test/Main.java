@@ -30,17 +30,17 @@ public class Main {
 		rets[2][0] = 0.25;
 		Matrix returns = new Matrix(rets);
 		
-		BPTMinLoss dc = BPTMinLoss.getInstance(1, 0.15);
-		//BPTMaxWealth dc = BPTMaxWealth.getInstance(1, -0.10, 0.15);
+		BPTMinLoss dc = BPTMinLoss.getInstance(1, 0.47);
+		//BPTMaxWealth dc = BPTMaxWealth.getInstance(1, -0.15, 0.2);
 		dc.setCovariances(covars);
 		dc.setExpectedReturns(returns);
 		System.out.println(dc.getLagrangeWeights());
 		System.out.println(dc.getScanWeights());
 		System.out.println(dc.getMonteCarloWeights());
 		
-		System.out.println((dc.getOptimalSecurityLevel(dc.getLagrangeWeights())));
-		System.out.println((dc.getOptimalSecurityLevel(dc.getScanWeights())));
-		System.out.println((dc.getOptimalSecurityLevel(dc.getMonteCarloWeights())));
+		//System.out.println((dc.getOptimalSecurityLevel(dc.getLagrangeWeights())));
+		//System.out.println((dc.getOptimalSecurityLevel(dc.getScanWeights())));
+		//System.out.println((dc.getOptimalSecurityLevel(dc.getMonteCarloWeights())));
 	}
 
 }
