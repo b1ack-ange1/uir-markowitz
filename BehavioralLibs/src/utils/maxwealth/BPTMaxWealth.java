@@ -32,6 +32,10 @@ public class BPTMaxWealth extends BPTAbstract{
 	public double getSecurityLevel(){
 		return H;
 	}
+	
+	public double getFailingProbability(){
+		return Alpha;
+	}
 
 	public void setCovariances(Matrix covs){
 		Covariances = covs;
