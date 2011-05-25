@@ -1,4 +1,4 @@
-package quotegetter;
+﻿package quotegetter;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -28,7 +28,7 @@ public class quoteGetter {
 			String requestText = "d=d";
 			// выбираем акции ММВБ
 			requestText += "&market=1";
-			// выбираем Газпром
+			// выбираем тикер
 			requestText += "&em="+tickerID;
 			// дата, месяц (начиная с 0), год даты начала запроса
 			requestText += "&df="+calend.get(Calendar.DAY_OF_MONTH);
