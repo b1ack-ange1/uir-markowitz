@@ -7,7 +7,8 @@ import utils.portfolio.Portfolio;
 
 public class MonteCarlo extends Method {
 	private double[] step;
-	private final int MAX_STEPS = 100000;
+	private int MAX_STEPS = 100000;
+	private double base = 0.1;
 
 	public MonteCarlo(Portfolio challenge, double epsilon) {
 		super(challenge, epsilon);
@@ -41,7 +42,7 @@ public class MonteCarlo extends Method {
 			operations++;
 			if (!doStep(riskLocal))
 				break;
-			
+
 			double extra = 0;
 			for (int i = 0; i < xLength - 1; i++) {
 				operations++;
@@ -54,10 +55,6 @@ public class MonteCarlo extends Method {
 			deltaStep = riskLocal - getRisk();
 			operations++;
 			riskLocal = risk;
-
-			for (int i = 0; i < xLength; i++)
-				System.out.print("x" + i + "=" + x[i] + ";");
-			System.out.println("Current risk =" + risk);
 
 		}
 		endTime();
@@ -81,7 +78,7 @@ public class MonteCarlo extends Method {
 		Random rnd = new Random();
 		for (int i = 0; i < step.length; i++) {
 			operations++;
-			step[i] = (rnd.nextBoolean() ? -1 : 1) * rnd.nextDouble() / 10;
+			step[i] = (rnd.nextBoolean() ? -1 : 1) * rnd.nextDouble() * base;
 		}
 	}
 
@@ -97,8 +94,9 @@ public class MonteCarlo extends Method {
 
 		temp[xLength - 1] = 1 - extra;
 
-		/*if (sumProfit(temp) < expectedProfit)
-			return false;*/
+		/*
+		 * if (sumProfit(temp) < expectedProfit) return false;
+		 */
 		for (int i = 0; i < xLength; i++) {
 			operations++;
 			if ((temp[i] < 0) || (temp[i] > 1))
