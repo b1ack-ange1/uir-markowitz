@@ -56,4 +56,52 @@ public interface LocalizeConstant extends Messages {
 	String chooseTickerList();
 
 	String chooseDatePeriod();
+
+	String delete();
+
+	String currentProfit();
+
+	String currentRisk();
+
+	String epsilon();
+
+	String expectedProfit();
+
+	String nMax();
+
+	String beta();
+
+	String risk();
+
+	String profit();
+
+	String countedRisk();
+
+	String countedProfit();
+
+	String countSolution();
+
+	String redact();
+
+	String saveNewKoeff();
+
+	String lagrange();
+
+	String montecatlo();
+
+	String zojtendake();
+
+	String kuntakker();
+
+	String arrhurvic();
+
+	String wolffrank();
+
+	String levenmarq();
+
+	String nonlinear();
+
+	String convex();
+
+	String quadratic();
 }
