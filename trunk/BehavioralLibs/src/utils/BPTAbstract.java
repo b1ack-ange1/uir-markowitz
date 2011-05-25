@@ -5,7 +5,8 @@ import utils.misc.*;
 public abstract class BPTAbstract {
 	protected double H;
 	protected double Alpha;
-	protected double ScanEpsilon = 0.005;
+	protected double ScanEpsilon = 0.001;
+	protected double ScanDelta = 0.001;
 	
 	protected Matrix Covariances = null;
 	protected Matrix ExpectedReturns = null;
@@ -27,6 +28,10 @@ public abstract class BPTAbstract {
 	
 	public double getScanEpsilon(){
 		return ScanEpsilon;
+	}
+	
+	public double getScanDelta(){
+		return ScanDelta;
 	}
 	
 	public void setScanEpsilon(double epsilon){
