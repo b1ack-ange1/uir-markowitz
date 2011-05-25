@@ -1,9 +1,7 @@
 package test;
 
-import exceptions.*;
-import utils.misc.*;
-import utils.maxwealth.*;
-import utils.minloss.*;
+import utils.maxwealth.BPTMaxWealth;
+import utils.misc.Matrix;
 
 public class Main {
 
@@ -35,17 +33,17 @@ public class Main {
 		dc.setCovariances(covars);
 		dc.setExpectedReturns(returns);
 		//System.out.println("Function :"+dc.getOptimalSecurityLevel(dc.getLagrangeWeights()));
-		System.out.println("Function :"+dc.getExpectedWealth((dc.getLagrangeWeights())));
+		System.out.println("Function :"+dc.getExpectedWealth(dc.getLagrangeWeights()));
 		System.out.println("Lagrange weigths:");
 		System.out.println(dc.getLagrangeWeights());
 		
 		//System.out.println("Function :"+dc.getOptimalSecurityLevel(dc.getScanWeights()));
-		System.out.println("Function :"+dc.getExpectedWealth((dc.getScanWeights())));
+		System.out.println("Function :"+dc.getExpectedWealth(dc.getScanWeights()));
 		System.out.println("Scan weigths:");
 		System.out.println(dc.getScanWeights());
 		
 		//System.out.println("Function :"+dc.getOptimalSecurityLevel(dc.getMonteCarloWeights()));
-		System.out.println("Function :"+dc.getExpectedWealth((dc.getMonteCarloWeights())));
+		System.out.println("Function :"+dc.getExpectedWealth(dc.getMonteCarloWeights()));
 		System.out.println("Monte-Carlo weigths:");
 		System.out.println(dc.getMonteCarloWeights());
 		

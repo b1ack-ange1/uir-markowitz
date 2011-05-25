@@ -38,4 +38,9 @@ public abstract class BPTAbstract {
 		ScanWeights = null;
 		ScanEpsilon = epsilon;
 	}
+	
+	public void setScanDelta(double delta){
+		ScanWeights = null;
+		ScanDelta = delta;
+	}
 }
