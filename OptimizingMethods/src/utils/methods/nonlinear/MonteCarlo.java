@@ -38,19 +38,21 @@ public class MonteCarlo extends Method {
 		double riskLocal = countRisk(x);
 		double deltaStep = epsilon + 1;
 		while (deltaStep >= epsilon) {
-
+			operations++;
 			if (!doStep(riskLocal))
 				break;
 			
 			double extra = 0;
 			for (int i = 0; i < xLength - 1; i++) {
+				operations++;
 				x[i] += step[i];
 				extra += x[i];
 			}
 
 			x[xLength - 1] = 1 - extra;
-
+			operations++;
 			deltaStep = riskLocal - getRisk();
+			operations++;
 			riskLocal = risk;
 
 			for (int i = 0; i < xLength; i++)
@@ -65,6 +67,7 @@ public class MonteCarlo extends Method {
 	private boolean doStep(double riskOld) {
 		int counter = 0;
 		while (counter < MAX_STEPS) {
+			operations++;
 			generateStep();
 			if (checkNewPoint(riskOld))
 				return true;
@@ -77,6 +80,7 @@ public class MonteCarlo extends Method {
 	private void generateStep() {
 		Random rnd = new Random();
 		for (int i = 0; i < step.length; i++) {
+			operations++;
 			step[i] = (rnd.nextBoolean() ? -1 : 1) * rnd.nextDouble() / 10;
 		}
 	}
@@ -86,6 +90,7 @@ public class MonteCarlo extends Method {
 		double[] temp = new double[xLength];
 		double extra = 0;
 		for (int i = 0; i < xLength - 1; i++) {
+			operations++;
 			temp[i] = x[i] + step[i];
 			extra += temp[i];
 		}
@@ -95,6 +100,7 @@ public class MonteCarlo extends Method {
 		/*if (sumProfit(temp) < expectedProfit)
 			return false;*/
 		for (int i = 0; i < xLength; i++) {
+			operations++;
 			if ((temp[i] < 0) || (temp[i] > 1))
 				return false;
 		}
@@ -124,10 +130,12 @@ public class MonteCarlo extends Method {
 	private double countRisk(double[] temp) {
 		double risk2 = 0;
 		for (int i = 0; i < temp.length; i++) {
+			operations++;
 			risk2 += Math.pow(temp[i], 2);
 		}
 
 		for (int i = 0; i < temp.length; i++) {
+			operations++;
 			risk2 += temp[i] * sumCovarIndex(i, temp);
 		}
 		return risk2;

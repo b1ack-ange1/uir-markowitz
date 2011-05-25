@@ -33,12 +33,13 @@ public class LagrangeMultiplier extends Method {
 	@Override
 	public void evaluate() throws OptimizingException {
 		// вырожденный риск всегда равен 1
-
+		startTime();
 		double minimumRisk = Double.MAX_VALUE;
 		int status = -1;
 		double temp;
 		double[] tempArr = new double[xLength];
 		for (int i = 0; i < Math.pow(2, xLength + 1); i++) {
+			operations++;
 			try {
 				temp = step(i);
 				if (temp >= 0)
@@ -66,7 +67,7 @@ public class LagrangeMultiplier extends Method {
 			throw new OptimizingException("alarm",
 					Methods.METOD_LAGRANGEMULTIPLIER);
 		}
-
+		endTime();
 	}
 
 	private String makePostfix(int count) {
@@ -81,11 +82,13 @@ public class LagrangeMultiplier extends Method {
 		// 1 - скобка равна 0
 		String code = Integer.toBinaryString(number);
 		if (code.length() < xLength + 1) {
+			operations++;
 			code = makePostfix(xLength + 1 - code.length()) + code;
 		}
 		double[][] matrixArray = new double[2 * xLength + 2][2 * xLength + 2];
 		double[][] matrixFree = new double[2 * xLength + 2][1];
 		for (int i = 0; i < code.length(); i++) {
+			operations++;
 			// условия
 			if (code.charAt(i) == '0') {
 				// переменная = 0
@@ -111,6 +114,7 @@ public class LagrangeMultiplier extends Method {
 
 		for (int i = 0; i < xLength; i++) {
 			for (int j = 0; j < xLength; j++) {
+				operations++;
 				matrixArray[i][j] = covariances[i][j];
 			}
 			matrixArray[i][i + xLength] = -1.0;
@@ -120,6 +124,7 @@ public class LagrangeMultiplier extends Method {
 		}
 
 		for (int i = 0; i < xLength; i++) {
+			operations++;
 			matrixArray[2 * xLength + 1][i] = 1.0;
 		}
 		matrixFree[2 * xLength + 1][0] = 1.0;
@@ -129,6 +134,7 @@ public class LagrangeMultiplier extends Method {
 		Matrix matrixFreeKoeff = new Matrix(matrixFree);
 		Matrix solution = null;
 		try {
+			operations+=Math.pow(xLength,2);
 			solution = dec.solve(matrixFreeKoeff);
 		} catch (Exception e) {
 			throw new OptimizingException("no variant",
@@ -136,6 +142,7 @@ public class LagrangeMultiplier extends Method {
 		}
 		double extra = 0.0;
 		for (int i = 0; i < xLength; i++) {
+			operations++;
 			x[i] = solution.get(i, 0);
 			extra += x[i];
 		}
