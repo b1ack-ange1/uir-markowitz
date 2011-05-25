@@ -1,8 +1,6 @@
 package com.lise.markowitz.client.form;
 
-import com.google.gwt.core.client.GWT;
 import com.lise.markowitz.client.db.datasources.OptionTickerListDataSource;
-import com.lise.markowitz.client.localization.LocalizeConstant;
 import com.lise.markowitz.client.utils.Logger;
 import com.smartgwt.client.types.MultipleAppearance;
 import com.smartgwt.client.util.SC;
@@ -16,8 +14,7 @@ import com.smartgwt.client.widgets.toolbar.ToolStripButton;
 
 public class StatsPanel extends WorkPanel {
 	private String code;
-	private LocalizeConstant localizeConstant = GWT
-			.create(LocalizeConstant.class);
+	
 	SelectItem tickerList = null;
 	MiniDateRangeItem dateRange = null;
 
