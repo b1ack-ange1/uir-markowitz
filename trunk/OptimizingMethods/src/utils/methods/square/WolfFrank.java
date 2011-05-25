@@ -44,7 +44,7 @@ public class WolfFrank extends Method {
 		int number = 0;
 		double maxProfit = 0;
 		for (int i = 0; i < xLength; i++) {
-			if (maxProfit < profit[i]) {
+			if (maxProfit < covariances[i][i] *profit[i]) {
 				number = i;
 				maxProfit = profit[i];
 			}
@@ -93,11 +93,6 @@ public class WolfFrank extends Method {
 			operations++;
 			delta += Math.pow(x_new[xLength - 1] - x[xLength - 1], 2);
 			x = x_new;
-
-			for (int i = 0; i < x.length; i++) {
-				System.out.print("X" + i + " = " + x[i] + "; ");
-			}
-			System.out.println("risk = " + getRisk());
 
 			if (delta < epsilon)
 				flag = false;

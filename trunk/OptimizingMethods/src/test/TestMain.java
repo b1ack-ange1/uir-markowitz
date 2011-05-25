@@ -26,7 +26,6 @@ public class TestMain {
 		method.evaluate();
 		System.out.println("Operations = " + method.getOperations());
 		System.out.println("Time = " + method.getTime() + "\n");
-		System.out.println(method.getTime());
 
 		System.out.println("MonteCarlo");
 		MonteCarlo method2 = new MonteCarlo(port, exp, e);
@@ -76,7 +75,7 @@ public class TestMain {
 	}
 
 	public static void main(String[] args) {
-		int size = 20;
+		int size = 10;
 
 		Portfolio port = new Portfolio(size);
 		double[] data = new double[size];

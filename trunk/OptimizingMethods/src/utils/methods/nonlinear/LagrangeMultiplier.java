@@ -50,12 +50,6 @@ public class LagrangeMultiplier extends Method {
 							tempArr[j] = x[j];
 					}
 
-				for (int j = 0; j < x.length; j++) {
-					System.out.println("X" + j + " = " + x[j]);
-				}
-
-				System.out.println("Final Risk = " + getRisk());
-
 			} catch (OptimizingException e) {
 
 			}
@@ -134,7 +128,7 @@ public class LagrangeMultiplier extends Method {
 		Matrix matrixFreeKoeff = new Matrix(matrixFree);
 		Matrix solution = null;
 		try {
-			operations+=Math.pow(xLength,2);
+			operations += Math.pow(xLength, 2);
 			solution = dec.solve(matrixFreeKoeff);
 		} catch (Exception e) {
 			throw new OptimizingException("no variant",

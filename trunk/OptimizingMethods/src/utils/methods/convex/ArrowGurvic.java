@@ -81,12 +81,6 @@ public class ArrowGurvic extends Method {
 				l_new[i] = l[i];
 			}
 
-	/*		for (int i = 0; i < xLength; i++)
-				System.out.print("x" + i + "=" + x[i] + ";");
-			for (int i = 0; i < l.length; i++)
-				System.out.print("l" + i + "=" + l[i] + ";");
-			System.out.println("Current risk =" + getRisk());
-*/
 			if (risk <= this.risk) {
 				this.risk = risk;
 
@@ -96,7 +90,6 @@ public class ArrowGurvic extends Method {
 			}
 
 			isTheEnd = stopCriteria();
-			//isTheEnd = isTheEnd || (risk <= this.risk);
 			risk = this.risk;
 
 		}

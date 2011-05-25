@@ -15,6 +15,7 @@ import Jama.Matrix;
 public class LevenbergMarquardt extends Method {
 	private Matrix baseMatrix;
 	private Matrix transitionMatrix;
+	private final int MAX_ITERATIONS = 1000000000;
 
 	public LevenbergMarquardt(Portfolio challenge, double epsilon) {
 		super(challenge, epsilon);
@@ -41,7 +42,7 @@ public class LevenbergMarquardt extends Method {
 	public void evaluate() throws OptimizingException {
 		startTime();
 		LevenbergMarquardtOptimizer optimizer = new LevenbergMarquardtOptimizer();
-		optimizer.setMaxIterations(1000000000);
+		optimizer.setMaxIterations(MAX_ITERATIONS);
 		double[] target = new double[xLength + 3];
 		double[] weights = new double[xLength + 3];
 
@@ -64,7 +65,9 @@ public class LevenbergMarquardt extends Method {
 			}
 			default: {
 				// xi>=0
+
 				target[i] = Math.log(1.0 / xLength + 1);
+
 				weights[i] = 1.0;
 			}
 			}
@@ -88,14 +91,14 @@ public class LevenbergMarquardt extends Method {
 		@Override
 		public double[] value(double[] arg0)
 				throws FunctionEvaluationException, IllegalArgumentException {
-			
+
 			double[] out = new double[xLength + 3];
 			out[0] = getRisk(arg0);
 			out[1] = Math.exp(1000 * Math.pow(sumWeights(arg0) - 1, 2));
 			out[2] = Math.log(1 + sumProfit(arg0) - expectedProfit);
 			for (int i = 3; i < xLength + 3; i++)
 				out[i] = Math.log(1.0 + arg0[i - 3]);
-			operations+=xLength;
+			operations += xLength;
 			return out;
 		}
 
@@ -144,7 +147,7 @@ public class LevenbergMarquardt extends Method {
 			double out = 0;
 			for (int i = 0; i < xLength; i++)
 				out += x[i];
-			operations+=xLength;
+			operations += xLength;
 			return out;
 		}
 

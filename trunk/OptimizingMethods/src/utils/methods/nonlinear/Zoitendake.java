@@ -82,20 +82,17 @@ public class Zoitendake extends Method {
 			double alpha = getMaxAlpha(list);
 			for (int i = 0; i < xLength - 1; i++)
 				x[i] += alpha * s[i];
-			operations+=xLength;
+			operations += xLength;
 			x[xLength - 1] = 1 - sumWeights();
 			operations++;
 			if (x[xLength - 1] < 0) {
 				for (int i = 0; i < xLength - 1; i++)
 					x[i] -= alpha * s[i];
-				operations+=xLength;
+				operations += xLength;
 				x[xLength - 1] = 1 - sumWeights();
 				operations++;
 				return;
 			}
-			for (int i = 0; i < xLength; i++)
-				System.out.print("x" + i + "=" + x[i] + ";");
-			System.out.println("Current risk =" + getRisk());
 
 			list.clear();
 			gradientZero = checkGradient();
@@ -176,7 +173,7 @@ public class Zoitendake extends Method {
 		// create and run the solver
 		RealPointValuePair solution = new SimplexSolver().optimize(f,
 				constraints, GoalType.MAXIMIZE, false);
-		operations+=Math.pow(xLength,2);
+		operations += Math.pow(xLength, 2);
 		for (int i = 0; i < xLength - 1; i++)
 			s[i] = solution.getPoint()[i];
 
@@ -471,7 +468,7 @@ public class Zoitendake extends Method {
 		double out = 0;
 		for (int i = 0; i < xLength - 1; i++)
 			out += x[i];
-		operations+=xLength;
+		operations += xLength;
 		return out;
 	}
 
