@@ -15,7 +15,7 @@ public abstract class Method {
 
 	private long time;
 	private int memory;
-	private int operations;
+	protected int operations;
 
 	public double[] getX() {
 		return x;
@@ -47,8 +47,8 @@ public abstract class Method {
 		this.epsilon = epsilon;
 	}
 
-	public long getTime() {
-		return time;
+	public double getTime() {
+		return ((double) time)/1000000.0;
 	}
 
 	public void setTime(int time) {
@@ -107,6 +107,7 @@ public abstract class Method {
 	protected double sumProfit() {
 		double out = 0;
 		for (int i = 0; i < x.length; i++) {
+			operations++;
 			out += x[i] * profit[i];
 		}
 		return out;
@@ -120,19 +121,46 @@ public abstract class Method {
 		}
 		return out;
 	}
-
-	public double getRisk() {
-		countRisk();
+	
+	protected double sumCovarIndexParent(int i) {
+		double out = 0;
+		for (int j = 0; j < x.length; j++) {
+			if (j != i)
+				out += covariances[i][j] * x[j];
+		}
+		return out;
+	}
+	
+	public double getParentRisk() {
+		countParentRisk();
 		return risk;
 	}
-
-	private void countRisk() {
+	
+	private void countParentRisk() {
 		risk = 0;
 		for (int i = 0; i < x.length; i++) {
 			risk += Math.pow(x[i], 2);
 		}
 
 		for (int i = 0; i < x.length; i++) {
+			risk += x[i] * sumCovarIndexParent(i);
+		}
+	}
+	
+	public double getRisk() {
+		countRisk();
+		return risk;
+	}
+	
+	private void countRisk() {
+		risk = 0;
+		for (int i = 0; i < x.length; i++) {
+			operations++;
+			risk += Math.pow(x[i], 2);
+		}
+
+		for (int i = 0; i < x.length; i++) {
+			operations++;
 			risk += x[i] * sumCovarIndex(i);
 		}
 	}

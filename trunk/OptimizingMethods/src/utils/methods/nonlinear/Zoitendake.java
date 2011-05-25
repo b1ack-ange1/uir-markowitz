@@ -51,6 +51,7 @@ public class Zoitendake extends Method {
 		final ArrayList<Integer> list = new ArrayList<Integer>();
 
 		while (!gradientZero) {
+			operations++;
 			isBorder = checkActive(list);
 			countGradient();
 
@@ -81,8 +82,17 @@ public class Zoitendake extends Method {
 			double alpha = getMaxAlpha(list);
 			for (int i = 0; i < xLength - 1; i++)
 				x[i] += alpha * s[i];
+			operations+=xLength;
 			x[xLength - 1] = 1 - sumWeights();
-
+			operations++;
+			if (x[xLength - 1] < 0) {
+				for (int i = 0; i < xLength - 1; i++)
+					x[i] -= alpha * s[i];
+				operations+=xLength;
+				x[xLength - 1] = 1 - sumWeights();
+				operations++;
+				return;
+			}
 			for (int i = 0; i < xLength; i++)
 				System.out.print("x" + i + "=" + x[i] + ";");
 			System.out.println("Current risk =" + getRisk());
@@ -98,12 +108,14 @@ public class Zoitendake extends Method {
 			throws OptimizationException {
 		double[] temp = new double[xLength - 1];
 		for (int i = 0; i < xLength - 1; i++) {
+			operations++;
 			temp[i] = difMainOnX(i);
 		}
 
 		LinearObjectiveFunction f = new LinearObjectiveFunction(temp, 0);
 		Collection constraints = new ArrayList();
 		for (int i = 0; i < list.size(); i++) {
+			operations++;
 			int index = list.get(i);
 			if (index == 0) {
 				// доходности
@@ -141,8 +153,9 @@ public class Zoitendake extends Method {
 				for (int j = 0; j < xLength - 1; j++) {
 					if (j == index - 1 + xLength)
 						temp[j - xLength] = 1;
-					else
-						temp[j - xLength] = 0;
+					/*
+					 * else temp[j - xLength] = 0;
+					 */
 				}
 				constraints
 						.add(new LinearConstraint(temp, Relationship.GEQ, 0));
@@ -163,7 +176,7 @@ public class Zoitendake extends Method {
 		// create and run the solver
 		RealPointValuePair solution = new SimplexSolver().optimize(f,
 				constraints, GoalType.MAXIMIZE, false);
-
+		operations+=Math.pow(xLength,2);
 		for (int i = 0; i < xLength - 1; i++)
 			s[i] = solution.getPoint()[i];
 
@@ -238,22 +251,26 @@ public class Zoitendake extends Method {
 			// доходности
 			double temp = 0;
 			for (int i = 0; i < temp2.length - 1; i++) {
+				operations++;
 				temp += temp2[i] * profit[i];
 			}
 
 			return temp - expectedProfit;
 		} else if ((index > 0) && (index < xLength)) {
+			operations++;
 			// xi<=1
 			return 1 - temp2[index];
 		} else if (index == xLength) {
 			// sum(xi)<=1
 			double sumWeights = 0.0;
 			for (int i = 0; i < temp2.length - 1; i++) {
+				operations++;
 				sumWeights += temp2[i];
 			}
 
 			return 1 - sumWeights;
 		} else {
+			operations++;
 			// xi>=0
 			return temp2[index - xLength];
 		}
@@ -264,6 +281,7 @@ public class Zoitendake extends Method {
 			// доходности
 			double temp = 0;
 			for (int i = 0; i < temp2.length - 1; i++) {
+				operations++;
 				temp += temp2[i] * profit[i];
 			}
 
@@ -282,6 +300,7 @@ public class Zoitendake extends Method {
 			// sum(xi)<=1
 			double sumWeights = 0.0;
 			for (int i = 0; i < temp2.length - 1; i++) {
+				operations++;
 				sumWeights += temp2[i];
 			}
 
@@ -302,6 +321,7 @@ public class Zoitendake extends Method {
 
 	private void countGradient() {
 		for (int i = 0; i < xLength - 1; i++) {
+			operations++;
 			gradient[i] = difMainOnX(i);
 		}
 	}
@@ -309,6 +329,7 @@ public class Zoitendake extends Method {
 	// допустимое направление
 	private boolean checkDirection(final ArrayList<Integer> list) {
 		for (int i = 0; i < list.size(); i++) {
+			operations++;
 			if (!checkDirection(i))
 				return false;
 		}
@@ -320,6 +341,7 @@ public class Zoitendake extends Method {
 			// доходности
 			double temp = 0;
 			for (int i = 0; i < gradient.length - 1; i++) {
+				operations++;
 				temp += gradient[i] * profit[i];
 			}
 
@@ -338,6 +360,7 @@ public class Zoitendake extends Method {
 			// sum(xi)<=1
 			double sumWeights = 0.0;
 			for (int i = 0; i < gradient.length - 1; i++) {
+				operations++;
 				sumWeights += gradient[i];
 			}
 
@@ -362,6 +385,7 @@ public class Zoitendake extends Method {
 		boolean gradientZero = true;
 		for (int i = 0; i < xLength - 1; i++) {
 			if (difMainOnX(i) >= epsilon) {
+				operations++;
 				gradientZero = false;
 				break;
 			}
@@ -371,10 +395,14 @@ public class Zoitendake extends Method {
 
 	private double difMainOnX(int index) {
 		double out = 0;
-		out += 2 * x[index];
+		operations++;
+		out += 2 * x[index] * covariances[index][index];
+		operations++;
 		out += 2 * sumCovarIndex(index);
+		operations++;
 		out += x[xLength - 1]
 				* (2 * covariances[xLength - 1][index] - covariances[xLength - 1][xLength - 1]);
+		operations++;
 		out -= (2 * sumCovarIndex(xLength - 1) + covariances[xLength - 1][xLength - 1]
 				* x[xLength - 1]);
 		return -out;
@@ -383,6 +411,7 @@ public class Zoitendake extends Method {
 	protected double sumCovarIndex(int i) {
 		double out = 0;
 		for (int j = 0; j < xLength - 1; j++) {
+			operations++;
 			if (j != i)
 				out += covariances[i][j] * x[j];
 		}
@@ -396,6 +425,7 @@ public class Zoitendake extends Method {
 	private boolean checkActive(final ArrayList<Integer> activeList) {
 		boolean result = false;
 		for (int i = 0; i < 2 * xLength; i++) {
+			operations++;
 
 			if (isActive(i)) {
 				result = true;
@@ -406,6 +436,7 @@ public class Zoitendake extends Method {
 	}
 
 	private boolean isActive(int index) {
+		operations++;
 		if (index == 0) {
 			// доходности
 			if (expectedProfit < sumProfit()) {
@@ -440,6 +471,7 @@ public class Zoitendake extends Method {
 		double out = 0;
 		for (int i = 0; i < xLength - 1; i++)
 			out += x[i];
+		operations+=xLength;
 		return out;
 	}
 

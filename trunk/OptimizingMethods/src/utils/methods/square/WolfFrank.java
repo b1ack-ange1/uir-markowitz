@@ -55,6 +55,7 @@ public class WolfFrank extends Method {
 
 	@Override
 	public void evaluate() throws OptimizingException {
+		startTime();
 		final double[] z = new double[xLength - 1];
 		double[] x_new;
 		boolean flag = true;
@@ -62,6 +63,7 @@ public class WolfFrank extends Method {
 		double delta = 0;
 		double extra = 0;
 		while (flag) {
+			operations++;
 			extra = 0;
 			x_new = new double[xLength];
 			for (int i = 0; i < xLength; i++) {
@@ -79,11 +81,16 @@ public class WolfFrank extends Method {
 
 			delta = 0;
 			for (int i = 0; i < xLength - 1; i++) {
+				operations++;
 				x_new[i] += alpha * (z[i] - x_new[i]);
+				operations++;
 				extra += x_new[i];
+				operations++;
 				delta += Math.pow(x_new[i] - x[i], 2);
 			}
+			operations++;
 			x_new[xLength - 1] = 1 - extra;
+			operations++;
 			delta += Math.pow(x_new[xLength - 1] - x[xLength - 1], 2);
 			x = x_new;
 
@@ -95,7 +102,7 @@ public class WolfFrank extends Method {
 			if (delta < epsilon)
 				flag = false;
 		}
-
+		endTime();
 	}
 
 	private double[] getDifArray() {
@@ -107,9 +114,9 @@ public class WolfFrank extends Method {
 
 	private double difMainOnX(int index) {
 		double out = 0;
-		out += 2 * x[index];
+		out += 2 * x[index] * covariances[index][index];
 		out += 2 * sumCovarIndex(index);
-		out -= 2 * x[xLength - 1];
+		out -= 2 * x[xLength - 1] * covariances[xLength - 1][xLength - 1];
 		out -= 2 * sumCovarIndex(xLength - 1);
 		out += 2 * (x[xLength - 1] - x[index])
 				* covariances[index][xLength - 1];
@@ -135,11 +142,13 @@ public class WolfFrank extends Method {
 
 		temp = new double[xLength - 1];
 		for (int i = 0; i < xLength - 1; i++) {
+			operations++;
 			temp[i] = profit[i] - profit[xLength - 1];
 			constraints.add(new LinearConstraint(temp, Relationship.GEQ,
 					expectedProfit - profit[xLength - 1]));
 		}
 		// create and run the solver
+		operations+=Math.pow(xLength,2);
 		RealPointValuePair solution = new SimplexSolver().optimize(f,
 				constraints, GoalType.MAXIMIZE, true);
 
