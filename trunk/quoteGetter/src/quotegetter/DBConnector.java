@@ -12,7 +12,7 @@ import resource.TickerCovariance;
 
 public class DBConnector {
 
-    public static final String dbURL = "jdbc:Cache://127.0.0.1:1972/LISE_F";
+    public static final String dbURL = "jdbc:Cache://1z1972/LISE_F";
     public static final String dbUser = "extConnector";
     public static final String dbPassword = "5njd_ap2xc";
     private static Database dbConnection;
