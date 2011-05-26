@@ -75,7 +75,7 @@ public abstract class ScanMethod {
 				ValSum -= scanVals[tempN];
 				scanVals[tempN] = 0.0;
 				++tempN;
-				if (Step > (8 * DefStep)) Step = DefStep;
+				if (Step > (N * (N/2) * DefStep)) Step = DefStep;
 			}
 		}
 	}

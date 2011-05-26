@@ -31,7 +31,7 @@ public abstract class MonteCarloMethod {
 		Matrix result = null;
 		double max = Double.NEGATIVE_INFINITY;
 		
-		for (int i = 0; i < (int)Math.pow(N, 3.0*N); ++i){
+		for (int i = 0; i < (int)Math.pow(2, N); ++i){
 			temp = this.generatePoint();
 			if (this.checkWeights(temp)){
 				tempMax = this.getAimFunction(temp);

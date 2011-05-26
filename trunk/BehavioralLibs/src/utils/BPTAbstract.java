@@ -5,7 +5,7 @@ import utils.misc.*;
 public abstract class BPTAbstract {
 	protected double H;
 	protected double Alpha;
-	protected double ScanEpsilon = 0.001;
+	protected double ScanEpsilon = 0.01;
 	protected double ScanDelta = 0.001;
 	
 	protected Matrix Covariances = null;
