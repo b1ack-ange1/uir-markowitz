@@ -8,7 +8,7 @@ package userinf;
 **/
 
 public class AuthData extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 1253;
+    private static final long serialVersionUID = 7700;
     private static String CACHE_CLASS_NAME = "userinf.AuthData";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
