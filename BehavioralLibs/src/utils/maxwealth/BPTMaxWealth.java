@@ -192,11 +192,6 @@ public class BPTMaxWealth extends BPTAbstract {
 			return ScanWeights;
 		if ((Covariances == null) || (ExpectedReturns == null))
 			return null;
-		if (Double.isNaN(ImpliedRisk)) {
-			ImpliedRisk = this.getImpliedRisk();
-			if (Double.isNaN(ImpliedRisk))
-				return null;
-		}
 		ScanMaxWealth scw = new ScanMaxWealth(this);
 		ScanWeights = scw.scan();
 
@@ -208,11 +203,6 @@ public class BPTMaxWealth extends BPTAbstract {
 			return MCWeights;
 		if ((Covariances == null) || (ExpectedReturns == null))
 			return null;
-		if (Double.isNaN(ImpliedRisk)) {
-			ImpliedRisk = this.getImpliedRisk();
-			if (Double.isNaN(ImpliedRisk))
-				return null;
-		}
 		MonteCarloMaxWealth mcw = new MonteCarloMaxWealth(this);
 		MCWeights = mcw.scan();
 
