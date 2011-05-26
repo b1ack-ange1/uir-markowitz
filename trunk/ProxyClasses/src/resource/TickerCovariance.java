@@ -8,7 +8,7 @@ package resource;
 **/
 
 public class TickerCovariance extends com.intersys.classes.Persistent {
-    private static final long serialVersionUID = 7530;
+    private static final long serialVersionUID = 2877;
     private static String CACHE_CLASS_NAME = "resource.TickerCovariance";
     /**
            <p>NB: DO NOT USE IN APPLICATION(!!!).
@@ -1646,6 +1646,20 @@ after the index filing is completed.
         com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"countCovariances",args,com.intersys.objects.Database.RET_PRIM);
         db.parseStatus(res);
         return;
+    }
+    /**
+     <p>Runs method getAllCovariances in Cache.</p>
+     @param db represented as com.intersys.objects.Database
+     @throws com.intersys.objects.CacheException if any error occured while running the method.
+     @see <a href = "http://cache-server:57772/csp/documatic/%25CSP.Documatic.cls?APP=1&PAGE=CLASS&LIBRARY=LISE_F&CLASSNAME=resource.TickerCovariance#getAllCovariances"> Method getAllCovariances</A>
+    */
+    public static java.util.List getAllCovariances (com.intersys.objects.Database db) throws com.intersys.objects.CacheException {
+        com.intersys.cache.Dataholder[] args = new com.intersys.cache.Dataholder[0];
+        com.intersys.cache.Dataholder res=db.runClassMethod(CACHE_CLASS_NAME,"getAllCovariances",args,com.intersys.objects.Database.RET_OBJECT);
+        com.intersys.cache.CacheObject cobj = res.getCacheObject();
+        if (cobj == null)
+            return null;
+        return (java.util.List)(cobj.newJavaInstance());
     }
     /**
      <p>Returns a CallableStatement for query Extent.</p>
